@@ -23,6 +23,15 @@ const galleries = [
         images: [
 
             "imagenes/Arte 2D/Personaje_Y_EscenarioBlancoYNegro.jpg",
+            "imagenes/Arte 2D/Personaje_Y_EscenarioColorDefinitivo.jpg",
+            "imagenes/Arte 2D/Personaje_Y_EscenarioColor1.jpg",
+            "imagenes/Arte 2D/Personaje_Y_EscenarioColor2.jpg",
+            "imagenes/Arte 2D/Siluetas.jpg",
+            "imagenes/Arte 2D/TURNAROUND1.jpg",
+            "imagenes/Arte 2D/TURNAROUND2.jpg",
+            "imagenes/Arte 2D/TURNAROUND3(armas).jpg",
+            "imagenes/Arte 2D/Expresiones.jpg",
+           
 
             /*
                 AÑADE AQUÍ LAS DEMÁS IMÁGENES
