@@ -27,13 +27,12 @@ body {
 ========================================= */
 
 .sidebar {
-
     position: fixed;
 
     left: 0;
     top: 0;
 
-    width: 260px;
+    width: 360px;
     height: 100vh;
 
     background: #171717;
@@ -47,7 +46,15 @@ body {
     justify-content: space-between;
 
     z-index: 100;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        80% 100%,
+        0 100%
+    );
 }
+
 
 
 /* TÍTULO DEL BANNER */
