@@ -2,77 +2,116 @@
    GALERÍAS
 ========================================= */
 
+
+/*
+    Cada proyecto tiene:
+
+    - title
+    - images
+    - caption para cada imagen
+
+    Para añadir una imagen nueva:
+
+    {
+        src: "ruta/imagen.jpg",
+        caption: "Descripción de la imagen"
+    }
+*/
+
+
 const galleries = [
 
+
     /* =====================================
-       PROYECTO 1 — ARTE 2D
+       CARTELERÍA 1
     ====================================== */
 
     {
-        title: "TÍTULO",
+        title: "FIESTAS",
 
         images: [
 
-            "imagenes/Arte 2D/Personaje_Y_EscenarioBlancoYNegro.jpg",
-            "imagenes/Arte 2D/Personaje_Y_EscenarioDefinitivo.jpg",
-            "imagenes/Arte 2D/Personaje_Y_EscenarioColor1.jpg",
-            "imagenes/Arte 2D/Personaje_Y_EscenarioColor2.jpg",
-            "imagenes/Arte 2D/Siuetas.jpg",
-            "imagenes/Arte 2D/TURNAROUND1.jpg",
-            "imagenes/Arte 2D/TURNAROUND2.jpg",
-            "imagenes/Arte 2D/TURNAROUND3(armas).jpg",
-            "imagenes/Arte 2D/Expresiones.jpg",
-            "imagenes/Arte 2D/Thumbnails Jesús Mercado Rioja.jpg",
-            "imagenes/Arte 2D/Concept art escenario a color Jesus Mercado Rioja.jpg",
-            "imagenes/Arte 2D/Callouts Jesús Mercado Rioja.jpg"
+            {
+                src: "imagenes/Carteles/fiestas.jpeg",
+                caption: "Cartel de fiestas"
+            }
+
+            /*
+                AÑADE MÁS IMÁGENES AQUÍ
+
+                Ejemplo:
+
+                {
+                    src: "imagenes/Carteles/fiestas2.jpeg",
+                    caption: "Boceto inicial"
+                },
+
+                {
+                    src: "imagenes/Carteles/fiestas3.jpeg",
+                    caption: "Versión definitiva"
+                }
+            */
 
         ]
     },
 
 
     /* =====================================
-       PROYECTO 2 — ROCK MOLE
+       CARTELERÍA 2
     ====================================== */
 
     {
-        title: "TÍTULO",
+        title: "ENCIERROS",
 
         images: [
 
-            "imagenes/Arte 2D/RockMole/Topo color 1.PNG",
-            "imagenes/Arte 2D/RockMole/Turnaround topo.PNG",
-            "imagenes/Arte 2D/RockMole/Indumentaria cambiada.PNG",
-            "imagenes/Arte 2D/RockMole/Objetos_personaje.png",
-            "imagenes/Arte 2D/RockMole/Turnaround cascos.PNG",
-            "imagenes/Arte 2D/RockMole/Expresiones topo.PNG",
-
-            "imagenes/Arte 2D/RockMole/Versión color definitiva.PNG",
-            "imagenes/Arte 2D/RockMole/Turnaround golem grande.PNG",
-            "imagenes/Arte 2D/RockMole/Expresiones golem.PNG",
-
-            "imagenes/Arte 2D/RockMole/Turnaround conejo barril.PNG",
-            "imagenes/Arte 2D/RockMole/Turnaround planta carnivora.PNG",
-
-            "imagenes/Arte 2D/RockMole/Turnaround_vagon.PNG",
-            "imagenes/Arte 2D/RockMole/Turnaround_cajas.PNG",
-            "imagenes/Arte 2D/RockMole/Turnaround_barril.png",
-            "imagenes/Arte 2D/RockMole/Turnaround picos.PNG",
-            "imagenes/Arte 2D/RockMole/Turnaround cofre.PNG",
-            "imagenes/Arte 2D/RockMole/Turnaround farol.PNG",
-            "imagenes/Arte 2D/RockMole/Turnaround pala.PNG",
-            "imagenes/Arte 2D/RockMole/Turnaround jaula.PNG",
-
-            "imagenes/Arte 2D/RockMole/Aldea.PNG",
-            "imagenes/Arte 2D/RockMole/Herrería.PNG",
-            "imagenes/Arte 2D/RockMole/Tienda ropa.PNG",
-            "imagenes/Arte 2D/RockMole/Mina.PNG"
+            {
+                src: "imagenes/Carteles/encierros.jpeg",
+                caption: "Cartel de encierros"
+            }
 
         ]
     },
 
 
     /* =====================================
-       PROYECTO 3 — ARTE 2D
+       CARTELERÍA 3
+    ====================================== */
+
+    {
+        title: "MIGUELTURRA",
+
+        images: [
+
+            {
+                src: "imagenes/Carteles/miguelturra.jpeg",
+                caption: "Cartel de Miguelturra"
+            }
+
+        ]
+    },
+
+
+    /* =====================================
+       CARTELERÍA 4
+    ====================================== */
+
+    {
+        title: "ILUSTRACIÓN",
+
+        images: [
+
+            {
+                src: "imagenes/Carteles/ilustracion.jpeg",
+                caption: "Ilustración"
+            }
+
+        ]
+    },
+
+
+    /* =====================================
+       ARTE 2D — PROYECTO 1
     ====================================== */
 
     {
@@ -80,7 +119,193 @@ const galleries = [
 
         images: [
 
-            "images/2d/proyecto3/portada.jpg"
+            {
+                src: "imagenes/Arte 2D/Personaje_Y_EscenarioBlancoYNegro.jpg",
+                caption: "Diseño inicial del personaje y escenario"
+            },
+
+            {
+                src: "imagenes/Arte 2D/Personaje_Y_EscenarioDefinitivo.jpg",
+                caption: "Diseño definitivo del personaje y escenario"
+            },
+
+            {
+                src: "imagenes/Arte 2D/Personaje_Y_EscenarioColor1.jpg",
+                caption: "Primera propuesta de color"
+            },
+
+            {
+                src: "imagenes/Arte 2D/Personaje_Y_EscenarioColor2.jpg",
+                caption: "Segunda propuesta de color"
+            },
+
+            {
+                src: "imagenes/Arte 2D/Siuetas.jpg",
+                caption: "Siluetas del personaje"
+            },
+
+            {
+                src: "imagenes/Arte 2D/TURNAROUND1.jpg",
+                caption: "Turnaround del personaje"
+            },
+
+            {
+                src: "imagenes/Arte 2D/TURNAROUND2.jpg",
+                caption: "Turnaround del personaje"
+            },
+
+            {
+                src: "imagenes/Arte 2D/TURNAROUND3(armas).jpg",
+                caption: "Turnaround y diseño de armas"
+            },
+
+            {
+                src: "imagenes/Arte 2D/Expresiones.jpg",
+                caption: "Hoja de expresiones"
+            },
+
+            {
+                src: "imagenes/Arte 2D/Thumbnails Jesús Mercado Rioja.jpg",
+                caption: "Thumbnails"
+            },
+
+            {
+                src: "imagenes/Arte 2D/Concept art escenario a color Jesus Mercado Rioja.jpg",
+                caption: "Concept art del escenario a color"
+            },
+
+            {
+                src: "imagenes/Arte 2D/Callouts Jesús Mercado Rioja.jpg",
+                caption: "Callouts del diseño"
+            }
+
+        ]
+    },
+
+
+    /* =====================================
+       ARTE 2D — ROCK MOLE
+    ====================================== */
+
+    {
+        title: "ROCK MOLE",
+
+        images: [
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Topo color 1.PNG",
+                caption: "Diseño del topo"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Turnaround topo.PNG",
+                caption: "Turnaround del topo"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Indumentaria cambiada.PNG",
+                caption: "Variaciones de indumentaria"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Objetos_personaje.png",
+                caption: "Objetos del personaje"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Turnaround cascos.PNG",
+                caption: "Turnaround de cascos"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Expresiones topo.PNG",
+                caption: "Expresiones del topo"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Versión color definitiva.PNG",
+                caption: "Versión de color definitiva"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Turnaround golem grande.PNG",
+                caption: "Turnaround del golem"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Expresiones golem.PNG",
+                caption: "Expresiones del golem"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Turnaround conejo barril.PNG",
+                caption: "Turnaround del conejo barril"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Turnaround planta carnivora.PNG",
+                caption: "Turnaround de la planta carnívora"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Turnaround_vagon.PNG",
+                caption: "Turnaround del vagón"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Turnaround_cajas.PNG",
+                caption: "Turnaround de cajas"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Turnaround_barril.png",
+                caption: "Turnaround del barril"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Turnaround picos.PNG",
+                caption: "Turnaround de picos"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Turnaround cofre.PNG",
+                caption: "Turnaround del cofre"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Turnaround farol.PNG",
+                caption: "Turnaround del farol"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Turnaround pala.PNG",
+                caption: "Turnaround de la pala"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Turnaround jaula.PNG",
+                caption: "Turnaround de la jaula"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Aldea.PNG",
+                caption: "Diseño de la aldea"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Herrería.PNG",
+                caption: "Diseño de la herrería"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Tienda ropa.PNG",
+                caption: "Diseño de la tienda de ropa"
+            },
+
+            {
+                src: "imagenes/Arte 2D/RockMole/Mina.PNG",
+                caption: "Diseño de la mina"
+            }
 
         ]
     }
@@ -137,26 +362,32 @@ function updateGallery() {
     const gallery =
         galleries[currentGallery];
 
+
     const imageElement =
         document.getElementById("gallery-image");
 
     const titleElement =
         document.getElementById("gallery-title");
 
+    const captionElement =
+        document.getElementById("gallery-caption");
+
     const counterElement =
         document.getElementById("gallery-counter");
 
 
     /*
-        TÍTULO
+        COMPROBAR SI EXISTE LA GALERÍA
     */
 
-    titleElement.textContent =
-        gallery.title;
+    if (!gallery) {
+
+        return;
+    }
 
 
     /*
-        COMPROBAR IMÁGENES
+        COMPROBAR SI HAY IMÁGENES
     */
 
     if (
@@ -166,11 +397,25 @@ function updateGallery() {
 
         imageElement.style.display = "none";
 
+        titleElement.textContent =
+            gallery.title || "";
+
+        captionElement.textContent =
+            "Sin imágenes";
+
         counterElement.textContent =
-            "SIN IMÁGENES";
+            "0 / 0";
 
         return;
     }
+
+
+    /*
+        OBTENER IMAGEN ACTUAL
+    */
+
+    const image =
+        gallery.images[currentImage];
 
 
     /*
@@ -180,20 +425,26 @@ function updateGallery() {
     imageElement.style.display = "block";
 
     imageElement.src =
-        gallery.images[currentImage];
+        image.src;
+
+    imageElement.alt =
+        image.caption || gallery.title;
 
 
     /*
-        IMPORTANTE:
-        El carrusel siempre muestra
-        la imagen completa.
+        TÍTULO DEL PROYECTO
     */
 
-    imageElement.style.objectFit =
-        "contain";
+    titleElement.textContent =
+        gallery.title;
 
-    imageElement.style.objectPosition =
-        "center center";
+
+    /*
+        PIE DE FOTO
+    */
+
+    captionElement.textContent =
+        image.caption || "";
 
 
     /*
@@ -216,6 +467,7 @@ function nextImage() {
 
 
     if (
+        !gallery ||
         !gallery.images ||
         gallery.images.length === 0
     ) {
@@ -251,6 +503,7 @@ function previousImage() {
 
 
     if (
+        !gallery ||
         !gallery.images ||
         gallery.images.length === 0
     ) {
@@ -332,6 +585,7 @@ galleryElement.addEventListener(
     "click",
     function(event) {
 
+
         /*
             Si pulsamos la imagen,
             NO cerramos.
@@ -359,14 +613,21 @@ galleryElement.addEventListener(
 
 
         /*
-            Cualquier otra zona del
-            carrusel cierra la galería.
+            Si pulsamos el contenido,
+            NO cerramos.
+        */
 
-            Por ejemplo:
-            - fondo negro
-            - zona alrededor de la imagen
-            - contador
-            - título
+        if (
+            event.target.closest(".gallery-content")
+        ) {
+
+            return;
+        }
+
+
+        /*
+            Si llegamos aquí hemos
+            pulsado el fondo negro.
         */
 
         closeGallery();
