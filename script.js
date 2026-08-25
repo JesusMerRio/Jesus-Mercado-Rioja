@@ -33,81 +33,31 @@ const galleries = [
 
             {
                 src: "imagenes/Carteles/fiestas.jpeg",
-                caption: "Cartel de fiestas"
+                caption: "Propuesta cartel fiestas populares San Sebastián de los Reyes 2026"
             }
-
-            /*
-                AÑADE MÁS IMÁGENES AQUÍ
-
-                Ejemplo:
-
-                {
-                    src: "imagenes/Carteles/fiestas2.jpeg",
-                    caption: "Boceto inicial"
-                },
-
-                {
-                    src: "imagenes/Carteles/fiestas3.jpeg",
-                    caption: "Versión definitiva"
-                }
-            */
-
-        ]
-    },
-
-
-    /* =====================================
-       CARTELERÍA 2
-    ====================================== */
-
-    {
-        title: "ENCIERROS",
-
-        images: [
 
             {
                 src: "imagenes/Carteles/encierros.jpeg",
-                caption: "Cartel de encierros"
+                caption: "Propuesta cartel encierros San Sebastián de los Reyes"
             }
-
-        ]
-    },
-
-
-    /* =====================================
-       CARTELERÍA 3
-    ====================================== */
-
-    {
-        title: "MIGUELTURRA",
-
-        images: [
-
+           
             {
                 src: "imagenes/Carteles/miguelturra.jpeg",
-                caption: "Cartel de Miguelturra"
+                caption: "Propuesta cartel carnaval Miguelturra 2025"
             }
-
-        ]
-    },
-
-
-    /* =====================================
-       CARTELERÍA 4
-    ====================================== */
-
-    {
-        title: "ILUSTRACIÓN",
-
-        images: [
-
+           
             {
                 src: "imagenes/Carteles/ilustracion.jpeg",
-                caption: "Ilustración"
+                caption: "Ilustración muelle de un puerto"
             }
+
+          
 
         ]
     },
+
+
+  
 
 
     /* =====================================
