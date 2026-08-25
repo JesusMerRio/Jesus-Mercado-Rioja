@@ -30,9 +30,9 @@ const galleries = [
 
                 Ejemplo:
 
-                "Imagenes/Arte2 D/imagen2.jpg",
-                "Imagenes/Arte2 D/imagen3.jpg",
-                "Imagenes/Arte2 D/imagen4.jpg"
+                "imagenes/Arte 2D/imagen2.jpg",
+                "imagenes/Arte 2D/imagen3.jpg",
+                "imagenes/Arte 2D/imagen4.jpg"
             */
 
         ]
@@ -104,9 +104,9 @@ function openGallery(galleryIndex) {
     gallery.classList.add("active");
 
     /*
-        Evitamos que el usuario pueda hacer
-        scroll por la página mientras la galería
-        está abierta.
+        Evitamos que la página principal
+        pueda hacer scroll mientras el
+        carrusel está abierto.
     */
 
     document.body.style.overflow = "hidden";
@@ -124,6 +124,10 @@ function closeGallery() {
 
     gallery.classList.remove("active");
 
+    /*
+        Devolvemos el scroll a la página.
+    */
+
     document.body.style.overflow = "";
 }
 
@@ -138,31 +142,59 @@ function updateGallery() {
         galleries[currentGallery];
 
 
-    const image =
+    const imageElement =
+        document.getElementById("gallery-image");
+
+    const titleElement =
+        document.getElementById("gallery-title");
+
+    const counterElement =
+        document.getElementById("gallery-counter");
+
+
+    /*
+        Actualizamos el título.
+    */
+
+    titleElement.textContent =
+        gallery.title;
+
+
+    /*
+        COMPROBAMOS SI HAY IMÁGENES
+    */
+
+    if (
+        !gallery.images ||
+        gallery.images.length === 0
+    ) {
+
+        /*
+            No hay imágenes todavía.
+        */
+
+        imageElement.style.display = "none";
+
+        counterElement.textContent =
+            "SIN IMÁGENES";
+
+        return;
+    }
+
+
+    /*
+        Si hay imágenes,
+        mostramos la imagen actual.
+    */
+
+    imageElement.style.display = "block";
+
+    imageElement.src =
         gallery.images[currentImage];
 
 
     /*
-        Cambiamos la imagen.
-    */
-
-    document
-        .getElementById("gallery-image")
-        .src = image;
-
-
-    /*
-        Cambiamos el título.
-    */
-
-    document
-        .getElementById("gallery-title")
-        .textContent =
-            gallery.title;
-
-
-    /*
-        Actualizamos el contador.
+        Contador.
 
         Ejemplo:
 
@@ -171,10 +203,8 @@ function updateGallery() {
         3 / 5
     */
 
-    document
-        .getElementById("gallery-counter")
-        .textContent =
-            `${currentImage + 1} / ${gallery.images.length}`;
+    counterElement.textContent =
+        `${currentImage + 1} / ${gallery.images.length}`;
 }
 
 
@@ -186,6 +216,20 @@ function nextImage() {
 
     const gallery =
         galleries[currentGallery];
+
+
+    /*
+        Si el proyecto no tiene imágenes,
+        no hacemos nada.
+    */
+
+    if (
+        !gallery.images ||
+        gallery.images.length === 0
+    ) {
+
+        return;
+    }
 
 
     currentImage++;
@@ -219,12 +263,27 @@ function previousImage() {
         galleries[currentGallery];
 
 
+    /*
+        Si el proyecto no tiene imágenes,
+        no hacemos nada.
+    */
+
+    if (
+        !gallery.images ||
+        gallery.images.length === 0
+    ) {
+
+        return;
+    }
+
+
     currentImage--;
 
 
     /*
         Si estamos en la primera imagen
-        y pulsamos atrás, vamos a la última.
+        y pulsamos atrás,
+        vamos a la última.
     */
 
     if (currentImage < 0) {
@@ -306,31 +365,43 @@ document.addEventListener(
    CERRAR AL HACER CLICK EN EL FONDO
 ========================================= */
 
-document
-    .getElementById("gallery")
-    .addEventListener(
-        "click",
-        function(event) {
+const galleryElement =
+    document.getElementById("gallery");
 
-            /*
-                Solo cerramos si el usuario
-                pulsa directamente sobre el
-                fondo oscuro.
 
-                Si pulsa la imagen o un botón,
-                no cerramos.
-            */
+galleryElement.addEventListener(
+    "click",
+    function(event) {
 
-            if (
-                event.target === this
-            ) {
+        /*
+            Solo cerramos si el usuario
+            pulsa directamente sobre el
+            fondo oscuro.
 
-                closeGallery();
-            }
+            Si pulsa:
 
+            - La imagen
+            - La flecha anterior
+            - La flecha siguiente
+            - El botón de cerrar
+
+            no se cierra por este evento.
+        */
+
+        if (
+            event.target === galleryElement
+        ) {
+
+            closeGallery();
         }
-    );
 
+    }
+);
+
+
+/* =========================================
+   MENSAJE DE COMPROBACIÓN
+========================================= */
 
 console.log(
     "Portfolio cargado correctamente."
