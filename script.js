@@ -362,7 +362,7 @@ document.addEventListener(
 
 
 /* =========================================
-   CERRAR AL HACER CLICK EN EL FONDO
+   CERRAR AL HACER CLICK FUERA DE LA IMAGEN
 ========================================= */
 
 const galleryElement =
@@ -374,26 +374,54 @@ galleryElement.addEventListener(
     function(event) {
 
         /*
-            Solo cerramos si el usuario
-            pulsa directamente sobre el
-            fondo oscuro.
-
-            Si pulsa:
-
+            Elementos que NO deben cerrar
+            el carrusel:
+            
             - La imagen
-            - La flecha anterior
-            - La flecha siguiente
-            - El botón de cerrar
-
-            no se cierra por este evento.
+            - Las flechas
+            - El botón X
+            - El contenido del carrusel
         */
 
-        if (
-            event.target === galleryElement
-        ) {
+        const clickedImage =
+            event.target.closest("#gallery-image");
 
-            closeGallery();
+        const clickedButton =
+            event.target.closest("button");
+
+        const clickedContent =
+            event.target.closest(".gallery-content");
+
+
+        /*
+            Si hemos pulsado la imagen
+            no hacemos nada.
+        */
+
+        if (clickedImage) {
+            return;
         }
+
+
+        /*
+            Si hemos pulsado cualquier botón
+            tampoco cerramos.
+        */
+
+        if (clickedButton) {
+            return;
+        }
+
+
+        /*
+            Si hemos pulsado cualquier parte
+            del contenido del carrusel que no
+            sea la imagen, TAMBIÉN cerramos.
+
+            Esto incluye el título y contador.
+        */
+
+        closeGallery();
 
     }
 );
