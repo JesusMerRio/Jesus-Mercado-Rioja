@@ -58,11 +58,6 @@ body {
 
     background: #171717;
 
-    /*
-        La parte superior llega más a la derecha
-        y la inferior termina antes.
-    */
-
     clip-path: polygon(
         0 0,
         100% 0,
@@ -162,10 +157,6 @@ body {
 .main-content {
 
     position: relative;
-
-    /*
-        El banner mide 360px.
-    */
 
     margin-left: 360px;
 
@@ -330,7 +321,7 @@ body {
 
 
 /* =========================================
-   IMÁGENES
+   IMÁGENES DE PROYECTOS
 ========================================= */
 
 .project-image {
@@ -350,16 +341,10 @@ body {
 .project-image img {
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
-
-    /*
-
-        Las imágenes verticales se recortan
-        empezando desde la parte superior.
-
-    */
 
     object-position: center top;
 
@@ -370,6 +355,45 @@ body {
         filter 0.5s ease;
 }
 
+
+/* =========================================
+   PORTADA PROYECTO 2 — ROCK MOLE
+========================================= */
+
+/*
+    Esta clase permite modificar SOLO la
+    portada del segundo proyecto.
+
+    Puedes cambiar el porcentaje de
+    object-position para subir o bajar
+    la imagen.
+
+    0%   = arriba
+    50%  = centro
+    100% = abajo
+*/
+
+.project-2-cover {
+
+    object-position: center 50% !important;
+}
+
+
+/*
+    Si quieres que aparezca todavía más abajo,
+    puedes usar por ejemplo:
+
+    object-position: center 65% !important;
+
+    Si quieres que aparezca más arriba:
+
+    object-position: center 30% !important;
+*/
+
+
+/* =========================================
+   HOVER DE LAS IMÁGENES
+========================================= */
 
 .project-card:hover img {
 
@@ -619,6 +643,16 @@ body {
     align-items: center;
 
     justify-content: center;
+
+    /*
+        Importante:
+
+        El contenido NO ocupa toda la pantalla
+        para que exista una zona exterior al
+        carrusel donde poder hacer click y cerrar.
+    */
+
+    pointer-events: none;
 }
 
 
@@ -631,22 +665,18 @@ body {
     display: block;
 
     width: auto;
+
     height: auto;
-
-    /*
-        La imagen nunca será más grande
-        que la pantalla.
-
-        Al utilizar contain,
-        nunca se recorta.
-
-    */
 
     max-width: 85vw;
 
     max-height: 75vh;
 
     object-fit: contain;
+
+    pointer-events: auto;
+
+    cursor: default;
 }
 
 
@@ -667,6 +697,8 @@ body {
     justify-content: space-between;
 
     align-items: center;
+
+    pointer-events: auto;
 }
 
 
@@ -706,6 +738,8 @@ body {
 
     transition:
         opacity 0.3s ease;
+
+    z-index: 10;
 }
 
 
@@ -794,6 +828,12 @@ body {
             65% 100%,
             0 100%
         );
+    }
+
+
+    .project-2-cover {
+
+        object-position: center 50% !important;
     }
 
 }
@@ -947,6 +987,14 @@ body {
     .gallery-next {
 
         right: 10px;
+    }
+
+
+    .gallery-close {
+
+        top: 15px;
+
+        right: 20px;
     }
 
 }
