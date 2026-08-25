@@ -22,7 +22,7 @@ const galleries = [
 
         images: [
 
-            "Imagenes/Arte2 D/Personaje_Y_EscenarioBlancoYNegro.jpg",
+            "imagenes/Arte 2D/Personaje_Y_EscenarioBlancoYNegro.jpg",
 
             /*
                 AÑADE AQUÍ LAS DEMÁS IMÁGENES
