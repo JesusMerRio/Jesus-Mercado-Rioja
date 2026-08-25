@@ -73,7 +73,7 @@ const galleries = [
             "imagenes/Arte 2D/RockMole/Turnaround conejo barril.PNG",
             "imagenes/Arte 2D/RockMole/Turnaround planta carnivora.PNG",
 
-            "imagenes/Arte 2D/RockMole/Turnaround_vagon.PNG",
+            
             "imagenes/Arte 2D/RockMole/Turnaround_cajas.PNG",
             "imagenes/Arte 2D/RockMole/Turnaround_barril.PNG",
             "imagenes/Arte 2D/RockMole/Turnaround picos.PNG",
