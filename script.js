@@ -59,8 +59,34 @@ const galleries = [
 
         images: [
 
-            "images/2d/proyecto2/portada.jpg",
+            "imagenes/Arte 2D/RockMole/Topo color 1.PNG",
+            "imagenes/Arte 2D/RockMole/Turnaround topo.PNG",
+            "imagenes/Arte 2D/RockMole/Indumentaria cambiada.PNG",
+            "imagenes/Arte 2D/RockMole/Objetos_personaje.png",
+            "imagenes/Arte 2D/RockMole/Turnaround cascos.PNG",
+            "imagenes/Arte 2D/RockMole/Expresiones topo.PNG",
+           
+            "imagenes/Arte 2D/RockMole/Versión color definitiva.PNG",
+            "imagenes/Arte 2D/RockMole/Turnaround golem grande.PNG",
+            "imagenes/Arte 2D/RockMole/Expresiones golem.PNG", 
+           
+            "imagenes/Arte 2D/RockMole/Turnaround conejo barril.PNG",
+            "imagenes/Arte 2D/RockMole/Turnaround planta carnivora.PNG",
 
+            "imagenes/Arte 2D/RockMole/Turnaround_vagon.PNG",
+            "imagenes/Arte 2D/RockMole/Turnaround_cajas.PNG",
+            "imagenes/Arte 2D/RockMole/Turnaround_barril.PNG",
+            "imagenes/Arte 2D/RockMole/Turnaround picos.PNG",
+            "imagenes/Arte 2D/RockMole/Turnaround cofre.PNG",
+            "imagenes/Arte 2D/RockMole/Turnaround farol.PNG",
+            "imagenes/Arte 2D/RockMole/Turnaround pala.PNG",
+            "imagenes/Arte 2D/RockMole/Turnaround jaula.PNG",
+
+            "imagenes/Arte 2D/RockMole/Aldea.PNG",
+            "imagenes/Arte 2D/RockMole/Herrería.PNG",
+            "imagenes/Arte 2D/RockMole/Tienda ropa.PNG",
+            "imagenes/Arte 2D/RockMole/Mina.PNG",
+ 
             /*
                 AÑADE AQUÍ LAS DEMÁS IMÁGENES
                 DEL PROYECTO 2.
