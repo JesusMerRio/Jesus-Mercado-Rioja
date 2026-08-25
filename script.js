@@ -2,15 +2,6 @@
    GALERÍAS
 ========================================= */
 
-
-/*
-    Cada objeto representa un proyecto.
-
-    Dentro de "images" ponemos todas las
-    imágenes que queremos mostrar en el
-    carrusel de ese proyecto.
-*/
-
 const galleries = [
 
     /* =====================================
@@ -33,25 +24,14 @@ const galleries = [
             "imagenes/Arte 2D/Expresiones.jpg",
             "imagenes/Arte 2D/Thumbnails Jesús Mercado Rioja.jpg",
             "imagenes/Arte 2D/Concept art escenario a color Jesus Mercado Rioja.jpg",
-            "imagenes/Arte 2D/Callouts Jesús Mercado Rioja.jpg",
-
-            /*
-                AÑADE AQUÍ LAS DEMÁS IMÁGENES
-                DEL PROYECTO 1.
-
-                Ejemplo:
-
-                "imagenes/Arte 2D/imagen2.jpg",
-                "imagenes/Arte 2D/imagen3.jpg",
-                "imagenes/Arte 2D/imagen4.jpg"
-            */
+            "imagenes/Arte 2D/Callouts Jesús Mercado Rioja.jpg"
 
         ]
     },
 
 
     /* =====================================
-       PROYECTO 2 — ARTE 2D
+       PROYECTO 2 — ROCK MOLE
     ====================================== */
 
     {
@@ -65,11 +45,11 @@ const galleries = [
             "imagenes/Arte 2D/RockMole/Objetos_personaje.png",
             "imagenes/Arte 2D/RockMole/Turnaround cascos.PNG",
             "imagenes/Arte 2D/RockMole/Expresiones topo.PNG",
-           
+
             "imagenes/Arte 2D/RockMole/Versión color definitiva.PNG",
             "imagenes/Arte 2D/RockMole/Turnaround golem grande.PNG",
-            "imagenes/Arte 2D/RockMole/Expresiones golem.PNG", 
-           
+            "imagenes/Arte 2D/RockMole/Expresiones golem.PNG",
+
             "imagenes/Arte 2D/RockMole/Turnaround conejo barril.PNG",
             "imagenes/Arte 2D/RockMole/Turnaround planta carnivora.PNG",
 
@@ -85,12 +65,7 @@ const galleries = [
             "imagenes/Arte 2D/RockMole/Aldea.PNG",
             "imagenes/Arte 2D/RockMole/Herrería.PNG",
             "imagenes/Arte 2D/RockMole/Tienda ropa.PNG",
-            "imagenes/Arte 2D/RockMole/Mina.PNG",
- 
-            /*
-                AÑADE AQUÍ LAS DEMÁS IMÁGENES
-                DEL PROYECTO 2.
-            */
+            "imagenes/Arte 2D/RockMole/Mina.PNG"
 
         ]
     },
@@ -105,12 +80,7 @@ const galleries = [
 
         images: [
 
-            "images/2d/proyecto3/portada.jpg",
-
-            /*
-                AÑADE AQUÍ LAS DEMÁS IMÁGENES
-                DEL PROYECTO 3.
-            */
+            "images/2d/proyecto3/portada.jpg"
 
         ]
     }
@@ -119,7 +89,6 @@ const galleries = [
 
 
 let currentGallery = 0;
-
 let currentImage = 0;
 
 
@@ -140,12 +109,6 @@ function openGallery(galleryIndex) {
 
     gallery.classList.add("active");
 
-    /*
-        Evitamos que la página principal
-        pueda hacer scroll mientras el
-        carrusel está abierto.
-    */
-
     document.body.style.overflow = "hidden";
 }
 
@@ -161,10 +124,6 @@ function closeGallery() {
 
     gallery.classList.remove("active");
 
-    /*
-        Devolvemos el scroll a la página.
-    */
-
     document.body.style.overflow = "";
 }
 
@@ -178,7 +137,6 @@ function updateGallery() {
     const gallery =
         galleries[currentGallery];
 
-
     const imageElement =
         document.getElementById("gallery-image");
 
@@ -190,7 +148,7 @@ function updateGallery() {
 
 
     /*
-        Actualizamos el título.
+        TÍTULO
     */
 
     titleElement.textContent =
@@ -198,17 +156,13 @@ function updateGallery() {
 
 
     /*
-        COMPROBAMOS SI HAY IMÁGENES
+        COMPROBAR IMÁGENES
     */
 
     if (
         !gallery.images ||
         gallery.images.length === 0
     ) {
-
-        /*
-            No hay imágenes todavía.
-        */
 
         imageElement.style.display = "none";
 
@@ -220,8 +174,7 @@ function updateGallery() {
 
 
     /*
-        Si hay imágenes,
-        mostramos la imagen actual.
+        MOSTRAR IMAGEN
     */
 
     imageElement.style.display = "block";
@@ -231,13 +184,20 @@ function updateGallery() {
 
 
     /*
-        Contador.
+        IMPORTANTE:
+        El carrusel siempre muestra
+        la imagen completa.
+    */
 
-        Ejemplo:
+    imageElement.style.objectFit =
+        "contain";
 
-        1 / 5
-        2 / 5
-        3 / 5
+    imageElement.style.objectPosition =
+        "center center";
+
+
+    /*
+        CONTADOR
     */
 
     counterElement.textContent =
@@ -255,11 +215,6 @@ function nextImage() {
         galleries[currentGallery];
 
 
-    /*
-        Si el proyecto no tiene imágenes,
-        no hacemos nada.
-    */
-
     if (
         !gallery.images ||
         gallery.images.length === 0
@@ -271,11 +226,6 @@ function nextImage() {
 
     currentImage++;
 
-
-    /*
-        Si llegamos al final,
-        volvemos a la primera imagen.
-    */
 
     if (
         currentImage >=
@@ -300,11 +250,6 @@ function previousImage() {
         galleries[currentGallery];
 
 
-    /*
-        Si el proyecto no tiene imágenes,
-        no hacemos nada.
-    */
-
     if (
         !gallery.images ||
         gallery.images.length === 0
@@ -316,12 +261,6 @@ function previousImage() {
 
     currentImage--;
 
-
-    /*
-        Si estamos en la primera imagen
-        y pulsamos atrás,
-        vamos a la última.
-    */
 
     if (currentImage < 0) {
 
@@ -346,11 +285,6 @@ document.addEventListener(
             document.getElementById("gallery");
 
 
-        /*
-            Si el carrusel no está abierto,
-            ignoramos las teclas.
-        */
-
         if (
             !gallery.classList.contains("active")
         ) {
@@ -358,10 +292,6 @@ document.addEventListener(
             return;
         }
 
-
-        /*
-            FLECHA DERECHA
-        */
 
         if (
             event.key === "ArrowRight"
@@ -371,10 +301,6 @@ document.addEventListener(
         }
 
 
-        /*
-            FLECHA IZQUIERDA
-        */
-
         if (
             event.key === "ArrowLeft"
         ) {
@@ -382,10 +308,6 @@ document.addEventListener(
             previousImage();
         }
 
-
-        /*
-            ESCAPE
-        */
 
         if (
             event.key === "Escape"
@@ -399,7 +321,7 @@ document.addEventListener(
 
 
 /* =========================================
-   CERRAR AL HACER CLICK FUERA DE LA IMAGEN
+   CERRAR AL HACER CLICK FUERA
 ========================================= */
 
 const galleryElement =
@@ -411,51 +333,40 @@ galleryElement.addEventListener(
     function(event) {
 
         /*
-            Elementos que NO deben cerrar
-            el carrusel:
-            
-            - La imagen
-            - Las flechas
-            - El botón X
-            - El contenido del carrusel
+            Si pulsamos la imagen,
+            NO cerramos.
         */
 
-        const clickedImage =
-            event.target.closest("#gallery-image");
+        if (
+            event.target.closest("#gallery-image")
+        ) {
 
-        const clickedButton =
-            event.target.closest("button");
-
-        const clickedContent =
-            event.target.closest(".gallery-content");
-
-
-        /*
-            Si hemos pulsado la imagen
-            no hacemos nada.
-        */
-
-        if (clickedImage) {
             return;
         }
 
 
         /*
-            Si hemos pulsado cualquier botón
-            tampoco cerramos.
+            Si pulsamos un botón,
+            NO cerramos.
         */
 
-        if (clickedButton) {
+        if (
+            event.target.closest("button")
+        ) {
+
             return;
         }
 
 
         /*
-            Si hemos pulsado cualquier parte
-            del contenido del carrusel que no
-            sea la imagen, TAMBIÉN cerramos.
+            Cualquier otra zona del
+            carrusel cierra la galería.
 
-            Esto incluye el título y contador.
+            Por ejemplo:
+            - fondo negro
+            - zona alrededor de la imagen
+            - contador
+            - título
         */
 
         closeGallery();
@@ -465,7 +376,7 @@ galleryElement.addEventListener(
 
 
 /* =========================================
-   MENSAJE DE COMPROBACIÓN
+   MENSAJE
 ========================================= */
 
 console.log(
