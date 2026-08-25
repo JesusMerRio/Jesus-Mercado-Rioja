@@ -27,47 +27,86 @@ body {
 ========================================= */
 
 .sidebar {
+
     position: fixed;
+
     left: 0;
     top: 0;
 
     width: 360px;
     height: 100vh;
 
-    background: #171717;
-    color: #f3f0e9;
-
-    padding: 40px 30px;
-
     z-index: 100;
+
+    pointer-events: none;
 }
 
-/* DIAGONAL */
-.sidebar::after {
-    content: "";
+
+/* -----------------------------------------
+   FONDO NEGRO DEL BANNER
+----------------------------------------- */
+
+.sidebar-background {
 
     position: absolute;
 
+    left: 0;
     top: 0;
-    right: -100px;
 
-    width: 200px;
+    width: 100%;
     height: 100%;
 
     background: #171717;
 
-    transform: skewX(-10deg);
+    /*
+        La parte superior llega más a la derecha
+        y la inferior termina antes.
+    */
 
-    z-index: -1;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        72% 100%,
+        0 100%
+    );
+
+    z-index: 1;
 }
 
 
+/* -----------------------------------------
+   CONTENIDO DEL BANNER
+----------------------------------------- */
 
-/* TÍTULO DEL BANNER */
+.sidebar-content {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 40px 30px;
+
+    color: #f3f0e9;
+
+    z-index: 2;
+
+    pointer-events: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+
+/* TÍTULO */
 
 .sidebar-title {
 
     font-size: 28px;
+
     font-weight: 700;
 
     letter-spacing: -1px;
@@ -76,15 +115,19 @@ body {
 }
 
 
-/* NAVEGACIÓN */
+/* =========================================
+   NAVEGACIÓN
+========================================= */
 
 .navigation {
 
     display: flex;
+
     flex-direction: column;
 
     gap: 14px;
 }
+
 
 .navigation a {
 
@@ -98,22 +141,17 @@ body {
 
     letter-spacing: 1px;
 
-    transition: opacity 0.3s ease;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
 }
+
 
 .navigation a:hover {
 
     opacity: 0.5;
-}
 
-
-/* PIE DEL BANNER */
-
-.sidebar-footer {
-
-    font-size: 11px;
-
-    opacity: 0.5;
+    transform: translateX(5px);
 }
 
 
@@ -123,9 +161,17 @@ body {
 
 .main-content {
 
-    margin-left: 260px;
+    position: relative;
 
-    width: calc(100% - 260px);
+    /*
+        El banner mide 360px.
+    */
+
+    margin-left: 360px;
+
+    width: calc(100% - 360px);
+
+    z-index: 10;
 }
 
 
@@ -140,6 +186,7 @@ body {
     padding: 80px;
 
     display: flex;
+
     flex-direction: column;
 
     justify-content: center;
@@ -164,7 +211,11 @@ body {
 
 .hero h1 {
 
-    font-size: clamp(70px, 12vw, 180px);
+    font-size: clamp(
+        70px,
+        12vw,
+        180px
+    );
 
     line-height: 0.85;
 
@@ -228,7 +279,11 @@ body {
 
 .section-header h2 {
 
-    font-size: clamp(45px, 7vw, 100px);
+    font-size: clamp(
+        45px,
+        7vw,
+        100px
+    );
 
     line-height: 0.9;
 
@@ -274,9 +329,13 @@ body {
 }
 
 
-/* IMAGEN */
+/* =========================================
+   IMÁGENES
+========================================= */
 
 .project-image {
+
+    position: relative;
 
     width: 100%;
 
@@ -307,11 +366,59 @@ body {
 
     transform: scale(1.04);
 
-    filter: brightness(0.85);
+    filter: brightness(0.7);
 }
 
 
-/* INFORMACIÓN */
+/* =========================================
+   OVERLAY DE PROYECTOS
+========================================= */
+
+.project-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #ffffff;
+
+    opacity: 0;
+
+    transition: opacity 0.4s ease;
+
+    pointer-events: none;
+}
+
+
+.project-card:hover .project-overlay {
+
+    opacity: 1;
+}
+
+
+.project-overlay span {
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    border-bottom: 1px solid white;
+
+    padding-bottom: 5px;
+}
+
+
+/* =========================================
+   INFORMACIÓN
+========================================= */
 
 .project-card h3 {
 
@@ -452,22 +559,195 @@ body {
 
 
 /* =========================================
-   RESPONSIVE — TABLET
+   CARRUSEL
+========================================= */
+
+.gallery {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(
+        15,
+        15,
+        15,
+        0.97
+    );
+
+    z-index: 1000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 50px;
+}
+
+
+.gallery.active {
+
+    display: flex;
+}
+
+
+/* CONTENIDO */
+
+.gallery-content {
+
+    width: 80vw;
+
+    height: 85vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* IMAGEN */
+
+.gallery-content img {
+
+    max-width: 100%;
+
+    max-height: 75vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* INFORMACIÓN */
+
+.gallery-info {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    color: #f3f0e9;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.gallery-info h3 {
+
+    font-size: 18px;
+
+    text-transform: uppercase;
+}
+
+
+.gallery-info span {
+
+    font-size: 12px;
+
+    opacity: 0.5;
+}
+
+
+/* =========================================
+   BOTONES DEL CARRUSEL
+========================================= */
+
+.gallery button {
+
+    border: none;
+
+    background: none;
+
+    color: #f3f0e9;
+
+    cursor: pointer;
+
+    position: absolute;
+
+    font-size: 40px;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+
+.gallery button:hover {
+
+    opacity: 0.5;
+}
+
+
+/* CERRAR */
+
+.gallery-close {
+
+    top: 25px;
+
+    right: 35px;
+
+    font-size: 45px !important;
+}
+
+
+/* ANTERIOR */
+
+.gallery-prev {
+
+    left: 30px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+}
+
+
+/* SIGUIENTE */
+
+.gallery-next {
+
+    right: 30px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+}
+
+
+/* =========================================
+   TABLET
 ========================================= */
 
 @media (max-width: 900px) {
 
     .sidebar {
 
-        width: 200px;
+        width: 240px;
     }
+
 
     .main-content {
 
-        margin-left: 200px;
+        margin-left: 240px;
 
-        width: calc(100% - 200px);
+        width: calc(100% - 240px);
     }
+
 
     .hero,
     .section {
@@ -475,15 +755,28 @@ body {
         padding: 70px 40px;
     }
 
+
     .projects-grid {
 
         grid-template-columns: 1fr;
     }
+
+
+    .sidebar-background {
+
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            65% 100%,
+            0 100%
+        );
+    }
+
 }
 
 
 /* =========================================
-   RESPONSIVE — MÓVIL
+   MÓVIL
 ========================================= */
 
 @media (max-width: 600px) {
@@ -496,15 +789,27 @@ body {
 
         height: auto;
 
-        padding: 25px;
-
-        gap: 30px;
+        min-height: 180px;
     }
+
+
+    .sidebar-background {
+
+        clip-path: none;
+    }
+
+
+    .sidebar-content {
+
+        padding: 25px;
+    }
+
 
     .sidebar-title {
 
         font-size: 22px;
     }
+
 
     .navigation {
 
@@ -515,10 +820,12 @@ body {
         gap: 10px 20px;
     }
 
+
     .navigation a {
 
         font-size: 11px;
     }
+
 
     .main-content {
 
@@ -527,16 +834,19 @@ body {
         width: 100%;
     }
 
+
     .hero,
     .section {
 
         padding: 70px 25px;
     }
 
+
     .hero {
 
         min-height: 80vh;
     }
+
 
     .hero h1 {
 
@@ -545,20 +855,24 @@ body {
         letter-spacing: -5px;
     }
 
+
     .section-header {
 
         display: block;
     }
+
 
     .section-header .section-number {
 
         margin-bottom: 20px;
     }
 
+
     .section-header h2 {
 
         font-size: 55px;
     }
+
 
     .game {
 
@@ -566,4 +880,39 @@ body {
 
         flex-direction: column;
     }
+
+
+    /* CARRUSEL EN MÓVIL */
+
+    .gallery {
+
+        padding: 20px;
+    }
+
+
+    .gallery-content {
+
+        width: 90vw;
+
+        height: 85vh;
+    }
+
+
+    .gallery-content img {
+
+        max-height: 70vh;
+    }
+
+
+    .gallery-prev {
+
+        left: 10px;
+    }
+
+
+    .gallery-next {
+
+        right: 10px;
+    }
+
 }
