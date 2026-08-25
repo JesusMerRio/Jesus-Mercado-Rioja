@@ -27,7 +27,7 @@ const galleries = [
     ====================================== */
 
     {
-        title: "FIESTAS",
+        title: "CARTELES E ILUSTRACIONES",
 
         images: [
 
