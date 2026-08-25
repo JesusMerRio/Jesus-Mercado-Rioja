@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,38 +12,73 @@
 
 <body>
 
-    <!-- BANNER LATERAL -->
+    <!-- =========================================
+         BANNER LATERAL
+    ========================================== -->
+
     <aside class="sidebar">
 
-        <div class="sidebar-title">
-            MENÚ
-        </div>
+        <!-- Fondo negro diagonal -->
+        <div class="sidebar-background"></div>
 
-        <nav class="navigation">
-            <a href="#inicio">Inicio</a>
-            <a href="#carteleria">Cartelería</a>
-            <a href="#arte2d">Arte 2D</a>
-            <a href="#arte3d">Arte 3D</a>
-            <a href="#juegos">Proyectos</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
+        <!-- Contenido del menú -->
+        <div class="sidebar-content">
 
-        <div class="sidebar-footer">
-           <!--   <span>© 2026</span> -->
+            <div class="sidebar-title">
+                MENÚ
+            </div>
+
+            <nav class="navigation">
+
+                <a href="#inicio">Inicio</a>
+
+                <a href="#carteleria">
+                    Cartelería
+                </a>
+
+                <a href="#arte2d">
+                    Arte 2D
+                </a>
+
+                <a href="#arte3d">
+                    Arte 3D
+                </a>
+
+                <a href="#juegos">
+                    Proyectos
+                </a>
+
+                <a href="#contacto">
+                    Contacto
+                </a>
+
+            </nav>
+
         </div>
 
     </aside>
 
 
-    <!-- CONTENIDO PRINCIPAL -->
+    <!-- =========================================
+         CONTENIDO PRINCIPAL
+    ========================================== -->
+
     <main class="main-content">
 
-        <!-- INICIO -->
+
+        <!-- =====================================
+             INICIO
+        ====================================== -->
+
         <section id="inicio" class="hero">
 
-            <p class="section-number">00 — PORTFOLIO</p>
+            <p class="section-number">
+                00 — PORTFOLIO
+            </p>
 
-            <h1>TÍTULO</h1>
+            <h1>
+                TÍTULO
+            </h1>
 
             <p class="hero-description">
                 TÍTULO
@@ -55,61 +91,118 @@
         </section>
 
 
-        <!-- CARTELERÍA -->
+        <!-- =====================================
+             CARTELERÍA
+        ====================================== -->
+
         <section id="carteleria" class="section">
 
             <div class="section-header">
-                <span class="section-number">01</span>
-                <h2>TÍTULO</h2>
+
+                <span class="section-number">
+                    01
+                </span>
+
+                <h2>
+                    TÍTULO
+                </h2>
+
             </div>
 
             <p class="section-description">
                 TÍTULO
             </p>
 
+
             <div class="projects-grid">
 
+
                 <article class="project-card">
+
                     <div class="project-image">
-                        <img src="images/carteleria/proyecto1.jpg" alt="TÍTULO">
+
+                        <img
+                            src="images/carteleria/proyecto1.jpg"
+                            alt="TÍTULO">
+
                     </div>
 
-                    <h3>TÍTULO</h3>
-                    <p>TÍTULO</p>
+                    <h3>
+                        TÍTULO
+                    </h3>
+
+                    <p>
+                        TÍTULO
+                    </p>
+
                 </article>
 
 
                 <article class="project-card">
+
                     <div class="project-image">
-                        <img src="images/carteleria/proyecto2.jpg" alt="TÍTULO">
+
+                        <img
+                            src="images/carteleria/proyecto2.jpg"
+                            alt="TÍTULO">
+
                     </div>
 
-                    <h3>TÍTULO</h3>
-                    <p>TÍTULO</p>
+                    <h3>
+                        TÍTULO
+                    </h3>
+
+                    <p>
+                        TÍTULO
+                    </p>
+
                 </article>
 
 
                 <article class="project-card">
+
                     <div class="project-image">
-                        <img src="images/carteleria/proyecto3.jpg" alt="TÍTULO">
+
+                        <img
+                            src="images/carteleria/proyecto3.jpg"
+                            alt="TÍTULO">
+
                     </div>
 
-                    <h3>TÍTULO</h3>
-                    <p>TÍTULO</p>
+                    <h3>
+                        TÍTULO
+                    </h3>
+
+                    <p>
+                        TÍTULO
+                    </p>
+
                 </article>
+
 
             </div>
 
         </section>
 
 
-        <!-- ARTE 2D -->
+        <!-- =====================================
+             ARTE 2D
+        ====================================== -->
+
         <section id="arte2d" class="section">
 
             <div class="section-header">
-                <span class="section-number">02</span>
-                <h2>TÍTULO</h2>
+
+                <span class="section-number">
+                    02
+                </span>
+
+                <h2>
+                    TÍTULO
+                </h2>
+
             </div>
+
 
             <p class="section-description">
                 TÍTULO
@@ -118,108 +211,240 @@
 
             <div class="projects-grid">
 
-                <article class="project-card">
+
+                <!-- ==============================
+                     PROYECTO 1
+                =============================== -->
+
+                <article
+                    class="project-card"
+                    onclick="openGallery(0)">
 
                     <div class="project-image">
-                        <img src="Personaje_Y_EscenarioBlancoYNegro.jpgjpg" alt="TÍTULO">
+
+                        <img
+                            src="imagenes/Arte 2D/Personaje_Y_EscenarioBlancoYNegro.jpg"
+                            alt="TÍTULO">
+
+                        <div class="project-overlay">
+
+                            <span>
+                                VER PROYECTO →
+                            </span>
+
+                        </div>
+
                     </div>
 
                     <div class="project-info">
-                        <h3>TÍTULO</h3>
-                        <p>TÍTULO</p>
+
+                        <h3>
+                            TÍTULO
+                        </h3>
+
+                        <p>
+                            TÍTULO
+                        </p>
+
                     </div>
 
                 </article>
 
 
-                <article class="project-card">
+                <!-- ==============================
+                     PROYECTO 2
+                =============================== -->
+
+                <article
+                    class="project-card"
+                    onclick="openGallery(1)">
 
                     <div class="project-image">
-                        <img src="images/2d/proyecto2/portada.jpg" alt="TÍTULO">
+
+                        <img
+                            src="images/2d/proyecto2/portada.jpg"
+                            alt="TÍTULO">
+
+                        <div class="project-overlay">
+
+                            <span>
+                                VER PROYECTO →
+                            </span>
+
+                        </div>
+
                     </div>
 
                     <div class="project-info">
-                        <h3>TÍTULO</h3>
-                        <p>TÍTULO</p>
+
+                        <h3>
+                            TÍTULO
+                        </h3>
+
+                        <p>
+                            TÍTULO
+                        </p>
+
                     </div>
 
                 </article>
 
 
-                <article class="project-card">
+                <!-- ==============================
+                     PROYECTO 3
+                =============================== -->
+
+                <article
+                    class="project-card"
+                    onclick="openGallery(2)">
 
                     <div class="project-image">
-                        <img src="images/2d/proyecto3/portada.jpg" alt="TÍTULO">
+
+                        <img
+                            src="images/2d/proyecto3/portada.jpg"
+                            alt="TÍTULO">
+
+                        <div class="project-overlay">
+
+                            <span>
+                                VER PROYECTO →
+                            </span>
+
+                        </div>
+
                     </div>
 
                     <div class="project-info">
-                        <h3>TÍTULO</h3>
-                        <p>TÍTULO</p>
+
+                        <h3>
+                            TÍTULO
+                        </h3>
+
+                        <p>
+                            TÍTULO
+                        </p>
+
                     </div>
 
                 </article>
+
 
             </div>
 
         </section>
 
 
-        <!-- ARTE 3D -->
+        <!-- =====================================
+             ARTE 3D
+        ====================================== -->
+
         <section id="arte3d" class="section">
 
             <div class="section-header">
-                <span class="section-number">03</span>
-                <h2>TÍTULO</h2>
+
+                <span class="section-number">
+                    03
+                </span>
+
+                <h2>
+                    TÍTULO
+                </h2>
+
             </div>
+
 
             <div class="projects-grid">
 
+
                 <article class="project-card">
+
                     <div class="project-image">
-                        <img src="images/3d/proyecto1.jpg" alt="TÍTULO">
+
+                        <img
+                            src="images/3d/proyecto1.jpg"
+                            alt="TÍTULO">
+
                     </div>
 
-                    <h3>TÍTULO</h3>
-                    <p>TÍTULO</p>
+                    <h3>
+                        TÍTULO
+                    </h3>
+
+                    <p>
+                        TÍTULO
+                    </p>
+
                 </article>
 
 
                 <article class="project-card">
+
                     <div class="project-image">
-                        <img src="images/3d/proyecto2.jpg" alt="TÍTULO">
+
+                        <img
+                            src="images/3d/proyecto2.jpg"
+                            alt="TÍTULO">
+
                     </div>
 
-                    <h3>TÍTULO</h3>
-                    <p>TÍTULO</p>
+                    <h3>
+                        TÍTULO
+                    </h3>
+
+                    <p>
+                        TÍTULO
+                    </p>
+
                 </article>
+
 
             </div>
 
         </section>
 
 
-        <!-- JUEGOS -->
+        <!-- =====================================
+             PROYECTOS / JUEGOS
+        ====================================== -->
+
         <section id="juegos" class="section">
 
             <div class="section-header">
-                <span class="section-number">04</span>
-                <h2>TÍTULO</h2>
+
+                <span class="section-number">
+                    04
+                </span>
+
+                <h2>
+                    TÍTULO
+                </h2>
+
             </div>
+
 
             <div class="games">
 
+
                 <article class="game">
 
                     <div>
-                        <h3>TÍTULO</h3>
+
+                        <h3>
+                            TÍTULO
+                        </h3>
 
                         <p>
                             TÍTULO
                         </p>
+
                     </div>
 
-                    <a href="#" target="_blank">
-                        VER JUEGO →
+                    <a
+                        href="#"
+                        target="_blank">
+
+                        VER PROYECTO →
+
                     </a>
 
                 </article>
@@ -228,62 +453,180 @@
                 <article class="game">
 
                     <div>
-                        <h3>TÍTULO</h3>
+
+                        <h3>
+                            TÍTULO
+                        </h3>
 
                         <p>
                             TÍTULO
                         </p>
+
                     </div>
 
-                    <a href="#" target="_blank">
-                        VER JUEGO →
+                    <a
+                        href="#"
+                        target="_blank">
+
+                        VER PROYECTO →
+
                     </a>
 
                 </article>
+
 
             </div>
 
         </section>
 
 
-        <!-- CONTACTO -->
-        <section id="contacto" class="section contact">
+        <!-- =====================================
+             CONTACTO
+        ====================================== -->
+
+        <section
+            id="contacto"
+            class="section contact">
 
             <div class="section-header">
-                <span class="section-number">05</span>
-                <h2>TÍTULO</h2>
+
+                <span class="section-number">
+                    05
+                </span>
+
+                <h2>
+                    TÍTULO
+                </h2>
+
             </div>
+
 
             <p>
                 TÍTULO
             </p>
 
+
             <div class="social-links">
 
-                <a href="#" target="_blank">
+                <a
+                    href="#"
+                    target="_blank">
+
                     LinkedIn
+
                 </a>
 
-                <a href="#" target="_blank">
+
+                <a
+                    href="#"
+                    target="_blank">
+
                     ArtStation
+
                 </a>
 
-                <a href="#" target="_blank">
+
+                <a
+                    href="#"
+                    target="_blank">
+
                     Instagram
+
                 </a>
 
-                <a href="mailto:correo@ejemplo.com">
+
+                <a
+                    href="mailto:correo@ejemplo.com">
+
                     Email
+
                 </a>
 
             </div>
 
         </section>
 
+
     </main>
+
+
+    <!-- =========================================
+         CARRUSEL
+    ========================================== -->
+
+    <div
+        id="gallery"
+        class="gallery">
+
+
+        <!-- CERRAR -->
+
+        <button
+            class="gallery-close"
+            onclick="closeGallery()"
+            aria-label="Cerrar">
+
+            ×
+
+        </button>
+
+
+        <!-- ANTERIOR -->
+
+        <button
+            class="gallery-prev"
+            onclick="previousImage()"
+            aria-label="Imagen anterior">
+
+            ←
+
+        </button>
+
+
+        <!-- CONTENIDO -->
+
+        <div class="gallery-content">
+
+
+            <img
+                id="gallery-image"
+                src=""
+                alt="TÍTULO">
+
+
+            <div class="gallery-info">
+
+                <span id="gallery-counter">
+                    1 / 1
+                </span>
+
+                <h3 id="gallery-title">
+                    TÍTULO
+                </h3>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- SIGUIENTE -->
+
+        <button
+            class="gallery-next"
+            onclick="nextImage()"
+            aria-label="Imagen siguiente">
+
+            →
+
+        </button>
+
+
+    </div>
 
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
