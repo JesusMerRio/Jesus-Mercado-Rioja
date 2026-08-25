@@ -23,15 +23,17 @@ const galleries = [
         images: [
 
             "imagenes/Arte 2D/Personaje_Y_EscenarioBlancoYNegro.jpg",
-            "imagenes/Arte 2D/Personaje_Y_EscenarioColorDefinitivo.jpg",
+            "imagenes/Arte 2D/Personaje_Y_EscenarioDefinitivo.jpg",
             "imagenes/Arte 2D/Personaje_Y_EscenarioColor1.jpg",
             "imagenes/Arte 2D/Personaje_Y_EscenarioColor2.jpg",
-            "imagenes/Arte 2D/Siluetas.jpg",
+            "imagenes/Arte 2D/Siuetas.jpg",
             "imagenes/Arte 2D/TURNAROUND1.jpg",
             "imagenes/Arte 2D/TURNAROUND2.jpg",
             "imagenes/Arte 2D/TURNAROUND3(armas).jpg",
             "imagenes/Arte 2D/Expresiones.jpg",
-           
+            "imagenes/Arte 2D/Thumbnails Jesús Mercado Rioja.jpg",
+            "imagenes/Arte 2D/Concept art escenario a color Jesus Mercado Rioja.jpg",
+            "imagenes/Arte 2D/Callouts Jesús Mercado Rioja.jpg",
 
             /*
                 AÑADE AQUÍ LAS DEMÁS IMÁGENES
