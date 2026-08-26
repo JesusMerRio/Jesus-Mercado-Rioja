@@ -9,7 +9,14 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <title>Portfolio</title>
+    <title>Jesús Mercado Rioja - Portfolio</title>
+
+    <!-- =========================================
+         LOGO DE LA PESTAÑA DEL NAVEGADOR
+         
+         El archivo Logo.PNG debe estar dentro
+         de la carpeta "imagenes".
+    ========================================== -->
 
     <link
         rel="icon"
@@ -23,8 +30,12 @@
 
 <body>
 
+
     <!-- =========================================
          DIBUJO DECORATIVO
+         
+         Esta imagen queda SIEMPRE fija
+         abajo a la derecha de la pantalla.
     ========================================== -->
 
     <img
@@ -35,7 +46,7 @@
 
 
     <!-- =========================================
-         MENÚ
+         BANNER LATERAL
     ========================================== -->
 
     <aside class="sidebar">
@@ -62,18 +73,21 @@
 
                     <a href="#juegos">Proyectos</a>
 
-                    <a href="#contacto">Contacto</a>
-
                 </nav>
 
             </div>
 
 
-            <!-- =====================================
-                 REDES
-            ====================================== -->
+            <!-- =========================================
+                 REDES SOCIALES DEL BANNER
+            ========================================== -->
 
             <div class="sidebar-social">
+
+
+                <!-- =====================================
+                     LINKEDIN
+                ====================================== -->
 
                 <a
                     href="https://es.linkedin.com/in/jes%C3%BAs-mercado-rioja-503884414"
@@ -95,6 +109,65 @@
 
                 </a>
 
+
+                <!-- =====================================
+                     INSTAGRAM
+
+                     COMENTADO PARA QUE NO APAREZCA
+                     EN LA PÁGINA.
+
+                     NO SE HA BORRADO EL CÓDIGO.
+                ====================================== -->
+
+                <!--
+                <a
+                    href="https://www.instagram.com/jesusmrart?igsi=czJlY3ptYjl6bGtu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram">
+
+                    <svg
+                        class="social-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true">
+
+                        <rect
+                            x="3"
+                            y="3"
+                            width="18"
+                            height="18"
+                            rx="5"
+                            ry="5"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+                        </rect>
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="4"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+                        </circle>
+
+                        <circle
+                            cx="17.5"
+                            cy="6.5"
+                            r="1"
+                            fill="currentColor">
+                        </circle>
+
+                    </svg>
+
+                </a>
+                -->
+
+
+                <!-- =====================================
+                     EMAIL
+                ====================================== -->
 
                 <a
                     href="mailto:jmrioja18@gmail.com"
@@ -150,7 +223,7 @@
             class="hero">
 
             <h1>
-                Jeeeeee
+                JESÚS MERCADO RIOJA
             </h1>
 
             <p class="hero-description">
@@ -169,7 +242,9 @@
             class="section">
 
             <div class="section-header">
+
                 <h2>CARTELERÍA</h2>
+
             </div>
 
             <p class="section-description">
@@ -181,21 +256,20 @@
 
                 <article
                     class="project-card"
-                    tabindex="0"
-                    role="button"
-                    aria-label="Abrir galería de cartelería"
-                    onclick="openGallery(0)"
-                    onkeydown="handleCardKey(event, 0)">
+                    onclick="openGallery(0)">
 
                     <div class="project-image carteleria-image">
 
                         <img
                             src="imagenes/Carteles/fiestas.jpeg"
-                            alt="Cartelería - Fiestas"
-                            loading="lazy">
+                            alt="Cartelería - Fiestas">
 
                         <div class="project-overlay">
-                            <span>VER MÁS →</span>
+
+                            <span>
+                                VER MÁS →
+                            </span>
+
                         </div>
 
                     </div>
@@ -224,7 +298,9 @@
             class="section">
 
             <div class="section-header">
+
                 <h2>ARTE 2D</h2>
+
             </div>
 
             <p class="section-description">
@@ -237,21 +313,20 @@
 
                 <article
                     class="project-card"
-                    tabindex="0"
-                    role="button"
-                    aria-label="Abrir proyecto Tyradon"
-                    onclick="openGallery(1)"
-                    onkeydown="handleCardKey(event, 1)">
+                    onclick="openGallery(1)">
 
                     <div class="project-image">
 
                         <img
                             src="imagenes/Arte 2D/Personaje_Y_EscenarioBlancoYNegro.jpg"
-                            alt="Arte 2D - Tyradon"
-                            loading="lazy">
+                            alt="Arte 2D - Tyradon">
 
                         <div class="project-overlay">
-                            <span>VER PROYECTO →</span>
+
+                            <span>
+                                VER PROYECTO →
+                            </span>
+
                         </div>
 
                     </div>
@@ -273,21 +348,20 @@
 
                 <article
                     class="project-card"
-                    tabindex="0"
-                    role="button"
-                    aria-label="Abrir proyecto Rock Mole"
-                    onclick="openGallery(2)"
-                    onkeydown="handleCardKey(event, 2)">
+                    onclick="openGallery(2)">
 
                     <div class="project-image">
 
                         <img
                             src="imagenes/Arte 2D/RockMole/Topo color 1.PNG"
-                            alt="Rock Mole"
-                            loading="lazy">
+                            alt="Rock Mole">
 
                         <div class="project-overlay">
-                            <span>VER PROYECTO →</span>
+
+                            <span>
+                                VER PROYECTO →
+                            </span>
+
                         </div>
 
                     </div>
@@ -320,7 +394,9 @@
             class="section">
 
             <div class="section-header">
+
                 <h2>ARTE 3D</h2>
+
             </div>
 
             <p class="section-description">
@@ -332,21 +408,20 @@
 
                 <article
                     class="project-card"
-                    tabindex="0"
-                    role="button"
-                    aria-label="Abrir galería de arte 3D"
-                    onclick="openGallery(3)"
-                    onkeydown="handleCardKey(event, 3)">
+                    onclick="openGallery(3)">
 
                     <div class="project-image">
 
                         <img
                             src="imagenes/Arte 3D/Render1.png"
-                            alt="Modelado 3D"
-                            loading="lazy">
+                            alt="Modelado 3D">
 
                         <div class="project-overlay">
-                            <span>VER MÁS →</span>
+
+                            <span>
+                                VER MÁS →
+                            </span>
+
                         </div>
 
                     </div>
@@ -366,7 +441,8 @@
                 </article>
 
 
-                <article class="project-card animation-project">
+                <article
+                    class="project-card animation-project">
 
                     <div class="animation-video">
 
@@ -415,7 +491,9 @@
             class="section">
 
             <div class="section-header">
+
                 <h2>PROYECTOS</h2>
+
             </div>
 
 
@@ -431,8 +509,7 @@
 
                         <img
                             src="imagenes/Juegos/thePit_foto.png"
-                            alt="The Pit"
-                            loading="lazy">
+                            alt="The Pit">
 
                     </div>
 
@@ -453,8 +530,7 @@
 
                         <img
                             src="imagenes/Juegos/RyMfondo.jpeg"
-                            alt="Rock and Mole"
-                            loading="lazy">
+                            alt="Rock and Mole">
 
                     </div>
 
@@ -475,8 +551,7 @@
 
                         <img
                             src="imagenes/Juegos/laMaldicion_foto.PNG"
-                            alt="La Maldición"
-                            loading="lazy">
+                            alt="La Maldición">
 
                     </div>
 
@@ -500,7 +575,9 @@
             class="section contact">
 
             <div class="section-header">
+
                 <h2>CONTACTO</h2>
+
             </div>
 
             <p>
@@ -510,6 +587,11 @@
 
 
             <div class="contact-social">
+
+
+                <!-- =====================================
+                     LINKEDIN
+                ====================================== -->
 
                 <a
                     href="https://es.linkedin.com/in/jes%C3%BAs-mercado-rioja-503884414"
@@ -533,6 +615,67 @@
 
                 </a>
 
+
+                <!-- =====================================
+                     INSTAGRAM
+
+                     COMENTADO PARA QUE NO APAREZCA
+                     EN CONTACTO.
+
+                     NO SE HA BORRADO EL CÓDIGO.
+                ====================================== -->
+
+                <!--
+                <a
+                    href="https://www.instagram.com/jesusmrart?igsi=czJlY3ptYjl6bGtu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram">
+
+                    <svg
+                        class="contact-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true">
+
+                        <rect
+                            x="3"
+                            y="3"
+                            width="18"
+                            height="18"
+                            rx="5"
+                            ry="5"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+                        </rect>
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="4"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2">
+                        </circle>
+
+                        <circle
+                            cx="17.5"
+                            cy="6.5"
+                            r="1"
+                            fill="currentColor">
+                        </circle>
+
+                    </svg>
+
+                    <span>Instagram</span>
+
+                </a>
+                -->
+
+
+                <!-- =====================================
+                     EMAIL
+                ====================================== -->
 
                 <a
                     href="mailto:jmrioja18@gmail.com"
@@ -580,23 +723,19 @@
 
     <div
         id="gallery"
-        class="gallery"
-        aria-hidden="true"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Galería de imágenes">
+        class="gallery">
 
         <button
-            type="button"
             class="gallery-close"
-            aria-label="Cerrar galería">
+            onclick="closeGallery()"
+            aria-label="Cerrar">
             ×
         </button>
 
 
         <button
-            type="button"
             class="gallery-prev"
+            onclick="previousImage()"
             aria-label="Imagen anterior">
             ←
         </button>
@@ -623,7 +762,7 @@
                     </h3>
 
                     <p id="gallery-caption">
-                        DESCRIPCIÓN
+                        TÍTULO
                     </p>
 
                 </div>
@@ -638,8 +777,8 @@
 
 
         <button
-            type="button"
             class="gallery-next"
+            onclick="nextImage()"
             aria-label="Imagen siguiente">
             →
         </button>
@@ -652,3 +791,4 @@
 </body>
 
 </html>
+
