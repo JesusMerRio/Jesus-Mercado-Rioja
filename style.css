@@ -370,10 +370,6 @@ body {
 
     display: grid;
 
-    /*
-       LAS 3 IMÁGENES SIEMPRE EN UNA FILA
-       EN ORDENADOR.
-    */
     grid-template-columns: repeat(3, minmax(0, 1fr));
 
     gap: 30px;
@@ -413,6 +409,8 @@ body {
 
 /* =========================================
    IMAGEN DEL JUEGO
+   CORREGIDO: SIN MARCO NI PROPORCIÓN
+   ARTIFICIAL
 ========================================= */
 
 .game-image {
@@ -420,17 +418,15 @@ body {
 
     width: 100%;
 
-    /*
-       MUCHO MÁS HORIZONTAL.
-       Esto reduce bastante la altura.
-    */
-    aspect-ratio: 3 / 1;
+    height: auto;
 
     overflow: hidden;
 
     background: transparent;
 
     display: block;
+
+    line-height: 0;
 }
 
 
@@ -441,24 +437,13 @@ body {
 .game-image img {
     display: block;
 
-    /*
-       La imagen ocupa el ancho disponible.
-    */
     width: 100%;
 
-    /*
-       IMPORTANTE:
-       altura automática para NO deformar
-       ni recortar la imagen.
-    */
     height: auto;
 
-    /*
-       No usamos object-fit aquí porque
-       queremos que el contenedor se adapte
-       al tamaño real de la imagen.
-    */
-    object-fit: initial;
+    max-width: 100%;
+
+    object-fit: contain;
 
     object-position: center;
 
@@ -782,7 +767,15 @@ body {
     }
 
     .game-image {
-        aspect-ratio: 3 / 1;
+        width: 100%;
+        height: auto;
+        aspect-ratio: auto;
+    }
+
+    .game-image img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
     }
 
 
@@ -916,10 +909,6 @@ body {
     ===================================== */
 
     .games {
-
-        /*
-           UNA SOLA COLUMNA.
-        */
         grid-template-columns: 1fr;
 
         gap: 45px;
@@ -933,40 +922,22 @@ body {
     }
 
 
-    /*
-       En móvil eliminamos el marco
-       artificial.
-    */
     .game-image {
-
         width: 100%;
-
         height: auto;
-
         aspect-ratio: auto;
-
-        overflow: visible;
-
+        overflow: hidden;
         background: transparent;
-
         display: block;
+        line-height: 0;
     }
 
 
-    /*
-       La imagen conserva EXACTAMENTE
-       su proporción.
-    */
     .game-image img {
-
         width: 100%;
-
         height: auto;
-
         max-width: 100%;
-
-        object-fit: initial;
-
+        object-fit: contain;
         display: block;
     }
 
@@ -976,7 +947,6 @@ body {
     ===================================== */
 
     .game h3 {
-
         width: 100%;
 
         text-align: center;
