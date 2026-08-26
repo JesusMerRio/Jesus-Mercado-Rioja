@@ -12,6 +12,7 @@ const galleries = [
         title: "CARTELES E ILUSTRACIONES",
 
         images: [
+
             {
                 src: "imagenes/Carteles/fiestas.jpeg",
                 caption: "Propuesta cartel fiestas populares San Sebastián de los Reyes 2026"
@@ -43,6 +44,7 @@ const galleries = [
         title: "ARTE 2D",
 
         images: [
+
             {
                 src: "imagenes/Arte 2D/Personaje_Y_EscenarioBlancoYNegro.jpg",
                 caption: "Diseño inicial del personaje y escenario"
@@ -114,6 +116,7 @@ const galleries = [
         title: "ROCK MOLE",
 
         images: [
+
             {
                 src: "imagenes/Arte 2D/RockMole/Topo color 1.PNG",
                 caption: "Diseño del topo"
@@ -242,6 +245,16 @@ let currentImage = 0;
 
 
 /* =========================================
+   VARIABLES PARA SWIPE
+========================================= */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+const swipeMinDistance = 50;
+
+
+/* =========================================
    ABRIR GALERÍA
 ========================================= */
 
@@ -346,6 +359,7 @@ function updateGallery() {
         !gallery.images ||
         gallery.images.length === 0
     ) {
+
         imageElement.style.display = "none";
 
         titleElement.textContent =
@@ -365,6 +379,7 @@ function updateGallery() {
         currentImage < 0 ||
         currentImage >= gallery.images.length
     ) {
+
         currentImage = 0;
     }
 
@@ -375,7 +390,8 @@ function updateGallery() {
 
     imageElement.style.display = "block";
 
-    imageElement.src = image.src;
+    imageElement.src =
+        image.src;
 
     imageElement.alt =
         image.caption || gallery.title;
@@ -414,6 +430,7 @@ function nextImage() {
         currentImage >=
         gallery.images.length
     ) {
+
         currentImage = 0;
     }
 
@@ -441,6 +458,7 @@ function previousImage() {
     currentImage--;
 
     if (currentImage < 0) {
+
         currentImage =
             gallery.images.length - 1;
     }
@@ -468,14 +486,17 @@ document.addEventListener(
         }
 
         if (event.key === "ArrowRight") {
+
             nextImage();
         }
 
         if (event.key === "ArrowLeft") {
+
             previousImage();
         }
 
         if (event.key === "Escape") {
+
             closeGallery();
         }
     }
@@ -494,12 +515,14 @@ document.addEventListener(
             document.getElementById("gallery");
 
         if (!galleryElement) {
+
             console.error(
                 "No se encuentra #gallery en el HTML."
             );
 
             return;
         }
+
 
         galleryElement.addEventListener(
             "click",
@@ -521,12 +544,121 @@ document.addEventListener(
             }
         );
 
+
         console.log(
             "Carrusel inicializado correctamente."
         );
     }
 );
 
+
+/* =========================================
+   SWIPE — MÓVIL Y TABLET
+========================================= */
+
+
+/*
+    Detectamos dónde empieza el dedo.
+*/
+
+document.addEventListener(
+    "touchstart",
+    function(event) {
+
+        const galleryElement =
+            document.getElementById("gallery");
+
+        if (
+            !galleryElement ||
+            !galleryElement.classList.contains("active")
+        ) {
+            return;
+        }
+
+        touchStartX =
+            event.changedTouches[0].screenX;
+    },
+    { passive: true }
+);
+
+
+/*
+    Detectamos dónde termina el dedo.
+*/
+
+document.addEventListener(
+    "touchend",
+    function(event) {
+
+        const galleryElement =
+            document.getElementById("gallery");
+
+        if (
+            !galleryElement ||
+            !galleryElement.classList.contains("active")
+        ) {
+            return;
+        }
+
+        touchEndX =
+            event.changedTouches[0].screenX;
+
+        handleSwipe();
+    },
+    { passive: true }
+);
+
+
+/* =========================================
+   PROCESAR SWIPE
+========================================= */
+
+function handleSwipe() {
+
+    const distance =
+        touchEndX - touchStartX;
+
+
+    /*
+        Si el movimiento es menor de 50px,
+        lo consideramos un simple toque.
+    */
+
+    if (
+        Math.abs(distance) <
+        swipeMinDistance
+    ) {
+        return;
+    }
+
+
+    /*
+        DESLIZAR HACIA LA IZQUIERDA
+        → SIGUIENTE IMAGEN
+    */
+
+    if (distance < 0) {
+
+        nextImage();
+
+    }
+
+
+    /*
+        DESLIZAR HACIA LA DERECHA
+        → IMAGEN ANTERIOR
+    */
+
+    else {
+
+        previousImage();
+    }
+}
+
+
+/* =========================================
+   MENSAJE
+========================================= */
 
 console.log(
     "Portfolio cargado correctamente."
