@@ -244,55 +244,67 @@ const galleries = [
 
         images: [
 
-            {
-                src: "imagenes/Arte 3D/modelo1.png",
-                caption: "Modelo del castillo sin texturas"
+           {
+                 src:"imagenes/Arte 3D/modelo1.png",
+                caption: "Módelo del castillo sin texturas"
             },
-
-            {
-                src: "imagenes/Arte 3D/modelo5.png",
-                caption: "Modelo del barco sin texturas"
+           {
+                 src:"imagenes/Arte 3D/modelo5.png",
+                caption: "Módelo del barco sin texturas"
             },
-
             {
-                src: "imagenes/Arte 3D/modelo7.png",
-                caption: "Modelo del castillo con texturas (1)"
+                 src:"imagenes/Arte 3D/modelo7.png",
+                caption: "Módelo del castillo con texturas (1)"
             },
-
             {
-                src: "imagenes/Arte 3D/modelo6.png",
-                caption: "Modelo del castillo con texturas (2)"
+                  src:"imagenes/Arte 3D/modelo6.png",
+                caption: "Módelo del castillo con texturas (2)"
             },
-
             {
-                src: "imagenes/Arte 3D/Render1.png",
+                  src:"imagenes/Arte 3D/Render1.png",
                 caption: "Render del castillo (1)"
             },
-
             {
-                src: "imagenes/Arte 3D/Render2.png",
+                  src:"imagenes/Arte 3D/Render2.png",
                 caption: "Render del castillo (2)"
             },
-
             {
-                src: "imagenes/Arte 3D/Render3.png",
+                  src:"imagenes/Arte 3D/Render3.png",
                 caption: "Render del castillo (3)"
             },
-
             {
-                src: "imagenes/Arte 3D/Render4.png",
+                 src:"imagenes/Arte 3D/Render4.png",
                 caption: "Render del castillo (4)"
             },
+            {
+                  src:"imagenes/Arte 3D/Render5.png",
+                caption: "Render del castillo (5)"
+            },
+            {
+                 src:"imagenes/Arte 3D/Render6.png",
+                caption: "Render del castillo (6)"
+            },
+
+
+
+
+
+          
+
+           
+            /*
+            AÑADE AQUÍ LAS DEMÁS IMÁGENES:
 
             {
-                src: "imagenes/Arte 3D/Render5.png",
-                caption: "Render del castillo (5)"
+                src: "images/3d/proyecto2.jpg",
+                caption: "Descripción del proyecto"
             },
 
             {
-                src: "imagenes/Arte 3D/Render6.png",
-                caption: "Render del castillo (6)"
+                src: "images/3d/proyecto3.jpg",
+                caption: "Descripción del proyecto"
             }
+            */
         ]
     }
 ];
@@ -305,44 +317,15 @@ const galleries = [
 let currentGallery = 0;
 let currentImage = 0;
 
-let touchStartX = 0;
-let touchStartY = 0;
-
-const swipeMinDistance = 50;
-
-let savedScrollPosition = 0;
-
 
 /* =========================================
-   ELEMENTOS
+   VARIABLES PARA SWIPE
 ========================================= */
 
-const galleryElement =
-    document.getElementById("gallery");
+let touchStartX = 0;
+let touchEndX = 0;
 
-const galleryImage =
-    document.getElementById("gallery-image");
-
-const galleryTitle =
-    document.getElementById("gallery-title");
-
-const galleryCaption =
-    document.getElementById("gallery-caption");
-
-const galleryCounter =
-    document.getElementById("gallery-counter");
-
-const galleryImageContainer =
-    document.querySelector(".gallery-image-container");
-
-const galleryClose =
-    document.querySelector(".gallery-close");
-
-const galleryPrev =
-    document.querySelector(".gallery-prev");
-
-const galleryNext =
-    document.querySelector(".gallery-next");
+const swipeMinDistance = 50;
 
 
 /* =========================================
@@ -350,6 +333,8 @@ const galleryNext =
 ========================================= */
 
 function openGallery(galleryIndex) {
+
+    console.log("Abriendo galería:", galleryIndex);
 
     if (
         galleryIndex < 0 ||
@@ -363,46 +348,25 @@ function openGallery(galleryIndex) {
         return;
     }
 
+    currentGallery = galleryIndex;
+    currentImage = 0;
+
+    const galleryElement =
+        document.getElementById("gallery");
+
     if (!galleryElement) {
         console.error(
-            "No existe el elemento #gallery."
+            "No existe el elemento #gallery"
         );
 
         return;
     }
 
-    currentGallery = galleryIndex;
-
-    currentImage = 0;
-
     updateGallery();
-
-    savedScrollPosition =
-        window.scrollY;
 
     galleryElement.classList.add("active");
 
-    galleryElement.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-    document.body.classList.add(
-        "gallery-open"
-    );
-
-    document.body.style.top =
-        `-${savedScrollPosition}px`;
-
-    /*
-       Ponemos el foco en el botón
-       de cerrar para mejorar
-       la navegación por teclado.
-    */
-
-    if (galleryClose) {
-        galleryClose.focus();
-    }
+    document.body.style.overflow = "hidden";
 }
 
 
@@ -412,29 +376,16 @@ function openGallery(galleryIndex) {
 
 function closeGallery() {
 
+    const galleryElement =
+        document.getElementById("gallery");
+
     if (!galleryElement) {
         return;
     }
 
-    galleryElement.classList.remove(
-        "active"
-    );
+    galleryElement.classList.remove("active");
 
-    galleryElement.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-    document.body.classList.remove(
-        "gallery-open"
-    );
-
-    document.body.style.top = "";
-
-    window.scrollTo(
-        0,
-        savedScrollPosition
-    );
+    document.body.style.overflow = "";
 }
 
 
@@ -447,56 +398,91 @@ function updateGallery() {
     const gallery =
         galleries[currentGallery];
 
+    if (!gallery) {
+        return;
+    }
+
+    const imageElement =
+        document.getElementById("gallery-image");
+
+    const titleElement =
+        document.getElementById("gallery-title");
+
+    const captionElement =
+        document.getElementById("gallery-caption");
+
+    const counterElement =
+        document.getElementById("gallery-counter");
+
+
     if (
-        !gallery ||
+        !imageElement ||
+        !titleElement ||
+        !captionElement ||
+        !counterElement
+    ) {
+        console.error(
+            "Falta algún elemento del carrusel en el HTML."
+        );
+
+        return;
+    }
+
+
+    if (
         !gallery.images ||
         gallery.images.length === 0
     ) {
+
+        imageElement.style.display = "none";
+
+        titleElement.textContent =
+            gallery.title;
+
+        captionElement.textContent =
+            "Sin imágenes";
+
+        counterElement.textContent =
+            "0 / 0";
+
         return;
     }
+
 
     if (
         currentImage < 0 ||
         currentImage >= gallery.images.length
     ) {
+
         currentImage = 0;
     }
+
 
     const image =
         gallery.images[currentImage];
 
-    if (galleryImage) {
 
-        galleryImage.src =
-            image.src;
+    imageElement.style.display = "block";
 
-        galleryImage.alt =
-            image.caption ||
-            gallery.title;
-    }
+    imageElement.src =
+        image.src;
 
-    if (galleryTitle) {
+    imageElement.alt =
+        image.caption || gallery.title;
 
-        galleryTitle.textContent =
-            gallery.title;
-    }
+    titleElement.textContent =
+        gallery.title;
 
-    if (galleryCaption) {
+    captionElement.textContent =
+        image.caption || "";
 
-        galleryCaption.textContent =
-            image.caption || "";
-    }
-
-    if (galleryCounter) {
-
-        galleryCounter.textContent =
-            `${currentImage + 1} / ${gallery.images.length}`;
-    }
+    counterElement.textContent =
+        `${currentImage + 1} / ${gallery.images.length}`;
 }
 
 
 /* =========================================
-   SIGUIENTE IMAGEN
+   SIGUIENTE
 ========================================= */
 
 function nextImage() {
@@ -512,16 +498,22 @@ function nextImage() {
         return;
     }
 
-    currentImage =
-        (currentImage + 1) %
-        gallery.images.length;
+    currentImage++;
+
+    if (
+        currentImage >=
+        gallery.images.length
+    ) {
+
+        currentImage = 0;
+    }
 
     updateGallery();
 }
 
 
 /* =========================================
-   IMAGEN ANTERIOR
+   ANTERIOR
 ========================================= */
 
 function previousImage() {
@@ -537,13 +529,13 @@ function previousImage() {
         return;
     }
 
-    currentImage =
-        (
-            currentImage -
-            1 +
-            gallery.images.length
-        ) %
-        gallery.images.length;
+    currentImage--;
+
+    if (currentImage < 0) {
+
+        currentImage =
+            gallery.images.length - 1;
+    }
 
     updateGallery();
 }
@@ -557,33 +549,25 @@ document.addEventListener(
     "keydown",
     function(event) {
 
+        const galleryElement =
+            document.getElementById("gallery");
+
         if (
             !galleryElement ||
-            !galleryElement.classList.contains(
-                "active"
-            )
+            !galleryElement.classList.contains("active")
         ) {
             return;
         }
 
         if (event.key === "ArrowRight") {
-
-            event.preventDefault();
-
             nextImage();
         }
 
-        else if (event.key === "ArrowLeft") {
-
-            event.preventDefault();
-
+        if (event.key === "ArrowLeft") {
             previousImage();
         }
 
-        else if (event.key === "Escape") {
-
-            event.preventDefault();
-
+        if (event.key === "Escape") {
             closeGallery();
         }
     }
@@ -591,259 +575,136 @@ document.addEventListener(
 
 
 /* =========================================
-   BOTÓN CERRAR
-========================================= */
-
-if (galleryClose) {
-
-    galleryClose.addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            event.stopPropagation();
-
-            closeGallery();
-        }
-    );
-}
-
-
-/* =========================================
-   BOTÓN ANTERIOR
-========================================= */
-
-if (galleryPrev) {
-
-    galleryPrev.addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            event.stopPropagation();
-
-            previousImage();
-        }
-    );
-}
-
-
-/* =========================================
-   BOTÓN SIGUIENTE
-========================================= */
-
-if (galleryNext) {
-
-    galleryNext.addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            event.stopPropagation();
-
-            nextImage();
-        }
-    );
-}
-
-
-/* =========================================
-   CERRAR AL PULSAR EL FONDO
-========================================= */
-
-if (galleryElement) {
-
-    galleryElement.addEventListener(
-        "click",
-        function(event) {
-
-            /*
-               Solo cerramos si el usuario
-               ha pulsado exactamente el fondo
-               negro del modal.
-            */
-
-            if (
-                event.target ===
-                galleryElement
-            ) {
-                closeGallery();
-            }
-        }
-    );
-}
-
-
-/* =========================================
-   SWIPE MÓVIL / TABLET
-========================================= */
-
-if (galleryImageContainer) {
-
-    galleryImageContainer.addEventListener(
-        "touchstart",
-        function(event) {
-
-            if (
-                event.touches.length !== 1
-            ) {
-                return;
-            }
-
-            touchStartX =
-                event.touches[0].clientX;
-
-            touchStartY =
-                event.touches[0].clientY;
-        },
-        {
-            passive: true
-        }
-    );
-
-
-    galleryImageContainer.addEventListener(
-        "touchend",
-        function(event) {
-
-            if (
-                event.changedTouches.length !== 1
-            ) {
-                return;
-            }
-
-            const touch =
-                event.changedTouches[0];
-
-            const distanceX =
-                touch.clientX -
-                touchStartX;
-
-            const distanceY =
-                touch.clientY -
-                touchStartY;
-
-            /*
-               Ignoramos movimientos pequeños.
-            */
-
-            if (
-                Math.abs(distanceX) <
-                swipeMinDistance
-            ) {
-                return;
-            }
-
-            /*
-               Si el movimiento vertical
-               es mayor, dejamos que sea
-               scroll vertical.
-            */
-
-            if (
-                Math.abs(distanceX) <=
-                Math.abs(distanceY)
-            ) {
-                return;
-            }
-
-            if (distanceX < 0) {
-
-                nextImage();
-
-            } else {
-
-                previousImage();
-            }
-        },
-        {
-            passive: true
-        }
-    );
-}
-
-
-/* =========================================
-   TECLADO EN TARJETAS
-========================================= */
-
-function handleCardKey(
-    event,
-    galleryIndex
-) {
-
-    if (
-        event.key === "Enter" ||
-        event.key === " "
-    ) {
-
-        event.preventDefault();
-
-        openGallery(galleryIndex);
-    }
-}
-
-
-/* =========================================
-   CERRAR AL CAMBIAR DE PESTAÑA
-========================================= */
-
-document.addEventListener(
-    "visibilitychange",
-    function() {
-
-        /*
-           No dejamos el body bloqueado
-           si el usuario abandona la pestaña
-           con el carrusel abierto.
-        */
-
-        if (
-            document.visibilityState ===
-            "visible" &&
-            galleryElement &&
-            !galleryElement.classList.contains(
-                "active"
-            )
-        ) {
-
-            document.body.classList.remove(
-                "gallery-open"
-            );
-
-            document.body.style.top = "";
-        }
-    }
-);
-
-
-/* =========================================
-   INICIALIZACIÓN
+   CERRAR AL PULSAR FONDO
 ========================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     function() {
 
+        const galleryElement =
+            document.getElementById("gallery");
+
         if (!galleryElement) {
 
             console.error(
-                "No se encuentra #gallery."
+                "No se encuentra #gallery en el HTML."
             );
 
             return;
         }
 
-        galleryElement.setAttribute(
-            "aria-hidden",
-            "true"
+
+        galleryElement.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target.closest("button")
+                ) {
+                    return;
+                }
+
+                if (
+                    event.target.closest(".gallery-content")
+                ) {
+                    return;
+                }
+
+                closeGallery();
+            }
         );
 
+
         console.log(
-            "Portfolio cargado correctamente."
+            "Carrusel inicializado correctamente."
         );
     }
 );
+
+
+/* =========================================
+   SWIPE — MÓVIL Y TABLET
+========================================= */
+
+document.addEventListener(
+    "touchstart",
+    function(event) {
+
+        const galleryElement =
+            document.getElementById("gallery");
+
+        if (
+            !galleryElement ||
+            !galleryElement.classList.contains("active")
+        ) {
+            return;
+        }
+
+        touchStartX =
+            event.changedTouches[0].screenX;
+    },
+    { passive: true }
+);
+
+
+document.addEventListener(
+    "touchend",
+    function(event) {
+
+        const galleryElement =
+            document.getElementById("gallery");
+
+        if (
+            !galleryElement ||
+            !galleryElement.classList.contains("active")
+        ) {
+            return;
+        }
+
+        touchEndX =
+            event.changedTouches[0].screenX;
+
+        handleSwipe();
+    },
+    { passive: true }
+);
+
+
+/* =========================================
+   PROCESAR SWIPE
+========================================= */
+
+function handleSwipe() {
+
+    const distance =
+        touchEndX - touchStartX;
+
+
+    if (
+        Math.abs(distance) <
+        swipeMinDistance
+    ) {
+        return;
+    }
+
+
+    if (distance < 0) {
+
+        nextImage();
+
+    } else {
+
+        previousImage();
+    }
+}
+
+
+/* =========================================
+   MENSAJE
+========================================= */
+
+console.log(
+    "Portfolio cargado correctamente."
+);
+
