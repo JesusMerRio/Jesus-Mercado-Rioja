@@ -319,9 +319,6 @@ body {
 
 /* =========================================
    TARJETA DE IMAGEN
-   ESTO ES LO QUE HACE QUE ARTE 3D
-   TENGA EXACTAMENTE EL MISMO TAMAÑO
-   QUE ARTE 2D
 ========================================= */
 
 .project-image {
@@ -486,25 +483,6 @@ body {
     width: 100%;
 }
 
-
-/*
-   IMPORTANTE:
-
-   El primer proyecto de 3D NO tiene
-   reglas especiales de tamaño.
-
-   Utiliza exactamente:
-
-       .project-card
-       .project-image
-       .project-image img
-
-   igual que Arte 2D.
-
-   Por eso la tarjeta tiene la misma
-   proporción 4:3.
-*/
-
 .arte3d-projects > .project-card:first-child {
     width: 100%;
 }
@@ -521,7 +499,6 @@ body {
 
 /* =========================================
    VÍDEO
-   NO USA .project-image
 ========================================= */
 
 .animation-video {
@@ -731,12 +708,19 @@ body {
     opacity: 0.7;
 }
 
+
+/* =========================================
+   REDES SOCIALES CONTACTO
+========================================= */
+
 .contact-social {
     display: flex;
 
     align-items: flex-start;
 
-    gap: 28px;
+    /* MÁS ESPACIO ENTRE LINKEDIN,
+       INSTAGRAM Y EMAIL */
+    gap: 60px;
 
     margin-top: 30px;
 
@@ -851,15 +835,6 @@ body {
 
     pointer-events: none;
 }
-
-
-/*
-   El contenedor del carrusel NO tiene
-   relación 4:3.
-
-   La imagen se muestra según su
-   proporción natural.
-*/
 
 .gallery-image-container {
     width: 90vw;
@@ -1095,7 +1070,7 @@ body {
     }
 
     .contact-social {
-        gap: 25px;
+        gap: 45px;
 
         margin-top: 28px;
     }
@@ -1255,17 +1230,11 @@ body {
 
     /* =====================================
        ARTE 3D
-       MISMA TARJETA QUE ARTE 2D
     ====================================== */
 
     .arte3d-projects {
         gap: 45px;
     }
-
-    /*
-       NO cambiamos el aspect-ratio.
-       Sigue siendo 4:3, igual que Arte 2D.
-    */
 
     .arte3d-projects > .project-card:first-child {
         width: 100%;
@@ -1414,7 +1383,7 @@ body {
     }
 
     .contact-social {
-        gap: 20px;
+        gap: 35px;
 
         margin-top: 28px;
 
