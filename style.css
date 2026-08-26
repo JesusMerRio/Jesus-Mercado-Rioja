@@ -24,22 +24,38 @@ body {
    IMAGEN DECORATIVA DE FONDO
 ========================================= */
 
+/*
+   Esta imagen queda SIEMPRE fija en la
+   esquina inferior derecha de la pantalla.
+
+   IMPORTANTE:
+   fondo.png debe ser un PNG con transparencia.
+   Las líneas negras quedan visibles y el resto
+   de la imagen deja ver el fondo de la página.
+*/
+
 .background-decoration {
     position: fixed;
+
     right: 0;
     bottom: 0;
 
     width: 25vw;
     max-width: 400px;
+
     height: auto;
 
-    z-index: 5;
+    display: block;
+
+    z-index: 20;
 
     pointer-events: none;
     user-select: none;
+
     -webkit-user-drag: none;
 
-    display: block;
+    object-fit: contain;
+    object-position: bottom right;
 }
 
 
@@ -49,6 +65,7 @@ body {
 
 .sidebar {
     position: fixed;
+
     left: 0;
     top: 0;
 
@@ -62,6 +79,7 @@ body {
 
 .sidebar-background {
     position: absolute;
+
     left: 0;
     top: 0;
 
@@ -106,14 +124,19 @@ body {
 
 .sidebar-top {
     display: flex;
+
     flex-direction: column;
+
     gap: 60px;
 }
 
 .sidebar-title {
     font-size: 28px;
+
     font-weight: 700;
+
     letter-spacing: -1px;
+
     text-transform: uppercase;
 }
 
@@ -124,16 +147,21 @@ body {
 
 .navigation {
     display: flex;
+
     flex-direction: column;
+
     gap: 14px;
 }
 
 .navigation a {
     color: #f3f0e9;
+
     text-decoration: none;
 
     font-size: 14px;
+
     text-transform: uppercase;
+
     letter-spacing: 1px;
 
     transition:
@@ -143,6 +171,7 @@ body {
 
 .navigation a:hover {
     opacity: 0.5;
+
     transform: translateX(5px);
 }
 
@@ -153,19 +182,24 @@ body {
 
 .sidebar-social {
     display: flex;
+
     align-items: center;
+
     gap: 18px;
 }
 
 .sidebar-social a {
     color: #ffffff !important;
+
     text-decoration: none;
 
     width: 28px;
     height: 28px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     transition:
@@ -175,6 +209,7 @@ body {
 
 .sidebar-social a:hover {
     opacity: 0.5;
+
     transform: translateY(-2px);
 }
 
@@ -227,7 +262,9 @@ body {
     padding: 80px;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
 
     border-bottom: 1px solid #d6d2ca;
@@ -272,7 +309,9 @@ body {
 
 .section-header {
     display: flex;
+
     align-items: baseline;
+
     gap: 30px;
 
     margin-bottom: 30px;
@@ -408,7 +447,8 @@ body {
     filter: brightness(0.7);
 }
 
-.project-card:hover .project-image:not(.carteleria-image) img {
+.project-card:hover
+.project-image:not(.carteleria-image) img {
     transform: scale(1.02);
 }
 
@@ -425,6 +465,7 @@ body {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     color: #ffffff;
@@ -661,6 +702,7 @@ body {
     min-height: auto;
 
     padding-top: 55px;
+
     padding-bottom: 45px;
 
     background: #d8d5cf;
@@ -761,6 +803,22 @@ body {
     fill: currentColor;
 }
 
+.contact-social span {
+    margin-top: 7px;
+
+    font-size: 8px;
+
+    line-height: 1;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+
+    color: #171717;
+
+    opacity: 0.6;
+}
+
 
 /* =========================================
    CARRUSEL
@@ -771,7 +829,12 @@ body {
 
     inset: 0;
 
-    background: rgba(15, 15, 15, 0.97);
+    background: rgba(
+        15,
+        15,
+        15,
+        0.97
+    );
 
     z-index: 1000;
 
@@ -822,9 +885,11 @@ body {
     display: block;
 
     width: auto;
+
     height: auto;
 
     max-width: 85vw;
+
     max-height: 75vh;
 
     object-fit: contain;
@@ -955,6 +1020,23 @@ body {
 
 @media (max-width: 900px) {
 
+    /* IMAGEN DECORATIVA */
+
+    .background-decoration {
+        width: 32vw;
+
+        max-width: 320px;
+
+        right: 0;
+
+        bottom: 0;
+
+        z-index: 20;
+    }
+
+
+    /* SIDEBAR */
+
     .sidebar {
         width: 240px;
     }
@@ -964,6 +1046,9 @@ body {
 
         width: calc(100% - 240px);
     }
+
+
+    /* CONTENIDO */
 
     .hero,
     .section {
@@ -985,6 +1070,9 @@ body {
         gap: 30px 25px;
     }
 
+
+    /* BANNER */
+
     .sidebar-background {
         clip-path: polygon(
             0 0,
@@ -993,6 +1081,9 @@ body {
             0 100%
         );
     }
+
+
+    /* ICONOS */
 
     .sidebar-social .social-icon {
         width: 18px !important;
@@ -1005,8 +1096,12 @@ body {
         max-height: 18px;
     }
 
+
+    /* CONTACTO */
+
     .contact {
         padding-top: 45px;
+
         padding-bottom: 40px;
     }
 
@@ -1032,6 +1127,9 @@ body {
         width: 45px;
         height: 45px;
     }
+
+
+    /* CARRUSEL */
 
     .gallery-image-container {
         width: 90vw;
@@ -1064,13 +1162,22 @@ body {
 
 @media (max-width: 600px) {
 
+    /* IMAGEN DECORATIVA */
+
     .background-decoration {
-        width: 35vw;
+        position: fixed;
+
+        width: 40vw;
 
         max-width: 220px;
 
         right: 0;
+
         bottom: 0;
+
+        z-index: 20;
+
+        pointer-events: none;
     }
 
 
