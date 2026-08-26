@@ -348,19 +348,9 @@ body {
 
 /* =========================================
    CARTELERÍA
-   RESPETAR PROPORCIÓN ORIGINAL
 ========================================= */
 
 .carteleria-image {
-
-    /*
-        IMPORTANTE:
-
-        No utilizamos aspect-ratio 4/3.
-
-        La altura se adapta automáticamente
-        a la proporción real del cartel.
-    */
 
     aspect-ratio: auto;
 
@@ -382,11 +372,6 @@ body {
 
     height: auto;
 
-    /*
-        La imagen mantiene exactamente
-        su proporción original.
-    */
-
     object-fit: contain;
 
     object-position: center;
@@ -396,11 +381,6 @@ body {
         filter 0.5s ease;
 }
 
-
-/*
-    Al hacer hover NO cambiamos el tamaño
-    de la imagen ni la recortamos.
-*/
 
 .carteleria-image:hover img {
 
@@ -419,12 +399,6 @@ body {
     filter: brightness(0.7);
 }
 
-
-/*
-    Para Cartelería usamos un zoom mucho
-    más pequeño para evitar que parezca
-    recortada.
-*/
 
 .project-card:hover .carteleria-image img {
 
@@ -709,18 +683,6 @@ body {
 
     height: auto;
 
-    /*
-        MUY IMPORTANTE:
-
-        La imagen siempre se muestra
-        completamente.
-
-        No se recorta aunque sea:
-        - vertical
-        - horizontal
-        - muy grande
-    */
-
     max-width: 85vw;
 
     max-height: 75vh;
@@ -732,6 +694,11 @@ body {
     pointer-events: auto;
 
     cursor: default;
+
+    /* Evita seleccionar/arrastrar la imagen */
+    user-select: none;
+
+    -webkit-user-drag: none;
 }
 
 
@@ -925,6 +892,10 @@ body {
         width: 90vw;
 
         height: 75vh;
+
+        /* Permite desplazamiento vertical,
+           pero el horizontal lo controla el swipe */
+        touch-action: pan-y;
     }
 
 
@@ -933,12 +904,27 @@ body {
         max-width: 82vw;
 
         max-height: 70vh;
+
+        user-select: none;
+
+        -webkit-user-drag: none;
     }
 
 
     .gallery-info {
 
         width: 82vw;
+    }
+
+
+    /* =====================================
+       SWIPE — OCULTAR FLECHAS
+    ===================================== */
+
+    .gallery-prev,
+    .gallery-next {
+
+        display: none;
     }
 
 }
@@ -1098,6 +1084,8 @@ body {
         width: 95vw;
 
         height: 72vh;
+
+        touch-action: pan-y;
     }
 
 
@@ -1112,6 +1100,10 @@ body {
         height: auto;
 
         object-fit: contain;
+
+        user-select: none;
+
+        -webkit-user-drag: none;
     }
 
 
@@ -1143,19 +1135,12 @@ body {
     }
 
 
-    .gallery-prev {
+    /* Las flechas siguen ocultas en móvil */
 
-        left: 8px;
-
-        font-size: 30px;
-    }
-
-
+    .gallery-prev,
     .gallery-next {
 
-        right: 8px;
-
-        font-size: 30px;
+        display: none;
     }
 
 
