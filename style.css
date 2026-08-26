@@ -75,7 +75,9 @@ body {
     width: 100%;
     height: 100%;
     padding: 40px 30px;
+
     color: #f3f0e9;
+
     z-index: 2;
     pointer-events: auto;
 
@@ -115,9 +117,13 @@ body {
 
 .navigation a {
     color: #f3f0e9;
+
     text-decoration: none;
+
     font-size: 14px;
+
     text-transform: uppercase;
+
     letter-spacing: 1px;
 
     transition:
@@ -137,18 +143,25 @@ body {
 
 .sidebar-social {
     display: flex;
+
     align-items: center;
+
     gap: 18px;
 }
 
+
+/* CONTENEDOR DE CADA ICONO */
+
 .sidebar-social a {
-    color: #ffffff;
+    color: #ffffff !important;
+
     text-decoration: none;
 
     width: 28px;
     height: 28px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -159,6 +172,7 @@ body {
 
 .sidebar-social a:hover {
     opacity: 0.5;
+
     transform: translateY(-2px);
 }
 
@@ -167,13 +181,32 @@ body {
    ICONOS SVG DEL BANNER
 ========================================= */
 
-.social-icon {
-    width: 20px;
-    height: 20px;
+.sidebar-social .social-icon {
+    width: 20px !important;
+    height: 20px !important;
+
+    min-width: 20px;
+    min-height: 20px;
+
+    max-width: 20px;
+    max-height: 20px;
 
     display: block;
 
-    color: #ffffff;
+    color: #ffffff !important;
+
+    fill: currentColor;
+}
+
+
+/* =========================================
+   INSTAGRAM - RESPETAR TRAZOS
+========================================= */
+
+.sidebar-social .social-icon rect,
+.sidebar-social .social-icon circle,
+.sidebar-social .social-icon path {
+    vector-effect: non-scaling-stroke;
 }
 
 
@@ -183,8 +216,11 @@ body {
 
 .main-content {
     position: relative;
+
     margin-left: 360px;
+
     width: calc(100% - 360px);
+
     z-index: 10;
 }
 
@@ -195,10 +231,13 @@ body {
 
 .hero {
     min-height: 100vh;
+
     padding: 80px;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
 
     border-bottom: 1px solid #d6d2ca;
@@ -206,9 +245,13 @@ body {
 
 .section-number {
     font-size: 12px;
+
     letter-spacing: 2px;
+
     text-transform: uppercase;
+
     opacity: 0.5;
+
     margin-bottom: 25px;
 }
 
@@ -220,23 +263,33 @@ body {
     );
 
     line-height: 0.85;
+
     letter-spacing: -8px;
+
     text-transform: uppercase;
+
     max-width: 1000px;
 }
 
 .hero-description {
     margin-top: 50px;
+
     max-width: 500px;
+
     font-size: 18px;
+
     line-height: 1.5;
 }
 
 .scroll-link {
     margin-top: 60px;
+
     color: #171717;
+
     text-decoration: none;
+
     font-size: 12px;
+
     letter-spacing: 2px;
 }
 
@@ -247,13 +300,17 @@ body {
 
 .section {
     padding: 140px 80px;
+
     border-bottom: 1px solid #d6d2ca;
 }
 
 .section-header {
     display: flex;
+
     align-items: baseline;
+
     gap: 30px;
+
     margin-bottom: 30px;
 }
 
@@ -265,7 +322,9 @@ body {
     );
 
     line-height: 0.9;
+
     letter-spacing: -4px;
+
     text-transform: uppercase;
 }
 
@@ -276,8 +335,11 @@ body {
 
 .section-description {
     max-width: 500px;
+
     font-size: 16px;
+
     line-height: 1.6;
+
     margin-bottom: 70px;
 }
 
@@ -288,7 +350,10 @@ body {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
     gap: 70px 35px;
 }
 
@@ -308,17 +373,25 @@ body {
 
 .project-image {
     position: relative;
+
     width: 100%;
+
     aspect-ratio: 4 / 3;
+
     overflow: hidden;
+
     background: #ddd8cf;
 }
 
 .project-image img {
     width: 100%;
+
     height: 100%;
+
     object-fit: cover;
+
     object-position: center top;
+
     display: block;
 
     transition:
@@ -333,17 +406,25 @@ body {
 
 .carteleria-image {
     aspect-ratio: auto;
+
     width: 100%;
+
     height: auto;
+
     overflow: hidden;
+
     background: #ddd8cf;
 }
 
 .carteleria-image img {
     display: block;
+
     width: 100%;
+
     height: auto;
+
     object-fit: contain;
+
     object-position: center;
 
     transition:
@@ -353,6 +434,7 @@ body {
 
 .carteleria-image:hover img {
     transform: scale(1.02);
+
     filter: brightness(0.7);
 }
 
@@ -376,9 +458,11 @@ body {
 
 .project-overlay {
     position: absolute;
+
     inset: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -397,9 +481,13 @@ body {
 
 .project-overlay span {
     font-size: 12px;
+
     letter-spacing: 2px;
+
     text-transform: uppercase;
+
     border-bottom: 1px solid white;
+
     padding-bottom: 5px;
 }
 
@@ -410,15 +498,21 @@ body {
 
 .project-card h3 {
     margin-top: 20px;
+
     font-size: 18px;
+
     text-transform: uppercase;
+
     letter-spacing: -0.5px;
 }
 
 .project-card p {
     margin-top: 8px;
+
     font-size: 14px;
+
     opacity: 0.6;
+
     line-height: 1.5;
 }
 
@@ -540,27 +634,24 @@ body {
 
 .game:hover .game-image img {
     transform: scale(1.02);
+
     filter: brightness(0.7);
 }
 
 
 /* =========================================
-   CONTACTO
+   SECCIÓN DE CONTACTO
 ========================================= */
-
-/*
-   La sección ahora tiene un fondo grisáceo
-   para diferenciarla visualmente del resto.
-*/
 
 .contact {
     min-height: 70vh;
 
     background: #d8d5cf;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    color: #171717;
+
+    padding-top: 120px;
+    padding-bottom: 120px;
 }
 
 
@@ -570,24 +661,31 @@ body {
 
 .contact > p {
     margin-top: 50px;
+
     max-width: 500px;
+
     font-size: 20px;
+
     line-height: 1.5;
+
+    color: #171717;
 }
 
 
 /* =========================================
-   CONTENEDOR DE ICONOS DE CONTACTO
+   ICONOS DE CONTACTO
 ========================================= */
 
 .contact-social {
     display: flex;
 
-    align-items: center;
+    align-items: flex-start;
 
     gap: 45px;
 
     margin-top: 60px;
+
+    flex-wrap: wrap;
 }
 
 
@@ -596,42 +694,52 @@ body {
 ========================================= */
 
 .contact-social a {
+    width: 75px;
+    height: 75px;
+
     display: flex;
+
+    flex-direction: column;
 
     align-items: center;
 
     justify-content: center;
 
-    width: 70px;
-    height: 70px;
-
-    color: #171717;
+    color: #171717 !important;
 
     text-decoration: none;
 
     transition:
-        transform 0.3s ease,
-        opacity 0.3s ease;
+        opacity 0.3s ease,
+        transform 0.3s ease;
 }
 
 .contact-social a:hover {
-    transform: translateY(-6px);
-
     opacity: 0.55;
+
+    transform: translateY(-5px);
 }
 
 
 /* =========================================
-   ICONOS SVG DE CONTACTO
+   SVG DE CONTACTO
 ========================================= */
 
 .contact-social .social-icon {
-    width: 42px;
-    height: 42px;
+    width: 42px !important;
+    height: 42px !important;
+
+    min-width: 42px;
+    min-height: 42px;
+
+    max-width: 42px;
+    max-height: 42px;
 
     display: block;
 
-    color: #171717;
+    color: #171717 !important;
+
+    fill: currentColor;
 }
 
 
@@ -648,7 +756,7 @@ body {
 
     text-transform: uppercase;
 
-    color: #171717;
+    color: #171717 !important;
 
     opacity: 0.65;
 }
@@ -692,6 +800,7 @@ body {
 
 .gallery-content {
     width: 90vw;
+
     height: 90vh;
 
     display: flex;
@@ -707,6 +816,7 @@ body {
 
 .gallery-image-container {
     width: 90vw;
+
     height: 78vh;
 
     display: flex;
@@ -727,9 +837,11 @@ body {
     display: block;
 
     width: auto;
+
     height: auto;
 
     max-width: 85vw;
+
     max-height: 75vh;
 
     object-fit: contain;
@@ -836,7 +948,9 @@ body {
 
 .gallery-close {
     top: 25px;
+
     right: 35px;
+
     font-size: 45px !important;
 }
 
@@ -847,6 +961,7 @@ body {
 
 .gallery-prev {
     left: 30px;
+
     top: 50%;
 
     transform: translateY(-50%);
@@ -859,6 +974,7 @@ body {
 
 .gallery-next {
     right: 30px;
+
     top: 50%;
 
     transform: translateY(-50%);
@@ -877,6 +993,7 @@ body {
 
     .main-content {
         margin-left: 240px;
+
         width: calc(100% - 240px);
     }
 
@@ -903,16 +1020,24 @@ body {
 
     .game-image {
         width: 100%;
+
         height: auto;
+
         aspect-ratio: auto;
     }
 
     .game-image img {
         width: 100%;
+
         height: auto;
+
         max-width: 100%;
     }
 
+
+    /* =====================================
+       BANNER EN TABLET
+    ===================================== */
 
     .sidebar-background {
         clip-path: polygon(
@@ -924,27 +1049,19 @@ body {
     }
 
 
-    .gallery-image-container {
-        width: 90vw;
-        height: 75vh;
-        touch-action: pan-y;
-    }
+    /* =====================================
+       ICONOS DEL BANNER EN TABLET
+    ===================================== */
 
-    .gallery-content img {
-        max-width: 82vw;
-        max-height: 70vh;
+    .sidebar-social .social-icon {
+        width: 18px !important;
+        height: 18px !important;
 
-        user-select: none;
-        -webkit-user-drag: none;
-    }
+        min-width: 18px;
+        min-height: 18px;
 
-    .gallery-info {
-        width: 82vw;
-    }
-
-    .gallery-prev,
-    .gallery-next {
-        display: none;
+        max-width: 18px;
+        max-height: 18px;
     }
 
 
@@ -962,8 +1079,46 @@ body {
     }
 
     .contact-social .social-icon {
-        width: 38px;
-        height: 38px;
+        width: 38px !important;
+        height: 38px !important;
+
+        min-width: 38px;
+        min-height: 38px;
+
+        max-width: 38px;
+        max-height: 38px;
+    }
+
+
+    /* =====================================
+       CARRUSEL
+    ===================================== */
+
+    .gallery-image-container {
+        width: 90vw;
+
+        height: 75vh;
+
+        touch-action: pan-y;
+    }
+
+    .gallery-content img {
+        max-width: 82vw;
+
+        max-height: 70vh;
+
+        user-select: none;
+
+        -webkit-user-drag: none;
+    }
+
+    .gallery-info {
+        width: 82vw;
+    }
+
+    .gallery-prev,
+    .gallery-next {
+        display: none;
     }
 }
 
@@ -976,6 +1131,7 @@ body {
 
     .background-decoration {
         width: 35vw;
+
         max-width: 220px;
     }
 
@@ -1026,11 +1182,12 @@ body {
 
 
     /* =====================================
-       ICONOS EN MÓVIL
+       ICONOS DEL BANNER EN MÓVIL
     ===================================== */
 
     .sidebar-social {
         margin-top: 35px;
+
         gap: 18px;
     }
 
@@ -1039,10 +1196,17 @@ body {
         height: 28px;
     }
 
-    .social-icon {
-        width: 20px;
-        height: 20px;
-        color: #ffffff;
+    .sidebar-social .social-icon {
+        width: 18px !important;
+        height: 18px !important;
+
+        min-width: 18px;
+        min-height: 18px;
+
+        max-width: 18px;
+        max-height: 18px;
+
+        color: #ffffff !important;
     }
 
 
@@ -1052,6 +1216,7 @@ body {
 
     .main-content {
         margin-left: 0;
+
         width: 100%;
     }
 
@@ -1066,6 +1231,7 @@ body {
 
     .hero h1 {
         font-size: 70px;
+
         letter-spacing: -5px;
     }
 
@@ -1101,24 +1267,35 @@ body {
 
     .game {
         width: 100%;
+
         align-items: center;
     }
 
     .game-image {
         width: 100%;
+
         height: auto;
+
         aspect-ratio: auto;
+
         overflow: hidden;
+
         background: transparent;
+
         display: block;
+
         line-height: 0;
     }
 
     .game-image img {
         width: 100%;
+
         height: auto;
+
         max-width: 100%;
+
         object-fit: contain;
+
         display: block;
     }
 
@@ -1129,8 +1306,11 @@ body {
 
     .game h3 {
         width: 100%;
+
         text-align: center;
+
         margin-top: 15px;
+
         font-size: 16px;
     }
 
@@ -1141,13 +1321,17 @@ body {
 
     .carteleria-image {
         width: 100%;
+
         height: auto;
+
         aspect-ratio: auto;
     }
 
     .carteleria-image img {
         width: 100%;
+
         height: auto;
+
         object-fit: contain;
     }
 
@@ -1158,15 +1342,22 @@ body {
 
     .contact {
         min-height: 60vh;
+
+        background: #d8d5cf;
+
+        padding-top: 80px;
+
+        padding-bottom: 80px;
     }
 
     .contact > p {
         font-size: 17px;
+
         margin-top: 35px;
     }
 
     .contact-social {
-        gap: 20px;
+        gap: 25px;
 
         margin-top: 45px;
 
@@ -1176,17 +1367,27 @@ body {
     }
 
     .contact-social a {
-        width: 58px;
-        height: 58px;
+        width: 65px;
+        height: 65px;
     }
 
     .contact-social .social-icon {
-        width: 36px;
-        height: 36px;
+        width: 38px !important;
+        height: 38px !important;
+
+        min-width: 38px;
+        min-height: 38px;
+
+        max-width: 38px;
+        max-height: 38px;
+
+        color: #171717 !important;
     }
 
     .contact-social-label {
         font-size: 9px;
+
+        color: #171717 !important;
     }
 
 
@@ -1200,31 +1401,39 @@ body {
 
     .gallery-content {
         width: 95vw;
+
         height: 90vh;
     }
 
     .gallery-image-container {
         width: 95vw;
+
         height: 72vh;
+
         touch-action: pan-y;
     }
 
     .gallery-content img {
         max-width: 88vw;
+
         max-height: 68vh;
 
         width: auto;
+
         height: auto;
 
         object-fit: contain;
 
         user-select: none;
+
         -webkit-user-drag: none;
     }
 
     .gallery-info {
         width: 88vw;
+
         margin-top: 15px;
+
         gap: 15px;
     }
 
@@ -1247,7 +1456,9 @@ body {
 
     .gallery-close {
         top: 15px;
+
         right: 20px;
+
         font-size: 40px !important;
     }
 }
