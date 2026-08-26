@@ -21,7 +21,7 @@ body {
 
 
 /* =========================================
-   IMAGEN DECORATIVA DE FONDO
+   IMAGEN DECORATIVA
 ========================================= */
 
 .background-decoration {
@@ -58,6 +58,7 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
+
     background: #171717;
 
     clip-path: polygon(
@@ -72,13 +73,16 @@ body {
 
 .sidebar-content {
     position: relative;
+
     width: 100%;
     height: 100%;
+
     padding: 40px 30px;
 
     color: #f3f0e9;
 
     z-index: 2;
+
     pointer-events: auto;
 
     display: flex;
@@ -88,7 +92,7 @@ body {
 
 
 /* =========================================
-   PARTE SUPERIOR DEL BANNER
+   PARTE SUPERIOR
 ========================================= */
 
 .sidebar-top {
@@ -118,6 +122,7 @@ body {
 .navigation a {
     color: #f3f0e9;
     text-decoration: none;
+
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -134,7 +139,7 @@ body {
 
 
 /* =========================================
-   ICONOS DEL BANNER
+   ICONOS SIDEBAR
 ========================================= */
 
 .sidebar-social {
@@ -213,24 +218,10 @@ body {
     padding: 80px;
 
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
 
     border-bottom: 1px solid #d6d2ca;
-}
-
-.section-number {
-    font-size: 12px;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-
-    opacity: 0.5;
-
-    margin-bottom: 25px;
 }
 
 .hero h1 {
@@ -259,18 +250,6 @@ body {
     line-height: 1.5;
 }
 
-.scroll-link {
-    margin-top: 60px;
-
-    color: #171717;
-
-    text-decoration: none;
-
-    font-size: 12px;
-
-    letter-spacing: 2px;
-}
-
 
 /* =========================================
    SECCIONES
@@ -284,9 +263,7 @@ body {
 
 .section-header {
     display: flex;
-
     align-items: baseline;
-
     gap: 30px;
 
     margin-bottom: 30px;
@@ -305,11 +282,6 @@ body {
 
     text-transform: uppercase;
 }
-
-
-/* =========================================
-   DESCRIPCIÓN
-========================================= */
 
 .section-description {
     max-width: 500px;
@@ -346,7 +318,10 @@ body {
 
 
 /* =========================================
-   IMÁGENES NORMALES
+   TARJETA DE IMAGEN
+   ESTO ES LO QUE HACE QUE ARTE 3D
+   TENGA EXACTAMENTE EL MISMO TAMAÑO
+   QUE ARTE 2D
 ========================================= */
 
 .project-image {
@@ -361,16 +336,20 @@ body {
     background: #ddd8cf;
 }
 
+
+/* =========================================
+   IMAGEN DE LA TARJETA
+========================================= */
+
 .project-image img {
     width: 100%;
-
     height: 100%;
+
+    display: block;
 
     object-fit: cover;
 
     object-position: center top;
-
-    display: block;
 
     transition:
         transform 0.7s ease,
@@ -383,13 +362,10 @@ body {
 ========================================= */
 
 .carteleria-image {
-    position: relative;
+    aspect-ratio: auto;
 
     width: 100%;
-
     height: auto;
-
-    aspect-ratio: auto;
 
     overflow: hidden;
 
@@ -400,7 +376,6 @@ body {
     display: block;
 
     width: 100%;
-
     height: auto;
 
     object-fit: contain;
@@ -420,14 +395,14 @@ body {
 
 
 /* =========================================
-   HOVER DE PROYECTOS
+   HOVER
 ========================================= */
 
 .project-card:hover img {
     filter: brightness(0.7);
 }
 
-.project-card:hover .carteleria-image img {
+.project-card:hover .project-image:not(.carteleria-image) img {
     transform: scale(1.02);
 }
 
@@ -444,7 +419,6 @@ body {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     color: #ffffff;
@@ -474,7 +448,7 @@ body {
 
 
 /* =========================================
-   INFORMACIÓN DE PROYECTOS
+   INFORMACIÓN
 ========================================= */
 
 .project-card h3 {
@@ -513,70 +487,41 @@ body {
 }
 
 
-/* =========================================
-   PRIMER PROYECTO 3D
-   IMAGEN A TAMAÑO NATURAL
-========================================= */
-
 /*
    IMPORTANTE:
 
-   NO utilizamos .project-image aquí.
+   El primer proyecto de 3D NO tiene
+   reglas especiales de tamaño.
 
-   Así evitamos completamente:
-   - aspect-ratio: 4 / 3
-   - height: 100%
-   - object-fit: cover
-   - cualquier espacio vertical sobrante
+   Utiliza exactamente:
+
+       .project-card
+       .project-image
+       .project-image img
+
+   igual que Arte 2D.
+
+   Por eso la tarjeta tiene la misma
+   proporción 4:3.
 */
 
-.animation-image {
-    position: relative;
-
+.arte3d-projects > .project-card:first-child {
     width: 100%;
-
-    height: auto;
-
-    overflow: hidden;
-
-    background: transparent;
-
-    display: block;
-
-    line-height: 0;
 }
 
-.animation-image img {
-    display: block;
 
+/* =========================================
+   ANIMACIÓN
+========================================= */
+
+.animation-project {
     width: 100%;
-
-    height: auto;
-
-    max-width: 100%;
-
-    object-fit: contain;
-
-    object-position: center;
-
-    margin: 0;
-
-    padding: 0;
-
-    transition:
-        transform 0.7s ease,
-        filter 0.5s ease;
-}
-
-.animation-project:hover .animation-image img {
-    transform: scale(1.02);
-
-    filter: brightness(0.7);
 }
 
 
 /* =========================================
    VÍDEO
+   NO USA .project-image
 ========================================= */
 
 .animation-video {
@@ -607,10 +552,6 @@ body {
     object-position: center;
 
     background: transparent;
-
-    margin: 0;
-
-    padding: 0;
 
     transition:
         transform 0.7s ease,
@@ -725,7 +666,7 @@ body {
 
 
 /* =========================================
-   SECCIÓN DE CONTACTO / FOOTER
+   CONTACTO
 ========================================= */
 
 .contact {
@@ -829,6 +770,7 @@ body {
     transform: translateY(-3px);
 }
 
+.contact-social .social-icon,
 .contact-social .contact-icon {
     width: 24px !important;
     height: 24px !important;
@@ -910,6 +852,15 @@ body {
     pointer-events: none;
 }
 
+
+/*
+   El contenedor del carrusel NO tiene
+   relación 4:3.
+
+   La imagen se muestra según su
+   proporción natural.
+*/
+
 .gallery-image-container {
     width: 90vw;
 
@@ -928,11 +879,9 @@ body {
     display: block;
 
     width: auto;
-
     height: auto;
 
     max-width: 85vw;
-
     max-height: 75vh;
 
     object-fit: contain;
@@ -947,6 +896,11 @@ body {
 
     -webkit-user-drag: none;
 }
+
+
+/* =========================================
+   INFORMACIÓN DEL CARRUSEL
+========================================= */
 
 .gallery-info {
     width: 85vw;
@@ -999,6 +953,11 @@ body {
 
     padding-top: 3px;
 }
+
+
+/* =========================================
+   BOTONES DEL CARRUSEL
+========================================= */
 
 .gallery button {
     border: none;
@@ -1143,23 +1102,7 @@ body {
 
     .contact-social a {
         width: 45px;
-
         height: 45px;
-    }
-
-    .contact-social .contact-icon {
-        width: 23px !important;
-        height: 23px !important;
-
-        min-width: 23px;
-        min-height: 23px;
-
-        max-width: 23px;
-        max-height: 23px;
-    }
-
-    .contact-social-label {
-        font-size: 8px;
     }
 
 
@@ -1177,10 +1120,6 @@ body {
         max-width: 82vw;
 
         max-height: 70vh;
-
-        user-select: none;
-
-        -webkit-user-drag: none;
     }
 
     .gallery-info {
@@ -1260,7 +1199,6 @@ body {
 
     .sidebar-social a {
         width: 28px;
-
         height: 28px;
     }
 
@@ -1273,8 +1211,6 @@ body {
 
         max-width: 18px;
         max-height: 18px;
-
-        color: #ffffff !important;
     }
 
 
@@ -1318,44 +1254,27 @@ body {
 
 
     /* =====================================
-       ARTE 3D - MÓVIL
+       ARTE 3D
+       MISMA TARJETA QUE ARTE 2D
     ====================================== */
 
     .arte3d-projects {
         gap: 45px;
     }
 
-    .animation-image {
+    /*
+       NO cambiamos el aspect-ratio.
+       Sigue siendo 4:3, igual que Arte 2D.
+    */
+
+    .arte3d-projects > .project-card:first-child {
         width: 100%;
-
-        height: auto;
-
-        aspect-ratio: auto;
-
-        overflow: hidden;
-
-        background: transparent;
-
-        display: block;
-
-        line-height: 0;
     }
 
-    .animation-image img {
-        width: 100%;
 
-        height: auto;
-
-        max-width: 100%;
-
-        object-fit: contain;
-
-        display: block;
-
-        margin: 0;
-
-        padding: 0;
-    }
+    /* =====================================
+       ANIMACIÓN
+    ====================================== */
 
     .animation-video {
         width: 100%;
@@ -1371,8 +1290,6 @@ body {
         height: auto;
 
         max-width: 100%;
-
-        display: block;
     }
 
 
@@ -1508,7 +1425,6 @@ body {
 
     .contact-social a {
         width: 45px;
-
         height: 45px;
     }
 
@@ -1521,16 +1437,6 @@ body {
 
         max-width: 23px;
         max-height: 23px;
-
-        color: #171717 !important;
-    }
-
-    .contact-social-label {
-        margin-top: 6px;
-
-        font-size: 8px;
-
-        color: #171717 !important;
     }
 
 
