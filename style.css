@@ -21,7 +21,7 @@ body {
 
 
 /* =========================================
-   IMAGEN DECORATIVA GENERAL
+   IMAGEN DECORATIVA DE FONDO
 ========================================= */
 
 .background-decoration {
@@ -38,53 +38,8 @@ body {
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
-}
-
-
-/* =========================================
-   MONIGOTE DE CONTACTO
-========================================= */
-
-.contact {
-    position: relative;
-    overflow: hidden;
-
-    min-height: 400px;
-
-    padding-top: 55px;
-    padding-bottom: 45px;
-
-    background: #d8d5cf;
-    color: #171717;
-
-    z-index: 1;
-}
-
-/*
-   IMPORTANTE:
-   El monigote está dentro de CONTACTO,
-   por lo que ahora se coloca respecto
-   a esa sección y NO respecto a toda
-   la pantalla.
-*/
-
-.contact-decoration {
-    position: absolute;
-
-    right: 0;
-    bottom: 0;
-
-    width: 32vw;
-    max-width: 500px;
-    height: auto;
-
-    z-index: 2;
 
     display: block;
-
-    pointer-events: none;
-    user-select: none;
-    -webkit-user-drag: none;
 }
 
 
@@ -240,6 +195,12 @@ body {
     fill: currentColor;
 }
 
+.sidebar-social .social-icon rect,
+.sidebar-social .social-icon circle,
+.sidebar-social .social-icon path {
+    vector-effect: non-scaling-stroke;
+}
+
 
 /* =========================================
    CONTENIDO PRINCIPAL
@@ -343,7 +304,7 @@ body {
 
 
 /* =========================================
-   GRID
+   GRID DE PROYECTOS
 ========================================= */
 
 .projects-grid {
@@ -366,7 +327,7 @@ body {
 
 
 /* =========================================
-   IMÁGENES
+   TARJETA DE IMAGEN
 ========================================= */
 
 .project-image {
@@ -380,6 +341,11 @@ body {
 
     background: #ddd8cf;
 }
+
+
+/* =========================================
+   IMAGEN DE LA TARJETA
+========================================= */
 
 .project-image img {
     width: 100%;
@@ -427,6 +393,12 @@ body {
         filter 0.5s ease;
 }
 
+.carteleria-image:hover img {
+    transform: scale(1.02);
+
+    filter: brightness(0.7);
+}
+
 
 /* =========================================
    HOVER
@@ -437,10 +409,6 @@ body {
 }
 
 .project-card:hover .project-image:not(.carteleria-image) img {
-    transform: scale(1.02);
-}
-
-.carteleria-image:hover img {
     transform: scale(1.02);
 }
 
@@ -536,6 +504,11 @@ body {
 .animation-project {
     width: 100%;
 }
+
+
+/* =========================================
+   VÍDEO
+========================================= */
 
 .animation-video {
     width: 100%;
@@ -682,21 +655,19 @@ body {
    CONTACTO
 ========================================= */
 
-.contact::before {
-    content: "";
+.contact {
+    position: relative;
 
-    position: absolute;
+    min-height: auto;
 
-    top: 0;
-    bottom: 0;
-
-    left: -360px;
-
-    width: 100vw;
+    padding-top: 55px;
+    padding-bottom: 45px;
 
     background: #d8d5cf;
 
-    z-index: -1;
+    color: #171717;
+
+    z-index: 1;
 }
 
 .contact .section-header {
@@ -727,14 +698,11 @@ body {
     color: #171717;
 
     opacity: 0.7;
-
-    position: relative;
-    z-index: 3;
 }
 
 
 /* =========================================
-   REDES CONTACTO
+   REDES SOCIALES CONTACTO
 ========================================= */
 
 .contact-social {
@@ -747,9 +715,6 @@ body {
     margin-top: 30px;
 
     flex-wrap: wrap;
-
-    position: relative;
-    z-index: 3;
 }
 
 .contact-social a {
@@ -794,22 +759,6 @@ body {
     color: #171717 !important;
 
     fill: currentColor;
-}
-
-.contact-social span {
-    margin-top: 7px;
-
-    font-size: 8px;
-
-    line-height: 1;
-
-    letter-spacing: 1.2px;
-
-    text-transform: uppercase;
-
-    color: #171717 !important;
-
-    opacity: 0.6;
 }
 
 
@@ -893,7 +842,7 @@ body {
 
 
 /* =========================================
-   INFORMACIÓN CARRUSEL
+   INFORMACIÓN DEL CARRUSEL
 ========================================= */
 
 .gallery-info {
@@ -950,7 +899,7 @@ body {
 
 
 /* =========================================
-   BOTONES CARRUSEL
+   BOTONES DEL CARRUSEL
 ========================================= */
 
 .gallery button {
@@ -1056,20 +1005,9 @@ body {
         max-height: 18px;
     }
 
-    .contact-decoration {
-        width: 38vw;
-        max-width: 380px;
-    }
-
     .contact {
         padding-top: 45px;
         padding-bottom: 40px;
-    }
-
-    .contact::before {
-        left: -240px;
-
-        width: 100vw;
     }
 
     .contact .section-header h2 {
@@ -1130,15 +1068,13 @@ body {
         width: 35vw;
 
         max-width: 220px;
-    }
-
-    .contact-decoration {
-        width: 48vw;
-        max-width: 280px;
 
         right: 0;
         bottom: 0;
     }
+
+
+    /* MENÚ */
 
     .sidebar {
         position: relative;
@@ -1180,6 +1116,9 @@ body {
         font-size: 11px;
     }
 
+
+    /* ICONOS */
+
     .sidebar-social {
         margin-top: 35px;
 
@@ -1202,6 +1141,9 @@ body {
         max-height: 18px;
     }
 
+
+    /* CONTENIDO */
+
     .main-content {
         margin-left: 0;
 
@@ -1223,6 +1165,9 @@ body {
         letter-spacing: -5px;
     }
 
+
+    /* CABECERAS */
+
     .section-header {
         display: block;
     }
@@ -1231,9 +1176,15 @@ body {
         font-size: 55px;
     }
 
+
+    /* ARTE 3D */
+
     .arte3d-projects {
         gap: 45px;
     }
+
+
+    /* ANIMACIÓN */
 
     .animation-video {
         width: 100%;
@@ -1250,6 +1201,9 @@ body {
 
         max-width: 100%;
     }
+
+
+    /* JUEGOS */
 
     .games {
         grid-template-columns: 1fr;
@@ -1303,6 +1257,9 @@ body {
         font-size: 16px;
     }
 
+
+    /* CARTELERÍA */
+
     .carteleria-image {
         width: 100%;
 
@@ -1319,20 +1276,17 @@ body {
         object-fit: contain;
     }
 
+
+    /* CONTACTO */
+
     .contact {
-        min-height: 400px;
+        min-height: auto;
 
         padding-top: 45px;
 
         padding-bottom: 40px;
 
         background: #d8d5cf;
-    }
-
-    .contact::before {
-        left: 0;
-
-        width: 100%;
     }
 
     .contact .section-header {
@@ -1383,6 +1337,9 @@ body {
         max-height: 23px;
     }
 
+
+    /* CARRUSEL */
+
     .gallery {
         padding: 20px;
     }
@@ -1411,6 +1368,10 @@ body {
         height: auto;
 
         object-fit: contain;
+
+        user-select: none;
+
+        -webkit-user-drag: none;
     }
 
     .gallery-info {
