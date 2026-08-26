@@ -19,26 +19,16 @@ body {
     overflow-x: hidden;
 }
 
+body.gallery-open {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+}
+
 
 /* =========================================
-   IMAGEN DECORATIVA DE FONDO
+   IMAGEN DECORATIVA
 ========================================= */
-
-/*
-   CAPAS:
-
-   0  -> fondo de la página
-   1  -> fondo gris de CONTACTO
-   5  -> dibujo decorativo
-   10 -> proyectos / imágenes / contenido
-   100 -> banner lateral
-   1000 -> carrusel
-
-   IMPORTANTE:
-   NO poner z-index al .main-content.
-   De esta forma los elementos individuales
-   pueden quedar por encima del dibujo.
-*/
 
 .background-decoration {
     position: fixed;
@@ -53,41 +43,24 @@ body {
 
     display: block;
 
-    /*
-       EL DIBUJO QUEDA:
-
-       - ENCIMA DEL FONDO NORMAL
-       - ENCIMA DEL GRIS DE CONTACTO
-       - DEBAJO DE PROYECTOS E IMÁGENES
-       - DEBAJO DEL BANNER
-    */
     z-index: 5;
 
     pointer-events: none;
     user-select: none;
+
     -webkit-user-drag: none;
 
     object-fit: contain;
     object-position: bottom right;
 
-    /*
-       El blanco de fondo.png se mezcla
-       con el fondo de la página.
-    */
     mix-blend-mode: multiply;
 
-    /*
-       Transparencia del dibujo.
-       1    = totalmente opaco
-       0.5  = 50%
-       0.3  = 30%
-    */
     opacity: 0.5;
 }
 
 
 /* =========================================
-   BANNER LATERAL
+   SIDEBAR
 ========================================= */
 
 .sidebar {
@@ -99,10 +72,6 @@ body {
     width: 360px;
     height: 100vh;
 
-    /*
-       EL BANNER SIEMPRE POR ENCIMA
-       DE TODO EL CONTENIDO Y DEL DIBUJO.
-    */
     z-index: 100;
 
     pointer-events: none;
@@ -111,11 +80,7 @@ body {
 .sidebar-background {
     position: absolute;
 
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 100%;
+    inset: 0;
 
     background: #171717;
 
@@ -144,20 +109,13 @@ body {
     pointer-events: auto;
 
     display: flex;
-
     flex-direction: column;
 
     justify-content: space-between;
 }
 
-
-/* =========================================
-   PARTE SUPERIOR
-========================================= */
-
 .sidebar-top {
     display: flex;
-
     flex-direction: column;
 
     gap: 60px;
@@ -180,7 +138,6 @@ body {
 
 .navigation {
     display: flex;
-
     flex-direction: column;
 
     gap: 14px;
@@ -204,13 +161,12 @@ body {
 
 .navigation a:hover {
     opacity: 0.5;
-
     transform: translateX(5px);
 }
 
 
 /* =========================================
-   ICONOS SIDEBAR
+   REDES SIDEBAR
 ========================================= */
 
 .sidebar-social {
@@ -222,7 +178,7 @@ body {
 }
 
 .sidebar-social a {
-    color: #ffffff !important;
+    color: #ffffff;
 
     text-decoration: none;
 
@@ -232,7 +188,6 @@ body {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     transition:
@@ -242,54 +197,24 @@ body {
 
 .sidebar-social a:hover {
     opacity: 0.5;
-
     transform: translateY(-2px);
 }
 
 .sidebar-social .social-icon {
-    width: 20px !important;
-    height: 20px !important;
-
-    min-width: 20px;
-    min-height: 20px;
-
-    max-width: 20px;
-    max-height: 20px;
+    width: 20px;
+    height: 20px;
 
     display: block;
 
-    color: #ffffff !important;
+    color: #ffffff;
 
     fill: currentColor;
 }
 
-.sidebar-social .social-icon rect,
-.sidebar-social .social-icon circle,
-.sidebar-social .social-icon path {
-    vector-effect: non-scaling-stroke;
-}
-
 
 /* =========================================
-   CONTENIDO PRINCIPAL
+   CONTENIDO
 ========================================= */
-
-/*
-   IMPORTANTE:
-
-   NO ponemos z-index aquí.
-
-   Si ponemos z-index: 10 en .main-content,
-   TODO el contenido pasa por encima del dibujo
-   y el dibujo nunca podrá aparecer sobre
-   el fondo gris del contacto.
-
-   Al dejarlo sin z-index:
-
-   - el fondo gris puede quedar debajo del dibujo
-   - las tarjetas pueden ponerse encima del dibujo
-   - el banner sigue por encima de todo
-*/
 
 .main-content {
     position: relative;
@@ -332,6 +257,8 @@ body {
     text-transform: uppercase;
 
     max-width: 1000px;
+
+    overflow-wrap: anywhere;
 }
 
 .hero-description {
@@ -383,6 +310,8 @@ body {
     letter-spacing: -4px;
 
     text-transform: uppercase;
+
+    overflow-wrap: anywhere;
 }
 
 .section-description {
@@ -401,7 +330,7 @@ body {
 
 
 /* =========================================
-   GRID DE PROYECTOS
+   GRID
 ========================================= */
 
 .projects-grid {
@@ -427,15 +356,19 @@ body {
 
     position: relative;
 
-    /*
-       POR ENCIMA DEL DIBUJO
-    */
     z-index: 10;
+
+    outline: none;
+}
+
+.project-card:focus-visible {
+    outline: 3px solid #171717;
+    outline-offset: 6px;
 }
 
 
 /* =========================================
-   TARJETA DE IMAGEN
+   IMÁGENES
 ========================================= */
 
 .project-image {
@@ -448,14 +381,7 @@ body {
     overflow: hidden;
 
     background: #ddd8cf;
-
-    z-index: 10;
 }
-
-
-/* =========================================
-   IMAGEN DE LA TARJETA
-========================================= */
 
 .project-image img {
     width: 100%;
@@ -466,10 +392,6 @@ body {
     object-fit: cover;
 
     object-position: center top;
-
-    position: relative;
-
-    z-index: 11;
 
     transition:
         transform 0.7s ease,
@@ -490,10 +412,6 @@ body {
     overflow: hidden;
 
     background: #ddd8cf;
-
-    position: relative;
-
-    z-index: 10;
 }
 
 .carteleria-image img {
@@ -506,19 +424,9 @@ body {
 
     object-position: center;
 
-    position: relative;
-
-    z-index: 11;
-
     transition:
         transform 0.7s ease,
         filter 0.5s ease;
-}
-
-.carteleria-image:hover img {
-    transform: scale(1.02);
-
-    filter: brightness(0.7);
 }
 
 
@@ -531,6 +439,10 @@ body {
 }
 
 .project-card:hover .project-image:not(.carteleria-image) img {
+    transform: scale(1.02);
+}
+
+.carteleria-image:hover img {
     transform: scale(1.02);
 }
 
@@ -547,7 +459,6 @@ body {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     color: #ffffff;
@@ -557,8 +468,6 @@ body {
     transition: opacity 0.4s ease;
 
     pointer-events: none;
-
-    z-index: 13;
 }
 
 .project-card:hover .project-overlay {
@@ -590,10 +499,6 @@ body {
     text-transform: uppercase;
 
     letter-spacing: -0.5px;
-
-    position: relative;
-
-    z-index: 12;
 }
 
 .project-card p {
@@ -604,10 +509,6 @@ body {
     opacity: 0.6;
 
     line-height: 1.5;
-
-    position: relative;
-
-    z-index: 12;
 }
 
 
@@ -633,22 +534,13 @@ body {
     width: 100%;
 }
 
-
-/* =========================================
-   ANIMACIÓN
-========================================= */
-
 .animation-project {
     width: 100%;
-
-    position: relative;
-
-    z-index: 10;
 }
 
 
 /* =========================================
-   VÍDEO
+   VIDEO
 ========================================= */
 
 .animation-video {
@@ -660,20 +552,15 @@ body {
 
     background: transparent;
 
-    overflow: visible;
+    overflow: hidden;
 
     line-height: 0;
-
-    position: relative;
-
-    z-index: 10;
 }
 
 .animation-video video {
     display: block;
 
     width: 100%;
-
     height: auto;
 
     max-width: 100%;
@@ -683,23 +570,11 @@ body {
     object-position: center;
 
     background: transparent;
-
-    position: relative;
-
-    z-index: 11;
-
-    transition:
-        transform 0.7s ease,
-        filter 0.5s ease;
-}
-
-.animation-project:hover .animation-video video {
-    filter: brightness(0.7);
 }
 
 
 /* =========================================
-   PROYECTOS / JUEGOS
+   JUEGOS
 ========================================= */
 
 .games {
@@ -741,17 +616,12 @@ body {
     padding: 0;
 
     transition: transform 0.3s ease;
-
-    position: relative;
-
-    z-index: 10;
 }
 
 .game-image {
     position: relative;
 
     width: 100%;
-
     height: auto;
 
     overflow: hidden;
@@ -761,15 +631,12 @@ body {
     display: block;
 
     line-height: 0;
-
-    z-index: 10;
 }
 
 .game-image img {
     display: block;
 
     width: 100%;
-
     height: auto;
 
     max-width: 100%;
@@ -777,10 +644,6 @@ body {
     object-fit: contain;
 
     object-position: center;
-
-    position: relative;
-
-    z-index: 11;
 
     transition:
         transform 0.6s ease,
@@ -801,10 +664,6 @@ body {
     letter-spacing: -0.3px;
 
     text-align: center;
-
-    position: relative;
-
-    z-index: 11;
 }
 
 .game:hover {
@@ -822,55 +681,18 @@ body {
    CONTACTO
 ========================================= */
 
-/*
-   MUY IMPORTANTE:
-
-   El contacto NO tiene z-index.
-
-   Su fondo gris se crea mediante ::before
-   con z-index: 0.
-
-   El dibujo tiene z-index: 5.
-
-   Por tanto:
-
-       gris contacto
-            ↓
-       dibujo
-            ↓
-       contenido
-
-   Esto permite que el dibujo se vea
-   SOBRE EL GRIS.
-*/
-
 .contact {
     position: relative;
 
     min-height: auto;
 
     padding-top: 55px;
-
     padding-bottom: 45px;
 
-    /*
-       NO poner fondo gris directamente aquí.
-       Tiene que ser transparente para que
-       el dibujo pueda aparecer encima.
-    */
     background: transparent;
 
     color: #171717;
-
-    /*
-       SIN Z-INDEX
-    */
 }
-
-
-/* =========================================
-   FONDO GRIS DEL CONTACTO
-========================================= */
 
 .contact::before {
     content: "";
@@ -880,34 +702,27 @@ body {
     top: 0;
     bottom: 0;
 
-    /*
-       Se extiende por detrás del banner.
-    */
     left: -360px;
 
     width: 100vw;
 
     background: #d8d5cf;
 
-    /*
-       EL GRIS ESTÁ POR DEBAJO DEL DIBUJO
-    */
     z-index: 0;
 
     pointer-events: none;
 }
 
+.contact .section-header,
+.contact > p,
+.contact-social {
+    position: relative;
 
-/* =========================================
-   CONTENIDO DEL CONTACTO
-========================================= */
+    z-index: 2;
+}
 
 .contact .section-header {
     margin-bottom: 0;
-
-    position: relative;
-
-    z-index: 10;
 }
 
 .contact .section-header h2 {
@@ -920,10 +735,6 @@ body {
     line-height: 0.9;
 
     letter-spacing: -3px;
-
-    position: relative;
-
-    z-index: 10;
 }
 
 .contact > p {
@@ -938,15 +749,11 @@ body {
     color: #171717;
 
     opacity: 0.7;
-
-    position: relative;
-
-    z-index: 10;
 }
 
 
 /* =========================================
-   REDES SOCIALES CONTACTO
+   REDES CONTACTO
 ========================================= */
 
 .contact-social {
@@ -959,10 +766,6 @@ body {
     margin-top: 30px;
 
     flex-wrap: wrap;
-
-    position: relative;
-
-    z-index: 10;
 }
 
 .contact-social a {
@@ -977,44 +780,29 @@ body {
 
     justify-content: flex-start;
 
-    color: #171717 !important;
+    color: #171717;
 
     text-decoration: none;
 
     transition:
         opacity 0.3s ease,
         transform 0.3s ease;
-
-    position: relative;
-
-    z-index: 10;
 }
 
 .contact-social a:hover {
     opacity: 0.5;
-
     transform: translateY(-3px);
 }
 
 .contact-social .contact-icon {
-    width: 24px !important;
-    height: 24px !important;
-
-    min-width: 24px;
-    min-height: 24px;
-
-    max-width: 24px;
-    max-height: 24px;
+    width: 24px;
+    height: 24px;
 
     display: block;
 
-    color: #171717 !important;
+    color: #171717;
 
     fill: currentColor;
-
-    position: relative;
-
-    z-index: 11;
 }
 
 
@@ -1027,25 +815,23 @@ body {
 
     inset: 0;
 
-    background: rgba(
-        15,
-        15,
-        15,
-        0.97
-    );
+    width: 100%;
+    height: 100%;
 
-    /*
-       SIEMPRE POR ENCIMA DE TODO
-    */
+    background: rgba(15, 15, 15, 0.97);
+
     z-index: 1000;
 
     display: none;
 
     align-items: center;
-
     justify-content: center;
 
-    padding: 40px;
+    padding: 30px;
+
+    overflow: hidden;
+
+    touch-action: none;
 }
 
 .gallery.active {
@@ -1053,8 +839,7 @@ body {
 }
 
 .gallery-content {
-    width: 90vw;
-
+    width: min(90vw, 1200px);
     height: 90vh;
 
     display: flex;
@@ -1062,24 +847,25 @@ body {
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
     pointer-events: none;
 }
 
 .gallery-image-container {
-    width: 90vw;
-
-    height: 78vh;
+    width: 100%;
+    height: 75vh;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
-    pointer-events: none;
+    pointer-events: auto;
+
+    touch-action: pan-y;
+
+    overflow: hidden;
 }
 
 .gallery-content img {
@@ -1089,7 +875,7 @@ body {
     height: auto;
 
     max-width: 85vw;
-    max-height: 75vh;
+    max-height: 70vh;
 
     object-fit: contain;
 
@@ -1097,20 +883,23 @@ body {
 
     pointer-events: auto;
 
-    cursor: default;
-
     user-select: none;
 
+    -webkit-user-select: none;
+
     -webkit-user-drag: none;
+
+    touch-action: pan-y;
 }
 
 
 /* =========================================
-   INFORMACIÓN DEL CARRUSEL
+   INFORMACIÓN CARRUSEL
 ========================================= */
 
 .gallery-info {
     width: 85vw;
+    max-width: 1200px;
 
     margin-top: 20px;
 
@@ -1133,6 +922,8 @@ body {
     flex-direction: column;
 
     gap: 7px;
+
+    min-width: 0;
 }
 
 .gallery-info h3 {
@@ -1163,25 +954,41 @@ body {
 
 
 /* =========================================
-   BOTONES DEL CARRUSEL
+   BOTONES CARRUSEL
 ========================================= */
 
 .gallery button {
-    border: none;
+    position: absolute;
 
-    background: none;
+    border: 0;
+
+    background: transparent;
 
     color: #f3f0e9;
 
     cursor: pointer;
 
-    position: absolute;
+    z-index: 20;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 55px;
+    height: 55px;
+
+    padding: 0;
 
     font-size: 40px;
 
-    transition: opacity 0.3s ease;
+    line-height: 1;
 
-    z-index: 10;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+
+    touch-action: manipulation;
 }
 
 .gallery button:hover {
@@ -1189,27 +996,32 @@ body {
 }
 
 .gallery-close {
-    top: 25px;
+    top: 20px;
+    right: 25px;
 
-    right: 35px;
-
-    font-size: 45px !important;
+    font-size: 45px;
 }
 
 .gallery-prev {
-    left: 30px;
-
+    left: 20px;
     top: 50%;
 
     transform: translateY(-50%);
 }
 
 .gallery-next {
-    right: 30px;
-
+    right: 20px;
     top: 50%;
 
     transform: translateY(-50%);
+}
+
+.gallery-prev:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.gallery-next:hover {
+    transform: translateY(-50%) scale(1.1);
 }
 
 
@@ -1220,29 +1032,64 @@ body {
 @media (max-width: 900px) {
 
     .sidebar {
-        width: 240px;
+        position: relative;
+
+        width: 100%;
+        height: auto;
+
+        min-height: 180px;
+
+        z-index: 100;
+
+        pointer-events: auto;
     }
 
-    /*
-       SIN Z-INDEX EN MAIN-CONTENT
-    */
-    .main-content {
-        margin-left: 240px;
+    .sidebar-background {
+        clip-path: none;
+    }
 
-        width: calc(100% - 240px);
+    .sidebar-content {
+        width: 100%;
+        height: auto;
+
+        min-height: 180px;
+
+        padding: 30px 40px;
+    }
+
+    .sidebar-top {
+        gap: 30px;
+    }
+
+    .navigation {
+        flex-direction: row;
+
+        flex-wrap: wrap;
+
+        gap: 12px 25px;
+    }
+
+    .main-content {
+        margin-left: 0;
+
+        width: 100%;
     }
 
     .hero,
     .section {
-        padding: 70px 40px;
+        padding: 80px 40px;
+    }
+
+    .hero h1 {
+        font-size: clamp(
+            60px,
+            12vw,
+            120px
+        );
     }
 
     .projects-grid {
         grid-template-columns: 1fr;
-    }
-
-    .arte3d-projects {
-        gap: 55px;
     }
 
     .games {
@@ -1252,121 +1099,39 @@ body {
         gap: 30px 25px;
     }
 
-
-    /* =====================================
-       BANNER
-    ===================================== */
-
-    .sidebar-background {
-        clip-path: polygon(
-            0 0,
-            100% 0,
-            65% 100%,
-            0 100%
-        );
-    }
-
-
-    /* =====================================
-       ICONOS
-    ===================================== */
-
-    .sidebar-social .social-icon {
-        width: 18px !important;
-        height: 18px !important;
-
-        min-width: 18px;
-        min-height: 18px;
-
-        max-width: 18px;
-        max-height: 18px;
-    }
-
-
-    /* =====================================
-       IMAGEN DECORATIVA
-    ===================================== */
-
     .background-decoration {
-        width: 60vw;
+        width: 55vw;
 
-        max-width: 550px;
-
-        right: 0;
-        bottom: 0;
-
-        z-index: 5;
-
-        opacity: 0.5;
-
-        mix-blend-mode: multiply;
-    }
-
-
-    /* =====================================
-       CONTACTO
-    ===================================== */
-
-    .contact {
-        padding-top: 45px;
-
-        padding-bottom: 40px;
-
-        background: transparent;
+        max-width: 500px;
     }
 
     .contact::before {
-        left: -240px;
+        left: 0;
 
-        width: 100vw;
-
-        z-index: 0;
+        width: 100%;
     }
 
-    .contact .section-header h2 {
-        font-size: 48px;
+    .gallery {
+        padding: 20px;
     }
 
-    .contact > p {
-        margin-top: 18px;
-
-        font-size: 14px;
-
-        max-width: 400px;
+    .gallery-content {
+        width: 94vw;
+        height: 90vh;
     }
-
-    .contact-social {
-        gap: 45px;
-
-        margin-top: 28px;
-    }
-
-    .contact-social a {
-        width: 45px;
-        height: 45px;
-    }
-
-
-    /* =====================================
-       CARRUSEL
-    ===================================== */
 
     .gallery-image-container {
-        width: 90vw;
-
-        height: 75vh;
-
-        touch-action: pan-y;
+        width: 94vw;
+        height: 72vh;
     }
 
     .gallery-content img {
-        max-width: 82vw;
-
-        max-height: 70vh;
+        max-width: 88vw;
+        max-height: 65vh;
     }
 
     .gallery-info {
-        width: 82vw;
+        width: 88vw;
     }
 
     .gallery-prev,
@@ -1382,39 +1147,13 @@ body {
 
 @media (max-width: 600px) {
 
-
-    /* =====================================
-       IMAGEN DECORATIVA
-    ===================================== */
-
     .background-decoration {
-        position: fixed;
-
-        right: 0;
-        bottom: 0;
-
         width: 65vw;
 
         max-width: 380px;
 
-        height: auto;
-
-        /*
-           DIBUJO:
-           encima del gris
-           debajo de proyectos
-        */
-        z-index: 5;
-
-        display: block;
-
-        object-fit: contain;
-
-        object-position: bottom right;
-
-        pointer-events: none;
-
-        mix-blend-mode: multiply;
+        right: 0;
+        bottom: 0;
 
         opacity: 0.5;
     }
@@ -1422,28 +1161,16 @@ body {
 
     /* =====================================
        MENÚ
-    ===================================== */
+    ====================================== */
 
     .sidebar {
-        position: relative;
-
-        width: 100%;
-
-        height: auto;
-
         min-height: 220px;
-
-        z-index: 100;
-    }
-
-    .sidebar-background {
-        clip-path: none;
     }
 
     .sidebar-content {
-        padding: 25px;
-
         min-height: 220px;
+
+        padding: 25px;
     }
 
     .sidebar-top {
@@ -1455,21 +1182,12 @@ body {
     }
 
     .navigation {
-        flex-direction: row;
-
-        flex-wrap: wrap;
-
         gap: 10px 20px;
     }
 
     .navigation a {
         font-size: 11px;
     }
-
-
-    /* =====================================
-       ICONOS
-    ===================================== */
 
     .sidebar-social {
         margin-top: 35px;
@@ -1483,26 +1201,14 @@ body {
     }
 
     .sidebar-social .social-icon {
-        width: 18px !important;
-        height: 18px !important;
-
-        min-width: 18px;
-        min-height: 18px;
-
-        max-width: 18px;
-        max-height: 18px;
+        width: 18px;
+        height: 18px;
     }
 
 
     /* =====================================
        CONTENIDO
-    ===================================== */
-
-    .main-content {
-        margin-left: 0;
-
-        width: 100%;
-    }
+    ====================================== */
 
     .hero,
     .section {
@@ -1514,218 +1220,80 @@ body {
     }
 
     .hero h1 {
-        font-size: 70px;
+        font-size: clamp(
+            50px,
+            17vw,
+            80px
+        );
 
         letter-spacing: -5px;
+    }
+
+    .hero-description {
+        margin-top: 35px;
+
+        font-size: 16px;
     }
 
 
     /* =====================================
        CABECERAS
-    ===================================== */
+    ====================================== */
 
     .section-header {
         display: block;
     }
 
     .section-header h2 {
-        font-size: 55px;
+        font-size: clamp(
+            42px,
+            14vw,
+            65px
+        );
+
+        letter-spacing: -3px;
+    }
+
+    .section-description {
+        margin-bottom: 50px;
+
+        font-size: 15px;
     }
 
 
     /* =====================================
        ARTE 3D
-    ===================================== */
+    ====================================== */
 
     .arte3d-projects {
         gap: 45px;
-
-        position: relative;
-
-        z-index: 10;
-    }
-
-
-    /* =====================================
-       ANIMACIÓN
-    ===================================== */
-
-    .animation-video {
-        width: 100%;
-
-        height: auto;
-
-        overflow: visible;
-
-        position: relative;
-
-        z-index: 10;
-    }
-
-    .animation-video video {
-        width: 100%;
-
-        height: auto;
-
-        max-width: 100%;
-
-        position: relative;
-
-        z-index: 11;
     }
 
 
     /* =====================================
        JUEGOS
-    ===================================== */
+    ====================================== */
 
     .games {
         grid-template-columns: 1fr;
 
         gap: 45px;
-
-        width: 100%;
-
-        position: relative;
-
-        z-index: 10;
-    }
-
-    .game {
-        width: 100%;
-
-        align-items: center;
-
-        position: relative;
-
-        z-index: 10;
-    }
-
-    .game-image {
-        width: 100%;
-
-        height: auto;
-
-        aspect-ratio: auto;
-
-        overflow: hidden;
-
-        background: transparent;
-
-        display: block;
-
-        line-height: 0;
-
-        position: relative;
-
-        z-index: 10;
-    }
-
-    .game-image img {
-        width: 100%;
-
-        height: auto;
-
-        max-width: 100%;
-
-        object-fit: contain;
-
-        display: block;
-
-        position: relative;
-
-        z-index: 11;
-    }
-
-    .game h3 {
-        width: 100%;
-
-        text-align: center;
-
-        margin-top: 15px;
-
-        font-size: 16px;
-
-        position: relative;
-
-        z-index: 11;
-    }
-
-
-    /* =====================================
-       CARTELERÍA
-    ===================================== */
-
-    .carteleria-image {
-        width: 100%;
-
-        height: auto;
-
-        aspect-ratio: auto;
-
-        position: relative;
-
-        z-index: 10;
-    }
-
-    .carteleria-image img {
-        width: 100%;
-
-        height: auto;
-
-        object-fit: contain;
-
-        position: relative;
-
-        z-index: 11;
     }
 
 
     /* =====================================
        CONTACTO
-    ===================================== */
+    ====================================== */
 
     .contact {
-        min-height: auto;
-
         padding-top: 45px;
-
         padding-bottom: 40px;
-
-        /*
-           TRANSPARENTE.
-
-           El gris está en ::before.
-           Esto permite que el dibujo
-           aparezca por encima del gris.
-        */
-        background: transparent;
-
-        position: relative;
     }
 
     .contact::before {
-        /*
-           En móvil el banner ya no ocupa
-           el lateral.
-        */
         left: 0;
 
         width: 100%;
-
-        background: #d8d5cf;
-
-        z-index: 0;
-    }
-
-    .contact .section-header {
-        display: block;
-
-        margin-bottom: 0;
-
-        position: relative;
-
-        z-index: 10;
     }
 
     .contact .section-header h2 {
@@ -1739,122 +1307,96 @@ body {
 
         font-size: 13px;
 
-        line-height: 1.5;
-
         max-width: 320px;
-
-        position: relative;
-
-        z-index: 10;
     }
 
     .contact-social {
         gap: 35px;
 
         margin-top: 28px;
-
-        justify-content: flex-start;
-
-        flex-wrap: wrap;
-
-        position: relative;
-
-        z-index: 10;
     }
 
     .contact-social a {
         width: 45px;
         height: 45px;
-
-        position: relative;
-
-        z-index: 10;
     }
 
     .contact-social .contact-icon {
-        width: 23px !important;
-        height: 23px !important;
-
-        min-width: 23px;
-        min-height: 23px;
-
-        max-width: 23px;
-        max-height: 23px;
-
-        position: relative;
-
-        z-index: 11;
+        width: 23px;
+        height: 23px;
     }
 
 
     /* =====================================
        CARRUSEL
-    ===================================== */
+    ====================================== */
 
     .gallery {
-        padding: 20px;
+        padding: 15px;
     }
 
     .gallery-content {
-        width: 95vw;
-
+        width: 100%;
         height: 90vh;
     }
 
     .gallery-image-container {
-        width: 95vw;
-
-        height: 72vh;
-
-        touch-action: pan-y;
+        width: 100%;
+        height: 68vh;
     }
 
     .gallery-content img {
-        max-width: 88vw;
-
-        max-height: 68vh;
-
-        width: auto;
-
-        height: auto;
-
-        object-fit: contain;
-
-        user-select: none;
-
-        -webkit-user-drag: none;
+        max-width: 94vw;
+        max-height: 60vh;
     }
 
     .gallery-info {
-        width: 88vw;
+        width: 94vw;
 
-        margin-top: 15px;
+        margin-top: 12px;
 
-        gap: 15px;
+        gap: 10px;
     }
 
     .gallery-info h3 {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .gallery-info p {
-        font-size: 12px;
-    }
-
-    .gallery-info span {
         font-size: 11px;
     }
 
-    .gallery-prev,
-    .gallery-next {
-        display: none;
+    .gallery-info span {
+        font-size: 10px;
     }
 
     .gallery-close {
-        top: 15px;
+        top: 10px;
+        right: 10px;
 
-        right: 20px;
+        width: 45px;
+        height: 45px;
 
-        font-size: 40px !important;
+        font-size: 38px;
+    }
+}
+
+
+/* =========================================
+   REDUCIR ANIMACIONES
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
