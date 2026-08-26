@@ -2,33 +2,16 @@
    GALERÍAS
 ========================================= */
 
-/*
-    Cada proyecto tiene:
-
-    - title
-    - images
-    - caption para cada imagen
-
-    Para añadir una imagen nueva:
-
-    {
-        src: "ruta/imagen.jpg",
-        caption: "Descripción de la imagen"
-    }
-*/
-
-
 const galleries = [
 
     /* =====================================
-       CARTELERÍA 1
+       CARTELERÍA
     ====================================== */
 
     {
         title: "CARTELES E ILUSTRACIONES",
 
         images: [
-
             {
                 src: "imagenes/Carteles/fiestas.jpeg",
                 caption: "Propuesta cartel fiestas populares San Sebastián de los Reyes 2026"
@@ -48,20 +31,18 @@ const galleries = [
                 src: "imagenes/Carteles/ilustracion.jpeg",
                 caption: "Ilustración muelle de un puerto"
             }
-
         ]
     },
 
 
     /* =====================================
-       ARTE 2D — PROYECTO 1
+       ARTE 2D
     ====================================== */
 
     {
-        title: "TÍTULO",
+        title: "ARTE 2D",
 
         images: [
-
             {
                 src: "imagenes/Arte 2D/Personaje_Y_EscenarioBlancoYNegro.jpg",
                 caption: "Diseño inicial del personaje y escenario"
@@ -121,20 +102,18 @@ const galleries = [
                 src: "imagenes/Arte 2D/Callouts Jesús Mercado Rioja.jpg",
                 caption: "Callouts del diseño"
             }
-
         ]
     },
 
 
     /* =====================================
-       ARTE 2D — ROCK MOLE
+       ROCK MOLE
     ====================================== */
 
     {
         title: "ROCK MOLE",
 
         images: [
-
             {
                 src: "imagenes/Arte 2D/RockMole/Topo color 1.PNG",
                 caption: "Diseño del topo"
@@ -249,12 +228,14 @@ const galleries = [
                 src: "imagenes/Arte 2D/RockMole/Mina.PNG",
                 caption: "Diseño de la mina"
             }
-
         ]
     }
-
 ];
 
+
+/* =========================================
+   VARIABLES
+========================================= */
 
 let currentGallery = 0;
 let currentImage = 0;
@@ -266,18 +247,37 @@ let currentImage = 0;
 
 function openGallery(galleryIndex) {
 
-    currentGallery = galleryIndex;
-    currentImage = 0;
+    console.log("Abriendo galería:", galleryIndex);
 
-    updateGallery();
+    if (
+        galleryIndex < 0 ||
+        galleryIndex >= galleries.length
+    ) {
+        console.error(
+            "Galería inexistente:",
+            galleryIndex
+        );
 
-    const gallery = document.getElementById("gallery");
-
-    if (!gallery) {
         return;
     }
 
-    gallery.classList.add("active");
+    currentGallery = galleryIndex;
+    currentImage = 0;
+
+    const galleryElement =
+        document.getElementById("gallery");
+
+    if (!galleryElement) {
+        console.error(
+            "No existe el elemento #gallery"
+        );
+
+        return;
+    }
+
+    updateGallery();
+
+    galleryElement.classList.add("active");
 
     document.body.style.overflow = "hidden";
 }
@@ -289,13 +289,14 @@ function openGallery(galleryIndex) {
 
 function closeGallery() {
 
-    const gallery = document.getElementById("gallery");
+    const galleryElement =
+        document.getElementById("gallery");
 
-    if (!gallery) {
+    if (!galleryElement) {
         return;
     }
 
-    gallery.classList.remove("active");
+    galleryElement.classList.remove("active");
 
     document.body.style.overflow = "";
 }
@@ -307,7 +308,12 @@ function closeGallery() {
 
 function updateGallery() {
 
-    const gallery = galleries[currentGallery];
+    const gallery =
+        galleries[currentGallery];
+
+    if (!gallery) {
+        return;
+    }
 
     const imageElement =
         document.getElementById("gallery-image");
@@ -322,42 +328,28 @@ function updateGallery() {
         document.getElementById("gallery-counter");
 
 
-    /*
-        COMPROBAR ELEMENTOS
-    */
-
     if (
         !imageElement ||
         !titleElement ||
         !captionElement ||
         !counterElement
     ) {
+        console.error(
+            "Falta algún elemento del carrusel en el HTML."
+        );
+
         return;
     }
 
-
-    /*
-        COMPROBAR SI EXISTE LA GALERÍA
-    */
-
-    if (!gallery) {
-        return;
-    }
-
-
-    /*
-        COMPROBAR SI HAY IMÁGENES
-    */
 
     if (
         !gallery.images ||
         gallery.images.length === 0
     ) {
-
         imageElement.style.display = "none";
 
         titleElement.textContent =
-            gallery.title || "";
+            gallery.title;
 
         captionElement.textContent =
             "Sin imágenes";
@@ -369,10 +361,6 @@ function updateGallery() {
     }
 
 
-    /*
-        COMPROBAR ÍNDICE
-    */
-
     if (
         currentImage < 0 ||
         currentImage >= gallery.images.length
@@ -381,51 +369,22 @@ function updateGallery() {
     }
 
 
-    /*
-        OBTENER IMAGEN ACTUAL
-    */
-
     const image =
         gallery.images[currentImage];
 
 
-    if (!image) {
-        return;
-    }
-
-
-    /*
-        MOSTRAR IMAGEN
-    */
-
     imageElement.style.display = "block";
 
-    imageElement.src =
-        image.src;
+    imageElement.src = image.src;
 
     imageElement.alt =
         image.caption || gallery.title;
 
-
-    /*
-        TÍTULO DEL PROYECTO
-    */
-
     titleElement.textContent =
         gallery.title;
 
-
-    /*
-        PIE DE FOTO
-    */
-
     captionElement.textContent =
         image.caption || "";
-
-
-    /*
-        CONTADOR
-    */
 
     counterElement.textContent =
         `${currentImage + 1} / ${gallery.images.length}`;
@@ -433,7 +392,7 @@ function updateGallery() {
 
 
 /* =========================================
-   SIGUIENTE IMAGEN
+   SIGUIENTE
 ========================================= */
 
 function nextImage() {
@@ -441,7 +400,6 @@ function nextImage() {
     const gallery =
         galleries[currentGallery];
 
-
     if (
         !gallery ||
         !gallery.images ||
@@ -450,25 +408,21 @@ function nextImage() {
         return;
     }
 
-
     currentImage++;
-
 
     if (
         currentImage >=
         gallery.images.length
     ) {
-
         currentImage = 0;
     }
-
 
     updateGallery();
 }
 
 
 /* =========================================
-   IMAGEN ANTERIOR
+   ANTERIOR
 ========================================= */
 
 function previousImage() {
@@ -476,7 +430,6 @@ function previousImage() {
     const gallery =
         galleries[currentGallery];
 
-
     if (
         !gallery ||
         !gallery.images ||
@@ -485,16 +438,12 @@ function previousImage() {
         return;
     }
 
-
     currentImage--;
 
-
     if (currentImage < 0) {
-
         currentImage =
             gallery.images.length - 1;
     }
-
 
     updateGallery();
 }
@@ -508,115 +457,76 @@ document.addEventListener(
     "keydown",
     function(event) {
 
-        const gallery =
+        const galleryElement =
             document.getElementById("gallery");
 
-
         if (
-            !gallery ||
-            !gallery.classList.contains("active")
+            !galleryElement ||
+            !galleryElement.classList.contains("active")
         ) {
             return;
         }
 
-
-        if (
-            event.key === "ArrowRight"
-        ) {
-
+        if (event.key === "ArrowRight") {
             nextImage();
         }
 
-
-        if (
-            event.key === "ArrowLeft"
-        ) {
-
+        if (event.key === "ArrowLeft") {
             previousImage();
         }
 
-
-        if (
-            event.key === "Escape"
-        ) {
-
+        if (event.key === "Escape") {
             closeGallery();
         }
-
     }
 );
 
 
 /* =========================================
-   CERRAR AL HACER CLICK FUERA
+   CERRAR AL PULSAR FONDO
 ========================================= */
 
-const galleryElement =
-    document.getElementById("gallery");
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
 
+        const galleryElement =
+            document.getElementById("gallery");
 
-if (galleryElement) {
+        if (!galleryElement) {
+            console.error(
+                "No se encuentra #gallery en el HTML."
+            );
 
-    galleryElement.addEventListener(
-        "click",
-        function(event) {
-
-
-            /*
-                Si pulsamos la imagen,
-                NO cerramos.
-            */
-
-            if (
-                event.target.closest("#gallery-image")
-            ) {
-
-                return;
-            }
-
-
-            /*
-                Si pulsamos un botón,
-                NO cerramos.
-            */
-
-            if (
-                event.target.closest("button")
-            ) {
-
-                return;
-            }
-
-
-            /*
-                Si pulsamos el contenido,
-                NO cerramos.
-            */
-
-            if (
-                event.target.closest(".gallery-content")
-            ) {
-
-                return;
-            }
-
-
-            /*
-                Si llegamos aquí hemos
-                pulsado el fondo negro.
-            */
-
-            closeGallery();
-
+            return;
         }
-    );
 
-}
+        galleryElement.addEventListener(
+            "click",
+            function(event) {
 
+                if (
+                    event.target.closest("button")
+                ) {
+                    return;
+                }
 
-/* =========================================
-   MENSAJE
-========================================= */
+                if (
+                    event.target.closest(".gallery-content")
+                ) {
+                    return;
+                }
+
+                closeGallery();
+            }
+        );
+
+        console.log(
+            "Carrusel inicializado correctamente."
+        );
+    }
+);
+
 
 console.log(
     "Portfolio cargado correctamente."
