@@ -134,7 +134,7 @@ body {
 
 
 /* =========================================
-   ICONOS DE CONTACTO DEL BANNER
+   ICONOS DEL BANNER
 ========================================= */
 
 .sidebar-social {
@@ -164,11 +164,6 @@ body {
     transform: translateY(-2px);
 }
 
-
-/* =========================================
-   ICONOS SVG DEL BANNER
-========================================= */
-
 .sidebar-social .social-icon {
     width: 20px !important;
     height: 20px !important;
@@ -185,11 +180,6 @@ body {
 
     fill: currentColor;
 }
-
-
-/* =========================================
-   INSTAGRAM - RESPETAR TRAZOS
-========================================= */
 
 .sidebar-social .social-icon rect,
 .sidebar-social .social-icon circle,
@@ -318,7 +308,7 @@ body {
 
 
 /* =========================================
-   DESCRIPCIÓN DE SECCIONES
+   DESCRIPCIÓN
 ========================================= */
 
 .section-description {
@@ -356,7 +346,7 @@ body {
 
 
 /* =========================================
-   IMÁGENES GENERALES DE PROYECTOS
+   IMÁGENES
 ========================================= */
 
 .project-image {
@@ -452,6 +442,7 @@ body {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     color: #ffffff;
@@ -506,6 +497,105 @@ body {
 
 
 /* =========================================
+   ARTE 3D
+========================================= */
+
+/*
+   Una sola columna.
+   El proyecto 2 aparece debajo del proyecto 1.
+*/
+
+.arte3d-projects {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 70px;
+
+    width: 100%;
+}
+
+
+/*
+   El proyecto 1 mantiene el comportamiento
+   normal de las imágenes.
+*/
+
+.arte3d-projects > .project-card:first-child {
+    width: 100%;
+}
+
+
+/*
+   ANIMACIÓN
+   No utilizamos .project-image aquí.
+   Por tanto, NO existe aspect-ratio 4:3
+   que pueda generar un borde vacío.
+*/
+
+.animation-project {
+    width: 100%;
+}
+
+
+/* =========================================
+   VÍDEO EN SU TAMAÑO NATURAL
+========================================= */
+
+.animation-video {
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    background: transparent;
+
+    overflow: visible;
+
+    line-height: 0;
+}
+
+
+/*
+   El vídeo ocupa el ancho disponible,
+   pero conserva su proporción original.
+
+   height: auto evita que aparezca
+   espacio vertical sobrante.
+*/
+
+.animation-video video {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    background: transparent;
+
+    transition:
+        transform 0.7s ease,
+        filter 0.5s ease;
+}
+
+
+/* =========================================
+   HOVER DEL VÍDEO
+========================================= */
+
+.animation-project:hover .animation-video video {
+    filter: brightness(0.7);
+}
+
+
+/* =========================================
    PROYECTOS / JUEGOS
 ========================================= */
 
@@ -523,11 +613,6 @@ body {
 
     align-items: start;
 }
-
-
-/* =========================================
-   TARJETA DEL JUEGO
-========================================= */
 
 .game {
     display: flex;
@@ -550,11 +635,6 @@ body {
 
     transition: transform 0.3s ease;
 }
-
-
-/* =========================================
-   IMAGEN DEL JUEGO
-========================================= */
 
 .game-image {
     position: relative;
@@ -590,11 +670,6 @@ body {
         filter 0.5s ease;
 }
 
-
-/* =========================================
-   TÍTULO DE LOS JUEGOS
-========================================= */
-
 .game h3 {
     width: 100%;
 
@@ -611,11 +686,6 @@ body {
     text-align: center;
 }
 
-
-/* =========================================
-   HOVER DE LOS JUEGOS
-========================================= */
-
 .game:hover {
     transform: translateY(-5px);
 }
@@ -628,104 +698,141 @@ body {
 
 
 /* =========================================
-   ARTE 3D
+   SECCIÓN DE CONTACTO / FOOTER
 ========================================= */
 
-/*
-   En Arte 3D los proyectos se colocan
-   uno debajo del otro, no en dos columnas.
-*/
+.contact {
+    position: relative;
 
-.arte3d-projects {
+    min-height: auto;
+
+    padding-top: 55px;
+    padding-bottom: 45px;
+
+    background: #d8d5cf;
+
+    color: #171717;
+
+    z-index: 1;
+}
+
+.contact::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: -360px;
+
+    width: 100vw;
+
+    background: #d8d5cf;
+
+    z-index: -1;
+}
+
+.contact .section-header {
+    margin-bottom: 0;
+}
+
+.contact .section-header h2 {
+    font-size: clamp(
+        35px,
+        5vw,
+        60px
+    );
+
+    line-height: 0.9;
+
+    letter-spacing: -3px;
+}
+
+.contact > p {
+    margin-top: 22px;
+
+    max-width: 400px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    color: #171717;
+
+    opacity: 0.7;
+}
+
+.contact-social {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 28px;
+
+    margin-top: 30px;
+
+    flex-wrap: wrap;
+}
+
+.contact-social a {
+    width: 48px;
+    height: 48px;
+
     display: flex;
 
     flex-direction: column;
 
-    align-items: flex-start;
+    align-items: center;
 
-    gap: 70px;
+    justify-content: flex-start;
 
-    width: 100%;
-}
+    color: #171717 !important;
 
-
-/* =========================================
-   PROYECTOS DE ARTE 3D
-========================================= */
-
-.arte3d-projects .project-card {
-    width: 100%;
-}
-
-
-/* =========================================
-   IMAGEN DEL PROYECTO 1
-========================================= */
-
-.arte3d-projects .project-image {
-    width: 100%;
-}
-
-
-/* =========================================
-   VÍDEO DE ANIMACIÓN
-========================================= */
-
-.arte3d-projects .arte3d-video {
-    width: auto;
-
-    max-width: 100%;
-}
-
-
-/*
-   Quitamos las dimensiones 4:3 que tienen
-   las imágenes normales de los proyectos.
-*/
-
-.arte3d-video .project-image {
-    width: auto;
-
-    height: auto;
-
-    aspect-ratio: auto;
-
-    overflow: visible;
-
-    background: transparent;
-}
-
-
-/*
-   El vídeo conserva su tamaño/proporción
-   original. Solo se reduce si no cabe.
-*/
-
-.arte3d-video .project-image video {
-    display: block;
-
-    width: auto;
-
-    height: auto;
-
-    max-width: 100%;
-
-    object-fit: contain;
-
-    object-position: center;
+    text-decoration: none;
 
     transition:
-        transform 0.7s ease,
-        filter 0.5s ease;
+        opacity 0.3s ease,
+        transform 0.3s ease;
 }
 
+.contact-social a:hover {
+    opacity: 0.5;
 
-/* =========================================
-   HOVER DEL VÍDEO
-========================================= */
+    transform: translateY(-3px);
+}
 
-.arte3d-video:hover .project-image video {
-    filter: brightness(0.7);
+.contact-social .social-icon {
+    width: 24px !important;
+    height: 24px !important;
+
+    min-width: 24px;
+    min-height: 24px;
+
+    max-width: 24px;
+    max-height: 24px;
+
+    display: block;
+
+    color: #171717 !important;
+
+    fill: currentColor;
+}
+
+.contact-social-label {
+    margin-top: 7px;
+
+    font-size: 8px;
+
+    line-height: 1;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+
+    color: #171717 !important;
+
+    opacity: 0.6;
 }
 
 
@@ -760,11 +867,6 @@ body {
     display: flex;
 }
 
-
-/* =========================================
-   CONTENIDO DEL CARRUSEL
-========================================= */
-
 .gallery-content {
     width: 90vw;
 
@@ -795,11 +897,6 @@ body {
     pointer-events: none;
 }
 
-
-/* =========================================
-   IMAGEN DEL CARRUSEL
-========================================= */
-
 .gallery-content img {
     display: block;
 
@@ -823,11 +920,6 @@ body {
 
     -webkit-user-drag: none;
 }
-
-
-/* =========================================
-   INFORMACIÓN / PIE DE FOTO
-========================================= */
 
 .gallery-info {
     width: 85vw;
@@ -881,11 +973,6 @@ body {
     padding-top: 3px;
 }
 
-
-/* =========================================
-   BOTONES DEL CARRUSEL
-========================================= */
-
 .gallery button {
     border: none;
 
@@ -908,11 +995,6 @@ body {
     opacity: 0.5;
 }
 
-
-/* =========================================
-   CERRAR
-========================================= */
-
 .gallery-close {
     top: 25px;
 
@@ -921,11 +1003,6 @@ body {
     font-size: 45px !important;
 }
 
-
-/* =========================================
-   ANTERIOR
-========================================= */
-
 .gallery-prev {
     left: 30px;
 
@@ -933,11 +1010,6 @@ body {
 
     transform: translateY(-50%);
 }
-
-
-/* =========================================
-   SIGUIENTE
-========================================= */
 
 .gallery-next {
     right: 30px;
@@ -973,10 +1045,9 @@ body {
         grid-template-columns: 1fr;
     }
 
-
-    /* =====================================
-       PROYECTOS EN TABLET
-    ===================================== */
+    .arte3d-projects {
+        gap: 55px;
+    }
 
     .games {
         grid-template-columns:
@@ -1002,9 +1073,7 @@ body {
     }
 
 
-    /* =====================================
-       BANNER EN TABLET
-    ===================================== */
+    /* BANNER */
 
     .sidebar-background {
         clip-path: polygon(
@@ -1016,9 +1085,7 @@ body {
     }
 
 
-    /* =====================================
-       ICONOS DEL BANNER EN TABLET
-    ===================================== */
+    /* ICONOS */
 
     .sidebar-social .social-icon {
         width: 18px !important;
@@ -1032,9 +1099,7 @@ body {
     }
 
 
-    /* =====================================
-       CONTACTO
-    ===================================== */
+    /* CONTACTO */
 
     .contact {
         padding-top: 45px;
@@ -1043,6 +1108,7 @@ body {
 
     .contact::before {
         left: -240px;
+
         width: 100vw;
     }
 
@@ -1052,17 +1118,21 @@ body {
 
     .contact > p {
         margin-top: 18px;
+
         font-size: 14px;
+
         max-width: 400px;
     }
 
     .contact-social {
         gap: 25px;
+
         margin-top: 28px;
     }
 
     .contact-social a {
         width: 45px;
+
         height: 45px;
     }
 
@@ -1082,9 +1152,7 @@ body {
     }
 
 
-    /* =====================================
-       CARRUSEL
-    ===================================== */
+    /* CARRUSEL */
 
     .gallery-image-container {
         width: 90vw;
@@ -1112,19 +1180,6 @@ body {
     .gallery-next {
         display: none;
     }
-
-
-    /* =====================================
-       VÍDEO EN TABLET
-    ===================================== */
-
-    .arte3d-video {
-        max-width: 100%;
-    }
-
-    .arte3d-video .project-image video {
-        max-width: 100%;
-    }
 }
 
 
@@ -1141,9 +1196,7 @@ body {
     }
 
 
-    /* =====================================
-       MENÚ
-    ===================================== */
+    /* MENÚ */
 
     .sidebar {
         position: relative;
@@ -1186,9 +1239,7 @@ body {
     }
 
 
-    /* =====================================
-       ICONOS DEL BANNER EN MÓVIL
-    ===================================== */
+    /* ICONOS */
 
     .sidebar-social {
         margin-top: 35px;
@@ -1198,6 +1249,7 @@ body {
 
     .sidebar-social a {
         width: 28px;
+
         height: 28px;
     }
 
@@ -1215,9 +1267,7 @@ body {
     }
 
 
-    /* =====================================
-       CONTENIDO
-    ===================================== */
+    /* CONTENIDO */
 
     .main-content {
         margin-left: 0;
@@ -1241,9 +1291,7 @@ body {
     }
 
 
-    /* =====================================
-       CABECERAS
-    ===================================== */
+    /* CABECERAS */
 
     .section-header {
         display: block;
@@ -1258,9 +1306,30 @@ body {
     }
 
 
-    /* =====================================
-       PROYECTOS EN MÓVIL
-    ===================================== */
+    /* ARTE 3D */
+
+    .arte3d-projects {
+        gap: 45px;
+    }
+
+    .animation-video {
+        width: 100%;
+
+        height: auto;
+
+        overflow: visible;
+    }
+
+    .animation-video video {
+        width: 100%;
+
+        height: auto;
+
+        max-width: 100%;
+    }
+
+
+    /* JUEGOS */
 
     .games {
         grid-template-columns: 1fr;
@@ -1304,11 +1373,6 @@ body {
         display: block;
     }
 
-
-    /* =====================================
-       TÍTULO EN MÓVIL
-    ===================================== */
-
     .game h3 {
         width: 100%;
 
@@ -1320,9 +1384,7 @@ body {
     }
 
 
-    /* =====================================
-       CARTELERÍA EN MÓVIL
-    ===================================== */
+    /* CARTELERÍA */
 
     .carteleria-image {
         width: 100%;
@@ -1341,36 +1403,7 @@ body {
     }
 
 
-    /* =====================================
-       ARTE 3D EN MÓVIL
-    ===================================== */
-
-    .arte3d-projects {
-        gap: 50px;
-    }
-
-    .arte3d-video {
-        width: 100% !important;
-    }
-
-    .arte3d-video .project-image {
-        width: 100%;
-
-        overflow: hidden;
-    }
-
-    .arte3d-video .project-image video {
-        width: auto;
-
-        height: auto;
-
-        max-width: 100%;
-    }
-
-
-    /* =====================================
-       CONTACTO
-    ===================================== */
+    /* CONTACTO */
 
     .contact {
         min-height: auto;
@@ -1448,9 +1481,7 @@ body {
     }
 
 
-    /* =====================================
-       CARRUSEL EN MÓVIL
-    ===================================== */
+    /* CARRUSEL */
 
     .gallery {
         padding: 20px;
@@ -1518,5 +1549,4 @@ body {
 
         font-size: 40px !important;
     }
-
 }
