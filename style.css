@@ -23,6 +23,33 @@ body {
 
 
 /* =========================================
+   IMAGEN DECORATIVA DE FONDO
+========================================= */
+
+.background-decoration {
+
+    position: fixed;
+
+    right: 0;
+    bottom: 0;
+
+    width: 25vw;
+
+    max-width: 400px;
+
+    height: auto;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+}
+
+
+/* =========================================
    BANNER LATERAL
 ========================================= */
 
@@ -695,7 +722,6 @@ body {
 
     cursor: default;
 
-    /* Evita seleccionar/arrastrar la imagen */
     user-select: none;
 
     -webkit-user-drag: none;
@@ -893,8 +919,6 @@ body {
 
         height: 75vh;
 
-        /* Permite desplazamiento vertical,
-           pero el horizontal lo controla el swipe */
         touch-action: pan-y;
     }
 
@@ -917,10 +941,6 @@ body {
     }
 
 
-    /* =====================================
-       SWIPE — OCULTAR FLECHAS
-    ===================================== */
-
     .gallery-prev,
     .gallery-next {
 
@@ -935,6 +955,14 @@ body {
 ========================================= */
 
 @media (max-width: 600px) {
+
+    .background-decoration {
+
+        width: 35vw;
+
+        max-width: 220px;
+    }
+
 
     .sidebar {
 
@@ -1134,8 +1162,6 @@ body {
         font-size: 11px;
     }
 
-
-    /* Las flechas siguen ocultas en móvil */
 
     .gallery-prev,
     .gallery-next {
