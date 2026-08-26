@@ -232,6 +232,53 @@ const galleries = [
                 caption: "Diseño de la mina"
             }
         ]
+    },
+
+
+    /* =====================================
+       ARTE 3D
+    ====================================== */
+
+    {
+        title: "ARTE 3D",
+
+        images: [
+
+           {
+                src: "imagenes/Arte 2D/RockMole/Mina.PNG",
+                caption: "Diseño de la mina"
+            },
+
+           {
+                src: "imagenes/Arte 2D/RockMole/Mina.PNG",
+                caption: "Diseño de la mina"
+            },
+
+           {
+                src: "imagenes/Arte 2D/RockMole/Mina.PNG",
+                caption: "Diseño de la mina"
+            },
+
+           {
+                src: "imagenes/Arte 2D/RockMole/Mina.PNG",
+                caption: "Diseño de la mina"
+            }
+
+           
+            /*
+            AÑADE AQUÍ LAS DEMÁS IMÁGENES:
+
+            {
+                src: "images/3d/proyecto2.jpg",
+                caption: "Descripción del proyecto"
+            },
+
+            {
+                src: "images/3d/proyecto3.jpg",
+                caption: "Descripción del proyecto"
+            }
+            */
+        ]
     }
 ];
 
@@ -486,17 +533,14 @@ document.addEventListener(
         }
 
         if (event.key === "ArrowRight") {
-
             nextImage();
         }
 
         if (event.key === "ArrowLeft") {
-
             previousImage();
         }
 
         if (event.key === "Escape") {
-
             closeGallery();
         }
     }
@@ -556,11 +600,6 @@ document.addEventListener(
    SWIPE — MÓVIL Y TABLET
 ========================================= */
 
-
-/*
-    Detectamos dónde empieza el dedo.
-*/
-
 document.addEventListener(
     "touchstart",
     function(event) {
@@ -581,10 +620,6 @@ document.addEventListener(
     { passive: true }
 );
 
-
-/*
-    Detectamos dónde termina el dedo.
-*/
 
 document.addEventListener(
     "touchend",
@@ -619,11 +654,6 @@ function handleSwipe() {
         touchEndX - touchStartX;
 
 
-    /*
-        Si el movimiento es menor de 50px,
-        lo consideramos un simple toque.
-    */
-
     if (
         Math.abs(distance) <
         swipeMinDistance
@@ -632,24 +662,11 @@ function handleSwipe() {
     }
 
 
-    /*
-        DESLIZAR HACIA LA IZQUIERDA
-        → SIGUIENTE IMAGEN
-    */
-
     if (distance < 0) {
 
         nextImage();
 
-    }
-
-
-    /*
-        DESLIZAR HACIA LA DERECHA
-        → IMAGEN ANTERIOR
-    */
-
-    else {
+    } else {
 
         previousImage();
     }
