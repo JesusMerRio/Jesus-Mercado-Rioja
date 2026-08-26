@@ -73,7 +73,7 @@
 
 
             <!-- =====================================
-                 CONTACTO / REDES SOCIALES
+                 REDES SOCIALES
             ====================================== -->
 
             <div class="sidebar-social">
@@ -197,7 +197,7 @@
             class="hero">
 
             <h1>
-                Jesús
+                NOMBRE
             </h1>
 
             <p class="hero-description">
@@ -289,6 +289,11 @@
 
             <div class="projects-grid">
 
+
+                <!-- =================================
+                     TYRADON
+                ================================== -->
+
                 <article
                     class="project-card"
                     onclick="openGallery(1)">
@@ -297,7 +302,7 @@
 
                         <img
                             src="imagenes/Arte 2D/Personaje_Y_EscenarioBlancoYNegro.jpg"
-                            alt="Arte 2D">
+                            alt="Arte 2D - Tyradon">
 
                         <div class="project-overlay">
 
@@ -323,6 +328,10 @@
 
                 </article>
 
+
+                <!-- =================================
+                     ROCK & MOLE
+                ================================== -->
 
                 <article
                     class="project-card"
@@ -387,18 +396,19 @@
             <div class="arte3d-projects">
 
 
-                <!-- =====================================
-                     PROYECTO 1 - GALERÍA 3D
-                ====================================== -->
+                <!-- =================================
+                     PROYECTO 3D
+                     MISMA TARJETA QUE ARTE 2D
+                ================================== -->
 
                 <article
-                    class="project-card animation-project"
+                    class="project-card"
                     onclick="openGallery(3)">
 
-                    <div class="animation-image">
+                    <div class="project-image">
 
                         <img
-                            src="imagenes/Arte 2D/RockMole/Topo color 1.PNG"
+                            src="images/3d/proyecto1.jpg"
                             alt="Modelado 3D">
 
                         <div class="project-overlay">
@@ -411,22 +421,27 @@
 
                     </div>
 
-                    <h3>
-                        MODELADO 3D
-                    </h3>
+                    <div class="project-info">
 
-                    <p>
-                        Galería de imágenes
-                    </p>
+                        <h3>
+                            MODELADO 3D
+                        </h3>
+
+                        <p>
+                            Galería de imágenes
+                        </p>
+
+                    </div>
 
                 </article>
 
 
-                <!-- =====================================
+                <!-- =================================
                      ANIMACIÓN
-                ====================================== -->
+                ================================== -->
 
-                <article class="project-card animation-project">
+                <article
+                    class="project-card animation-project">
 
                     <div class="animation-video">
 
@@ -447,13 +462,17 @@
 
                     </div>
 
-                    <h3>
-                        ANIMACIÓN
-                    </h3>
+                    <div class="project-info">
 
-                    <p>
-                        Animación de un barco navegando
-                    </p>
+                        <h3>
+                            ANIMACIÓN
+                        </h3>
+
+                        <p>
+                            Animación de un barco navegando
+                        </p>
+
+                    </div>
 
                 </article>
 
@@ -463,7 +482,7 @@
 
 
         <!-- =====================================
-             PROYECTOS
+             PROYECTOS / JUEGOS
         ====================================== -->
 
         <section
@@ -590,7 +609,9 @@
 
                     </svg>
 
-                    <span>LinkedIn</span>
+                    <span>
+                        LinkedIn
+                    </span>
 
                 </a>
 
@@ -636,7 +657,9 @@
 
                     </svg>
 
-                    <span>Instagram</span>
+                    <span>
+                        Instagram
+                    </span>
 
                 </a>
 
@@ -670,7 +693,9 @@
 
                     </svg>
 
-                    <span>Email</span>
+                    <span>
+                        Email
+                    </span>
 
                 </a>
 
@@ -693,9 +718,7 @@
             class="gallery-close"
             onclick="closeGallery()"
             aria-label="Cerrar">
-
             ×
-
         </button>
 
 
@@ -703,9 +726,7 @@
             class="gallery-prev"
             onclick="previousImage()"
             aria-label="Imagen anterior">
-
             ←
-
         </button>
 
 
@@ -748,9 +769,7 @@
             class="gallery-next"
             onclick="nextImage()"
             aria-label="Imagen siguiente">
-
             →
-
         </button>
 
     </div>
