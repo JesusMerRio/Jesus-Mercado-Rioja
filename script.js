@@ -245,47 +245,43 @@ const galleries = [
         images: [
 
            {
-                 src="imagenes/Arte 3D/modelo1.png",
+                 src:"imagenes/Arte 3D/modelo1.png",
                 caption: "Módelo del castillo sin texturas"
             },
            {
-                 src="imagenes/Arte 3D/modelo5.png",
+                 src:"imagenes/Arte 3D/modelo5.png",
                 caption: "Módelo del barco sin texturas"
             },
             {
-                 src="imagenes/Arte 3D/modelo7.png",
+                 src:"imagenes/Arte 3D/modelo7.png",
                 caption: "Módelo del castillo con texturas (1)"
             },
             {
-                 src="imagenes/Arte 3D/modelo7.png",
-                caption: "Módelo del castillo con texturas (1)"
-            },
-            {
-                 src="imagenes/Arte 3D/modelo6.png",
+                  src:"imagenes/Arte 3D/modelo6.png",
                 caption: "Módelo del castillo con texturas (2)"
             },
             {
-                 src="imagenes/Arte 3D/Render1.png",
+                  src:"imagenes/Arte 3D/Render1.png",
                 caption: "Render del castillo (1)"
             },
             {
-                 src="imagenes/Arte 3D/Render2.png",
+                  src:"imagenes/Arte 3D/Render2.png",
                 caption: "Render del castillo (2)"
             },
             {
-                 src="imagenes/Arte 3D/Render3.png",
+                  src:"imagenes/Arte 3D/Render3.png",
                 caption: "Render del castillo (3)"
             },
             {
-                 src="imagenes/Arte 3D/Render4.png",
+                 src:"imagenes/Arte 3D/Render4.png",
                 caption: "Render del castillo (4)"
             },
             {
-                 src="imagenes/Arte 3D/Render5.png",
+                  src:"imagenes/Arte 3D/Render5.png",
                 caption: "Render del castillo (5)"
             },
             {
-                 src="imagenes/Arte 3D/Render6.png",
+                 src:"imagenes/Arte 3D/Render6.png",
                 caption: "Render del castillo (6)"
             },
 
