@@ -39,21 +39,11 @@
 
         <div class="sidebar-content">
 
-
-            <!-- =====================================
-                 PARTE SUPERIOR DEL BANNER
-            ====================================== -->
-
             <div class="sidebar-top">
 
                 <div class="sidebar-title">
                     MENÚ
                 </div>
-
-
-                <!-- =================================
-                     NAVEGACIÓN
-                ================================== -->
 
                 <nav class="navigation">
 
@@ -88,9 +78,6 @@
 
             <div class="sidebar-social">
 
-
-                <!-- LINKEDIN -->
-
                 <a
                     href="https://es.linkedin.com/in/jes%C3%BAs-mercado-rioja-503884414"
                     target="_blank"
@@ -111,8 +98,6 @@
 
                 </a>
 
-
-                <!-- INSTAGRAM -->
 
                 <a
                     href="PON-AQUI-TU-INSTAGRAM"
@@ -157,8 +142,6 @@
 
                 </a>
 
-
-                <!-- EMAIL -->
 
                 <a
                     href="mailto:jmrioja18@gmail.com"
@@ -251,8 +234,7 @@
                     class="project-card"
                     onclick="openGallery(0)">
 
-                    <div
-                        class="project-image carteleria-image">
+                    <div class="project-image carteleria-image">
 
                         <img
                             src="imagenes/Carteles/fiestas.jpeg"
@@ -300,12 +282,12 @@
             </div>
 
             <p class="section-description">
-                Estos son algunos de los proyectos de concept art de personajes, escenarios y props en los que he trabajado.
+                Estos son algunos de los proyectos de concept art de personajes,
+                escenarios y props en los que he trabajado.
             </p>
 
 
             <div class="projects-grid">
-
 
                 <article
                     class="project-card"
@@ -402,9 +384,11 @@
             </p>
 
 
-            <!-- =====================================
-                 CONTENEDOR EXCLUSIVO DE ARTE 3D
-            ====================================== -->
+            <!--
+                IMPORTANTE:
+                Esta sección utiliza una columna única para que
+                el proyecto 2 aparezca DEBAJO del proyecto 1.
+            -->
 
             <div class="arte3d-projects">
 
@@ -438,10 +422,15 @@
                      ANIMACIÓN
                 ====================================== -->
 
-                <article
-                    class="project-card arte3d-video">
+                <article class="project-card animation-project">
 
-                    <div class="project-image">
+                    <!--
+                        SIN .project-image:
+                        así el contenedor no fuerza 4:3
+                        ni deja espacio sobrante.
+                    -->
+
+                    <div class="animation-video">
 
                         <video
                             autoplay
@@ -470,7 +459,6 @@
 
                 </article>
 
-
             </div>
 
         </section>
@@ -495,9 +483,6 @@
 
             <div class="games">
 
-
-                <!-- PROYECTO 1 -->
-
                 <a
                     href="https://acholito.itch.io/the-pit"
                     target="_blank"
@@ -518,8 +503,6 @@
 
                 </a>
 
-
-                <!-- PROYECTO 2 -->
 
                 <a
                     href="https://realbananaslip.itch.io/rock-mole"
@@ -542,8 +525,6 @@
                 </a>
 
 
-                <!-- PROYECTO 3 -->
-
                 <a
                     href="https://acholito.itch.io/la-maldicin"
                     target="_blank"
@@ -563,7 +544,6 @@
                     </h3>
 
                 </a>
-
 
             </div>
 
@@ -587,14 +567,12 @@
             </div>
 
             <p>
-                Si quieres ponerte en contacto conmigo, puedes hacerlo a través de cualquiera de los siguientes medios.
+                Si quieres ponerte en contacto conmigo, puedes hacerlo a través
+                de cualquiera de los siguientes medios.
             </p>
 
 
             <div class="contact-social">
-
-
-                <!-- LINKEDIN -->
 
                 <a
                     href="https://es.linkedin.com/in/jes%C3%BAs-mercado-rioja-503884414"
@@ -618,8 +596,6 @@
 
                 </a>
 
-
-                <!-- INSTAGRAM -->
 
                 <a
                     href="PON-AQUI-TU-INSTAGRAM"
@@ -667,8 +643,6 @@
                 </a>
 
 
-                <!-- EMAIL -->
-
                 <a
                     href="mailto:jmrioja18@gmail.com"
                     aria-label="Enviar email">
@@ -706,7 +680,6 @@
 
         </section>
 
-
     </main>
 
 
@@ -718,7 +691,6 @@
         id="gallery"
         class="gallery">
 
-
         <button
             class="gallery-close"
             onclick="closeGallery()"
@@ -728,7 +700,6 @@
 
         </button>
 
-
         <button
             class="gallery-prev"
             onclick="previousImage()"
@@ -737,7 +708,6 @@
             ←
 
         </button>
-
 
         <div class="gallery-content">
 
@@ -749,7 +719,6 @@
                     alt="">
 
             </div>
-
 
             <div class="gallery-info">
 
@@ -773,7 +742,6 @@
 
         </div>
 
-
         <button
             class="gallery-next"
             onclick="nextImage()"
@@ -782,7 +750,6 @@
             →
 
         </button>
-
 
     </div>
 
