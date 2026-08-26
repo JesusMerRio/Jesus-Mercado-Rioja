@@ -25,14 +25,19 @@ body {
 ========================================= */
 
 /*
-   ORDEN DE CAPAS:
+   CAPAS:
 
-   Fondo página       -> debajo
-   Fondo contacto     -> debajo
-   Imagen decorativa  -> z-index 5
-   Contenido          -> z-index 10
-   Banner             -> z-index 100
-   Carrusel           -> z-index 1000
+   0  -> fondo de la página
+   1  -> fondo gris de CONTACTO
+   5  -> dibujo decorativo
+   10 -> proyectos / imágenes / contenido
+   100 -> banner lateral
+   1000 -> carrusel
+
+   IMPORTANTE:
+   NO poner z-index al .main-content.
+   De esta forma los elementos individuales
+   pueden quedar por encima del dibujo.
 */
 
 .background-decoration {
@@ -49,8 +54,12 @@ body {
     display: block;
 
     /*
-       POR ENCIMA DE LOS FONDOS
-       PERO POR DEBAJO DEL CONTENIDO
+       EL DIBUJO QUEDA:
+
+       - ENCIMA DEL FONDO NORMAL
+       - ENCIMA DEL GRIS DE CONTACTO
+       - DEBAJO DE PROYECTOS E IMÁGENES
+       - DEBAJO DEL BANNER
     */
     z-index: 5;
 
@@ -62,16 +71,16 @@ body {
     object-position: bottom right;
 
     /*
-       Hace que el fondo blanco de
-       fondo.png se funda con la página.
+       El blanco de fondo.png se mezcla
+       con el fondo de la página.
     */
     mix-blend-mode: multiply;
 
     /*
        Transparencia del dibujo.
-       1 = opaco
-       0.5 = 50%
-       0.3 = más transparente
+       1    = totalmente opaco
+       0.5  = 50%
+       0.3  = 30%
     */
     opacity: 0.5;
 }
@@ -92,7 +101,7 @@ body {
 
     /*
        EL BANNER SIEMPRE POR ENCIMA
-       DE LA IMAGEN DECORATIVA
+       DE TODO EL CONTENIDO Y DEL DIBUJO.
     */
     z-index: 100;
 
@@ -265,18 +274,29 @@ body {
    CONTENIDO PRINCIPAL
 ========================================= */
 
+/*
+   IMPORTANTE:
+
+   NO ponemos z-index aquí.
+
+   Si ponemos z-index: 10 en .main-content,
+   TODO el contenido pasa por encima del dibujo
+   y el dibujo nunca podrá aparecer sobre
+   el fondo gris del contacto.
+
+   Al dejarlo sin z-index:
+
+   - el fondo gris puede quedar debajo del dibujo
+   - las tarjetas pueden ponerse encima del dibujo
+   - el banner sigue por encima de todo
+*/
+
 .main-content {
     position: relative;
 
     margin-left: 360px;
 
     width: calc(100% - 360px);
-
-    /*
-       POR ENCIMA DE LA IMAGEN DECORATIVA
-       PERO POR DEBAJO DEL BANNER
-    */
-    z-index: 10;
 }
 
 
@@ -333,6 +353,8 @@ body {
     padding: 140px 80px;
 
     border-bottom: 1px solid #d6d2ca;
+
+    position: relative;
 }
 
 .section-header {
@@ -343,6 +365,10 @@ body {
     gap: 30px;
 
     margin-bottom: 30px;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 .section-header h2 {
@@ -367,6 +393,10 @@ body {
     line-height: 1.6;
 
     margin-bottom: 70px;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 
@@ -381,6 +411,10 @@ body {
         repeat(2, minmax(0, 1fr));
 
     gap: 70px 35px;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 
@@ -391,13 +425,12 @@ body {
 .project-card {
     cursor: pointer;
 
-    /*
-       ASEGURA QUE LAS TARJETAS
-       ESTÉN POR ENCIMA DEL DIBUJO
-    */
     position: relative;
 
-    z-index: 11;
+    /*
+       POR ENCIMA DEL DIBUJO
+    */
+    z-index: 10;
 }
 
 
@@ -416,7 +449,7 @@ body {
 
     background: #ddd8cf;
 
-    z-index: 11;
+    z-index: 10;
 }
 
 
@@ -434,17 +467,13 @@ body {
 
     object-position: center top;
 
+    position: relative;
+
+    z-index: 11;
+
     transition:
         transform 0.7s ease,
         filter 0.5s ease;
-
-    /*
-       LAS IMÁGENES DE PROYECTOS
-       ESTÁN POR ENCIMA DEL DIBUJO
-    */
-    position: relative;
-
-    z-index: 12;
 }
 
 
@@ -461,6 +490,10 @@ body {
     overflow: hidden;
 
     background: #ddd8cf;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 .carteleria-image img {
@@ -472,6 +505,10 @@ body {
     object-fit: contain;
 
     object-position: center;
+
+    position: relative;
+
+    z-index: 11;
 
     transition:
         transform 0.7s ease,
@@ -589,7 +626,7 @@ body {
 
     position: relative;
 
-    z-index: 11;
+    z-index: 10;
 }
 
 .arte3d-projects > .project-card:first-child {
@@ -606,7 +643,7 @@ body {
 
     position: relative;
 
-    z-index: 11;
+    z-index: 10;
 }
 
 
@@ -629,7 +666,7 @@ body {
 
     position: relative;
 
-    z-index: 11;
+    z-index: 10;
 }
 
 .animation-video video {
@@ -647,13 +684,13 @@ body {
 
     background: transparent;
 
+    position: relative;
+
+    z-index: 11;
+
     transition:
         transform 0.7s ease,
         filter 0.5s ease;
-
-    position: relative;
-
-    z-index: 12;
 }
 
 .animation-project:hover .animation-video video {
@@ -681,7 +718,7 @@ body {
 
     position: relative;
 
-    z-index: 11;
+    z-index: 10;
 }
 
 .game {
@@ -707,7 +744,7 @@ body {
 
     position: relative;
 
-    z-index: 11;
+    z-index: 10;
 }
 
 .game-image {
@@ -725,7 +762,7 @@ body {
 
     line-height: 0;
 
-    z-index: 11;
+    z-index: 10;
 }
 
 .game-image img {
@@ -741,13 +778,13 @@ body {
 
     object-position: center;
 
+    position: relative;
+
+    z-index: 11;
+
     transition:
         transform 0.6s ease,
         filter 0.5s ease;
-
-    position: relative;
-
-    z-index: 12;
 }
 
 .game h3 {
@@ -767,7 +804,7 @@ body {
 
     position: relative;
 
-    z-index: 12;
+    z-index: 11;
 }
 
 .game:hover {
@@ -785,6 +822,28 @@ body {
    CONTACTO
 ========================================= */
 
+/*
+   MUY IMPORTANTE:
+
+   El contacto NO tiene z-index.
+
+   Su fondo gris se crea mediante ::before
+   con z-index: 0.
+
+   El dibujo tiene z-index: 5.
+
+   Por tanto:
+
+       gris contacto
+            ↓
+       dibujo
+            ↓
+       contenido
+
+   Esto permite que el dibujo se vea
+   SOBRE EL GRIS.
+*/
+
 .contact {
     position: relative;
 
@@ -795,32 +854,23 @@ body {
     padding-bottom: 45px;
 
     /*
-       EL FONDO GRIS SE MANTIENE
-       POR DEBAJO DE LA IMAGEN DECORATIVA.
+       NO poner fondo gris directamente aquí.
+       Tiene que ser transparente para que
+       el dibujo pueda aparecer encima.
     */
     background: transparent;
 
     color: #171717;
 
     /*
-       EL CONTENIDO DEL CONTACTO
-       SIGUE ESTANDO POR ENCIMA
-       DE LA IMAGEN DECORATIVA.
+       SIN Z-INDEX
     */
-    z-index: 10;
 }
 
 
-/*
+/* =========================================
    FONDO GRIS DEL CONTACTO
-
-   Se extiende hacia la izquierda,
-   pasando por detrás del banner.
-
-   IMPORTANTE:
-   z-index: -1 hace que el gris
-   quede detrás del contenido.
-*/
+========================================= */
 
 .contact::before {
     content: "";
@@ -830,23 +880,34 @@ body {
     top: 0;
     bottom: 0;
 
+    /*
+       Se extiende por detrás del banner.
+    */
     left: -360px;
 
     width: 100vw;
 
     background: #d8d5cf;
 
-    z-index: -1;
+    /*
+       EL GRIS ESTÁ POR DEBAJO DEL DIBUJO
+    */
+    z-index: 0;
 
     pointer-events: none;
 }
+
+
+/* =========================================
+   CONTENIDO DEL CONTACTO
+========================================= */
 
 .contact .section-header {
     margin-bottom: 0;
 
     position: relative;
 
-    z-index: 12;
+    z-index: 10;
 }
 
 .contact .section-header h2 {
@@ -862,7 +923,7 @@ body {
 
     position: relative;
 
-    z-index: 12;
+    z-index: 10;
 }
 
 .contact > p {
@@ -880,7 +941,7 @@ body {
 
     position: relative;
 
-    z-index: 12;
+    z-index: 10;
 }
 
 
@@ -901,7 +962,7 @@ body {
 
     position: relative;
 
-    z-index: 12;
+    z-index: 10;
 }
 
 .contact-social a {
@@ -926,7 +987,7 @@ body {
 
     position: relative;
 
-    z-index: 12;
+    z-index: 10;
 }
 
 .contact-social a:hover {
@@ -953,7 +1014,7 @@ body {
 
     position: relative;
 
-    z-index: 13;
+    z-index: 11;
 }
 
 
@@ -1162,12 +1223,13 @@ body {
         width: 240px;
     }
 
+    /*
+       SIN Z-INDEX EN MAIN-CONTENT
+    */
     .main-content {
         margin-left: 240px;
 
         width: calc(100% - 240px);
-
-        z-index: 10;
     }
 
     .hero,
@@ -1251,8 +1313,6 @@ body {
         padding-bottom: 40px;
 
         background: transparent;
-
-        z-index: 10;
     }
 
     .contact::before {
@@ -1260,7 +1320,7 @@ body {
 
         width: 100vw;
 
-        z-index: -1;
+        z-index: 0;
     }
 
     .contact .section-header h2 {
@@ -1333,9 +1393,6 @@ body {
         right: 0;
         bottom: 0;
 
-        /*
-           TAMAÑO GRANDE EN MÓVIL
-        */
         width: 65vw;
 
         max-width: 380px;
@@ -1343,8 +1400,9 @@ body {
         height: auto;
 
         /*
-           POR ENCIMA DEL FONDO
-           PERO DEBAJO DEL CONTENIDO
+           DIBUJO:
+           encima del gris
+           debajo de proyectos
         */
         z-index: 5;
 
@@ -1444,8 +1502,6 @@ body {
         margin-left: 0;
 
         width: 100%;
-
-        z-index: 10;
     }
 
     .hero,
@@ -1484,7 +1540,9 @@ body {
     .arte3d-projects {
         gap: 45px;
 
-        z-index: 11;
+        position: relative;
+
+        z-index: 10;
     }
 
 
@@ -1499,7 +1557,9 @@ body {
 
         overflow: visible;
 
-        z-index: 11;
+        position: relative;
+
+        z-index: 10;
     }
 
     .animation-video video {
@@ -1509,7 +1569,9 @@ body {
 
         max-width: 100%;
 
-        z-index: 12;
+        position: relative;
+
+        z-index: 11;
     }
 
 
@@ -1524,7 +1586,9 @@ body {
 
         width: 100%;
 
-        z-index: 11;
+        position: relative;
+
+        z-index: 10;
     }
 
     .game {
@@ -1532,7 +1596,9 @@ body {
 
         align-items: center;
 
-        z-index: 11;
+        position: relative;
+
+        z-index: 10;
     }
 
     .game-image {
@@ -1550,7 +1616,9 @@ body {
 
         line-height: 0;
 
-        z-index: 11;
+        position: relative;
+
+        z-index: 10;
     }
 
     .game-image img {
@@ -1564,7 +1632,9 @@ body {
 
         display: block;
 
-        z-index: 12;
+        position: relative;
+
+        z-index: 11;
     }
 
     .game h3 {
@@ -1576,7 +1646,9 @@ body {
 
         font-size: 16px;
 
-        z-index: 12;
+        position: relative;
+
+        z-index: 11;
     }
 
 
@@ -1590,6 +1662,10 @@ body {
         height: auto;
 
         aspect-ratio: auto;
+
+        position: relative;
+
+        z-index: 10;
     }
 
     .carteleria-image img {
@@ -1598,6 +1674,10 @@ body {
         height: auto;
 
         object-fit: contain;
+
+        position: relative;
+
+        z-index: 11;
     }
 
 
@@ -1613,33 +1693,39 @@ body {
         padding-bottom: 40px;
 
         /*
-           TRANSPARENTE PARA QUE EL
-           DIBUJO PUEDA ESTAR POR ENCIMA
-           DEL GRIS.
+           TRANSPARENTE.
+
+           El gris está en ::before.
+           Esto permite que el dibujo
+           aparezca por encima del gris.
         */
         background: transparent;
 
-        z-index: 10;
+        position: relative;
     }
 
-    /*
-       EN MÓVIL EL BANNER YA NO OCUPA
-       LA PARTE LATERAL.
-
-       EL GRIS OCUPA TODO EL ANCHO.
-    */
     .contact::before {
+        /*
+           En móvil el banner ya no ocupa
+           el lateral.
+        */
         left: 0;
 
         width: 100%;
 
-        z-index: -1;
+        background: #d8d5cf;
+
+        z-index: 0;
     }
 
     .contact .section-header {
         display: block;
 
         margin-bottom: 0;
+
+        position: relative;
+
+        z-index: 10;
     }
 
     .contact .section-header h2 {
@@ -1656,6 +1742,10 @@ body {
         line-height: 1.5;
 
         max-width: 320px;
+
+        position: relative;
+
+        z-index: 10;
     }
 
     .contact-social {
@@ -1666,11 +1756,19 @@ body {
         justify-content: flex-start;
 
         flex-wrap: wrap;
+
+        position: relative;
+
+        z-index: 10;
     }
 
     .contact-social a {
         width: 45px;
         height: 45px;
+
+        position: relative;
+
+        z-index: 10;
     }
 
     .contact-social .contact-icon {
@@ -1682,6 +1780,10 @@ body {
 
         max-width: 23px;
         max-height: 23px;
+
+        position: relative;
+
+        z-index: 11;
     }
 
 
