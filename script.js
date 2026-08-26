@@ -47,22 +47,22 @@ const galleries = [
 
             {
                 src: "imagenes/Arte 2D/Personaje_Y_EscenarioBlancoYNegro.jpg",
-                caption: "Diseño inicial del personaje y escenario"
+                caption: "Beauty del personaje (blanco y negro)"
             },
 
             {
                 src: "imagenes/Arte 2D/Personaje_Y_EscenarioDefinitivo.jpg",
-                caption: "Diseño definitivo del personaje y escenario"
+                caption: "Beauty del personaje definitivo"
             },
 
             {
                 src: "imagenes/Arte 2D/Personaje_Y_EscenarioColor1.jpg",
-                caption: "Primera propuesta de color"
+                caption: "Beauty del personaje (Versión de color 1)"
             },
 
             {
                 src: "imagenes/Arte 2D/Personaje_Y_EscenarioColor2.jpg",
-                caption: "Segunda propuesta de color"
+                caption: "Beauty del personaje (Versión de color 2)"
             },
 
             {
@@ -72,27 +72,27 @@ const galleries = [
 
             {
                 src: "imagenes/Arte 2D/TURNAROUND1.jpg",
-                caption: "Turnaround del personaje"
+                caption: "Turnaround del personaje (1)"
             },
 
             {
                 src: "imagenes/Arte 2D/TURNAROUND2.jpg",
-                caption: "Turnaround del personaje"
+                caption: "Turnaround del personaje (2)"
             },
 
             {
                 src: "imagenes/Arte 2D/TURNAROUND3(armas).jpg",
-                caption: "Turnaround y diseño de armas"
+                caption: "Turnaround armas del personaje"
             },
 
             {
                 src: "imagenes/Arte 2D/Expresiones.jpg",
-                caption: "Hoja de expresiones"
+                caption: "Hoja de expresiones del personaje"
             },
 
             {
                 src: "imagenes/Arte 2D/Thumbnails Jesús Mercado Rioja.jpg",
-                caption: "Thumbnails"
+                caption: "Thumbnails del escenario"
             },
 
             {
@@ -102,7 +102,7 @@ const galleries = [
 
             {
                 src: "imagenes/Arte 2D/Callouts Jesús Mercado Rioja.jpg",
-                caption: "Callouts del diseño"
+                caption: "Callouts del escenario"
             }
         ]
     },
