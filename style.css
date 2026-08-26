@@ -25,17 +25,14 @@ body {
 ========================================= */
 
 /*
-   La imagen queda SIEMPRE en la esquina
-   inferior derecha de la pantalla.
+   ORDEN DE CAPAS:
 
-   IMPORTANTE:
-   Si fondo.png tiene fondo BLANCO y líneas negras,
-   mix-blend-mode: multiply hace desaparecer
-   visualmente el blanco y mantiene las líneas negras.
-
-   Si el PNG tiene un fondo NEGRO REAL,
-   habrá que modificar el propio PNG para
-   quitarle ese fondo.
+   Fondo página       -> debajo
+   Fondo contacto     -> debajo
+   Imagen decorativa  -> z-index 5
+   Contenido          -> z-index 10
+   Banner             -> z-index 100
+   Carrusel           -> z-index 1000
 */
 
 .background-decoration {
@@ -51,7 +48,11 @@ body {
 
     display: block;
 
-    z-index: 50;
+    /*
+       POR ENCIMA DE LOS FONDOS
+       PERO POR DEBAJO DEL CONTENIDO
+    */
+    z-index: 5;
 
     pointer-events: none;
     user-select: none;
@@ -61,11 +62,18 @@ body {
     object-position: bottom right;
 
     /*
-       Hace que el blanco de la imagen
-       se funda con el fondo de la página
-       y las líneas negras permanezcan.
+       Hace que el fondo blanco de
+       fondo.png se funda con la página.
     */
     mix-blend-mode: multiply;
+
+    /*
+       Transparencia del dibujo.
+       1 = opaco
+       0.5 = 50%
+       0.3 = más transparente
+    */
+    opacity: 0.5;
 }
 
 
@@ -82,6 +90,10 @@ body {
     width: 360px;
     height: 100vh;
 
+    /*
+       EL BANNER SIEMPRE POR ENCIMA
+       DE LA IMAGEN DECORATIVA
+    */
     z-index: 100;
 
     pointer-events: none;
@@ -253,16 +265,6 @@ body {
    CONTENIDO PRINCIPAL
 ========================================= */
 
-/*
-   IMPORTANTE:
-   Antes estaba en z-index: 10.
-
-   Eso impedía que el fondo del contacto
-   pudiera quedar por detrás del banner.
-
-   Ahora queda por debajo del sidebar.
-*/
-
 .main-content {
     position: relative;
 
@@ -270,7 +272,11 @@ body {
 
     width: calc(100% - 360px);
 
-    z-index: 1;
+    /*
+       POR ENCIMA DE LA IMAGEN DECORATIVA
+       PERO POR DEBAJO DEL BANNER
+    */
+    z-index: 10;
 }
 
 
@@ -384,6 +390,14 @@ body {
 
 .project-card {
     cursor: pointer;
+
+    /*
+       ASEGURA QUE LAS TARJETAS
+       ESTÉN POR ENCIMA DEL DIBUJO
+    */
+    position: relative;
+
+    z-index: 11;
 }
 
 
@@ -401,6 +415,8 @@ body {
     overflow: hidden;
 
     background: #ddd8cf;
+
+    z-index: 11;
 }
 
 
@@ -421,6 +437,14 @@ body {
     transition:
         transform 0.7s ease,
         filter 0.5s ease;
+
+    /*
+       LAS IMÁGENES DE PROYECTOS
+       ESTÁN POR ENCIMA DEL DIBUJO
+    */
+    position: relative;
+
+    z-index: 12;
 }
 
 
@@ -496,6 +520,8 @@ body {
     transition: opacity 0.4s ease;
 
     pointer-events: none;
+
+    z-index: 13;
 }
 
 .project-card:hover .project-overlay {
@@ -527,6 +553,10 @@ body {
     text-transform: uppercase;
 
     letter-spacing: -0.5px;
+
+    position: relative;
+
+    z-index: 12;
 }
 
 .project-card p {
@@ -537,6 +567,10 @@ body {
     opacity: 0.6;
 
     line-height: 1.5;
+
+    position: relative;
+
+    z-index: 12;
 }
 
 
@@ -552,6 +586,10 @@ body {
     gap: 70px;
 
     width: 100%;
+
+    position: relative;
+
+    z-index: 11;
 }
 
 .arte3d-projects > .project-card:first-child {
@@ -565,6 +603,10 @@ body {
 
 .animation-project {
     width: 100%;
+
+    position: relative;
+
+    z-index: 11;
 }
 
 
@@ -584,6 +626,10 @@ body {
     overflow: visible;
 
     line-height: 0;
+
+    position: relative;
+
+    z-index: 11;
 }
 
 .animation-video video {
@@ -604,6 +650,10 @@ body {
     transition:
         transform 0.7s ease,
         filter 0.5s ease;
+
+    position: relative;
+
+    z-index: 12;
 }
 
 .animation-project:hover .animation-video video {
@@ -628,6 +678,10 @@ body {
     width: 100%;
 
     align-items: start;
+
+    position: relative;
+
+    z-index: 11;
 }
 
 .game {
@@ -650,6 +704,10 @@ body {
     padding: 0;
 
     transition: transform 0.3s ease;
+
+    position: relative;
+
+    z-index: 11;
 }
 
 .game-image {
@@ -666,6 +724,8 @@ body {
     display: block;
 
     line-height: 0;
+
+    z-index: 11;
 }
 
 .game-image img {
@@ -684,6 +744,10 @@ body {
     transition:
         transform 0.6s ease,
         filter 0.5s ease;
+
+    position: relative;
+
+    z-index: 12;
 }
 
 .game h3 {
@@ -700,6 +764,10 @@ body {
     letter-spacing: -0.3px;
 
     text-align: center;
+
+    position: relative;
+
+    z-index: 12;
 }
 
 .game:hover {
@@ -726,21 +794,32 @@ body {
 
     padding-bottom: 45px;
 
-    background: #d8d5cf;
+    /*
+       EL FONDO GRIS SE MANTIENE
+       POR DEBAJO DE LA IMAGEN DECORATIVA.
+    */
+    background: transparent;
 
     color: #171717;
 
     /*
-       Mantiene el contacto por debajo
-       del banner lateral.
+       EL CONTENIDO DEL CONTACTO
+       SIGUE ESTANDO POR ENCIMA
+       DE LA IMAGEN DECORATIVA.
     */
-    z-index: 1;
+    z-index: 10;
 }
 
 
 /*
-   EL FONDO DEL CONTACTO SE EXTIENDE
-   HACIA LA IZQUIERDA, POR DEBAJO DEL BANNER.
+   FONDO GRIS DEL CONTACTO
+
+   Se extiende hacia la izquierda,
+   pasando por detrás del banner.
+
+   IMPORTANTE:
+   z-index: -1 hace que el gris
+   quede detrás del contenido.
 */
 
 .contact::before {
@@ -764,6 +843,10 @@ body {
 
 .contact .section-header {
     margin-bottom: 0;
+
+    position: relative;
+
+    z-index: 12;
 }
 
 .contact .section-header h2 {
@@ -776,6 +859,10 @@ body {
     line-height: 0.9;
 
     letter-spacing: -3px;
+
+    position: relative;
+
+    z-index: 12;
 }
 
 .contact > p {
@@ -790,6 +877,10 @@ body {
     color: #171717;
 
     opacity: 0.7;
+
+    position: relative;
+
+    z-index: 12;
 }
 
 
@@ -807,6 +898,10 @@ body {
     margin-top: 30px;
 
     flex-wrap: wrap;
+
+    position: relative;
+
+    z-index: 12;
 }
 
 .contact-social a {
@@ -828,6 +923,10 @@ body {
     transition:
         opacity 0.3s ease,
         transform 0.3s ease;
+
+    position: relative;
+
+    z-index: 12;
 }
 
 .contact-social a:hover {
@@ -851,6 +950,10 @@ body {
     color: #171717 !important;
 
     fill: currentColor;
+
+    position: relative;
+
+    z-index: 13;
 }
 
 
@@ -870,6 +973,9 @@ body {
         0.97
     );
 
+    /*
+       SIEMPRE POR ENCIMA DE TODO
+    */
     z-index: 1000;
 
     display: none;
@@ -1061,7 +1167,7 @@ body {
 
         width: calc(100% - 240px);
 
-        z-index: 1;
+        z-index: 10;
     }
 
     .hero,
@@ -1085,7 +1191,9 @@ body {
     }
 
 
-    /* BANNER */
+    /* =====================================
+       BANNER
+    ===================================== */
 
     .sidebar-background {
         clip-path: polygon(
@@ -1097,7 +1205,9 @@ body {
     }
 
 
-    /* ICONOS */
+    /* =====================================
+       ICONOS
+    ===================================== */
 
     .sidebar-social .social-icon {
         width: 18px !important;
@@ -1111,11 +1221,12 @@ body {
     }
 
 
-    /* IMAGEN DECORATIVA */
+    /* =====================================
+       IMAGEN DECORATIVA
+    ===================================== */
 
     .background-decoration {
-        width: 300vw;
-        opacity: 0.5;
+        width: 60vw;
 
         max-width: 550px;
 
@@ -1124,18 +1235,24 @@ body {
 
         z-index: 5;
 
+        opacity: 0.5;
+
         mix-blend-mode: multiply;
     }
 
 
-    /* CONTACTO */
+    /* =====================================
+       CONTACTO
+    ===================================== */
 
     .contact {
         padding-top: 45px;
 
         padding-bottom: 40px;
 
-        z-index: 1;
+        background: transparent;
+
+        z-index: 10;
     }
 
     .contact::before {
@@ -1170,7 +1287,9 @@ body {
     }
 
 
-    /* CARRUSEL */
+    /* =====================================
+       CARRUSEL
+    ===================================== */
 
     .gallery-image-container {
         width: 90vw;
@@ -1203,6 +1322,7 @@ body {
 
 @media (max-width: 600px) {
 
+
     /* =====================================
        IMAGEN DECORATIVA
     ===================================== */
@@ -1214,7 +1334,7 @@ body {
         bottom: 0;
 
         /*
-           MÁS GRANDE EN MÓVIL
+           TAMAÑO GRANDE EN MÓVIL
         */
         width: 65vw;
 
@@ -1222,7 +1342,11 @@ body {
 
         height: auto;
 
-        z-index: 50;
+        /*
+           POR ENCIMA DEL FONDO
+           PERO DEBAJO DEL CONTENIDO
+        */
+        z-index: 5;
 
         display: block;
 
@@ -1233,6 +1357,8 @@ body {
         pointer-events: none;
 
         mix-blend-mode: multiply;
+
+        opacity: 0.5;
     }
 
 
@@ -1319,7 +1445,7 @@ body {
 
         width: 100%;
 
-        z-index: 1;
+        z-index: 10;
     }
 
     .hero,
@@ -1357,6 +1483,8 @@ body {
 
     .arte3d-projects {
         gap: 45px;
+
+        z-index: 11;
     }
 
 
@@ -1370,6 +1498,8 @@ body {
         height: auto;
 
         overflow: visible;
+
+        z-index: 11;
     }
 
     .animation-video video {
@@ -1378,6 +1508,8 @@ body {
         height: auto;
 
         max-width: 100%;
+
+        z-index: 12;
     }
 
 
@@ -1391,12 +1523,16 @@ body {
         gap: 45px;
 
         width: 100%;
+
+        z-index: 11;
     }
 
     .game {
         width: 100%;
 
         align-items: center;
+
+        z-index: 11;
     }
 
     .game-image {
@@ -1413,6 +1549,8 @@ body {
         display: block;
 
         line-height: 0;
+
+        z-index: 11;
     }
 
     .game-image img {
@@ -1425,6 +1563,8 @@ body {
         object-fit: contain;
 
         display: block;
+
+        z-index: 12;
     }
 
     .game h3 {
@@ -1435,6 +1575,8 @@ body {
         margin-top: 15px;
 
         font-size: 16px;
+
+        z-index: 12;
     }
 
 
@@ -1470,17 +1612,22 @@ body {
 
         padding-bottom: 40px;
 
-        background: #d8d5cf;
+        /*
+           TRANSPARENTE PARA QUE EL
+           DIBUJO PUEDA ESTAR POR ENCIMA
+           DEL GRIS.
+        */
+        background: transparent;
 
-        z-index: 1;
+        z-index: 10;
     }
 
     /*
-       En móvil el banner ya no está fijo
-       lateralmente, por lo que el fondo
-       ocupa normalmente todo el ancho.
-    */
+       EN MÓVIL EL BANNER YA NO OCUPA
+       LA PARTE LATERAL.
 
+       EL GRIS OCUPA TODO EL ANCHO.
+    */
     .contact::before {
         left: 0;
 
