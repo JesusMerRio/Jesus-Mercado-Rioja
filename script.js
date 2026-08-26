@@ -2,7 +2,6 @@
    GALERÍAS
 ========================================= */
 
-
 /*
     Cada proyecto tiene:
 
@@ -21,7 +20,6 @@
 
 const galleries = [
 
-
     /* =====================================
        CARTELERÍA 1
     ====================================== */
@@ -34,30 +32,25 @@ const galleries = [
             {
                 src: "imagenes/Carteles/fiestas.jpeg",
                 caption: "Propuesta cartel fiestas populares San Sebastián de los Reyes 2026"
-            }
+            },
 
             {
                 src: "imagenes/Carteles/encierros.jpeg",
                 caption: "Propuesta cartel encierros San Sebastián de los Reyes"
-            }
-           
+            },
+
             {
                 src: "imagenes/Carteles/miguelturra.jpeg",
                 caption: "Propuesta cartel carnaval Miguelturra 2025"
-            }
-           
+            },
+
             {
                 src: "imagenes/Carteles/ilustracion.jpeg",
                 caption: "Ilustración muelle de un puerto"
             }
 
-          
-
         ]
     },
-
-
-  
 
 
     /* =====================================
@@ -274,13 +267,15 @@ let currentImage = 0;
 function openGallery(galleryIndex) {
 
     currentGallery = galleryIndex;
-
     currentImage = 0;
 
     updateGallery();
 
-    const gallery =
-        document.getElementById("gallery");
+    const gallery = document.getElementById("gallery");
+
+    if (!gallery) {
+        return;
+    }
 
     gallery.classList.add("active");
 
@@ -294,8 +289,11 @@ function openGallery(galleryIndex) {
 
 function closeGallery() {
 
-    const gallery =
-        document.getElementById("gallery");
+    const gallery = document.getElementById("gallery");
+
+    if (!gallery) {
+        return;
+    }
 
     gallery.classList.remove("active");
 
@@ -309,9 +307,7 @@ function closeGallery() {
 
 function updateGallery() {
 
-    const gallery =
-        galleries[currentGallery];
-
+    const gallery = galleries[currentGallery];
 
     const imageElement =
         document.getElementById("gallery-image");
@@ -327,11 +323,24 @@ function updateGallery() {
 
 
     /*
+        COMPROBAR ELEMENTOS
+    */
+
+    if (
+        !imageElement ||
+        !titleElement ||
+        !captionElement ||
+        !counterElement
+    ) {
+        return;
+    }
+
+
+    /*
         COMPROBAR SI EXISTE LA GALERÍA
     */
 
     if (!gallery) {
-
         return;
     }
 
@@ -361,11 +370,28 @@ function updateGallery() {
 
 
     /*
+        COMPROBAR ÍNDICE
+    */
+
+    if (
+        currentImage < 0 ||
+        currentImage >= gallery.images.length
+    ) {
+        currentImage = 0;
+    }
+
+
+    /*
         OBTENER IMAGEN ACTUAL
     */
 
     const image =
         gallery.images[currentImage];
+
+
+    if (!image) {
+        return;
+    }
 
 
     /*
@@ -421,7 +447,6 @@ function nextImage() {
         !gallery.images ||
         gallery.images.length === 0
     ) {
-
         return;
     }
 
@@ -457,7 +482,6 @@ function previousImage() {
         !gallery.images ||
         gallery.images.length === 0
     ) {
-
         return;
     }
 
@@ -489,9 +513,9 @@ document.addEventListener(
 
 
         if (
+            !gallery ||
             !gallery.classList.contains("active")
         ) {
-
             return;
         }
 
@@ -531,59 +555,63 @@ const galleryElement =
     document.getElementById("gallery");
 
 
-galleryElement.addEventListener(
-    "click",
-    function(event) {
+if (galleryElement) {
+
+    galleryElement.addEventListener(
+        "click",
+        function(event) {
 
 
-        /*
-            Si pulsamos la imagen,
-            NO cerramos.
-        */
+            /*
+                Si pulsamos la imagen,
+                NO cerramos.
+            */
 
-        if (
-            event.target.closest("#gallery-image")
-        ) {
+            if (
+                event.target.closest("#gallery-image")
+            ) {
 
-            return;
+                return;
+            }
+
+
+            /*
+                Si pulsamos un botón,
+                NO cerramos.
+            */
+
+            if (
+                event.target.closest("button")
+            ) {
+
+                return;
+            }
+
+
+            /*
+                Si pulsamos el contenido,
+                NO cerramos.
+            */
+
+            if (
+                event.target.closest(".gallery-content")
+            ) {
+
+                return;
+            }
+
+
+            /*
+                Si llegamos aquí hemos
+                pulsado el fondo negro.
+            */
+
+            closeGallery();
+
         }
+    );
 
-
-        /*
-            Si pulsamos un botón,
-            NO cerramos.
-        */
-
-        if (
-            event.target.closest("button")
-        ) {
-
-            return;
-        }
-
-
-        /*
-            Si pulsamos el contenido,
-            NO cerramos.
-        */
-
-        if (
-            event.target.closest(".gallery-content")
-        ) {
-
-            return;
-        }
-
-
-        /*
-            Si llegamos aquí hemos
-            pulsado el fondo negro.
-        */
-
-        closeGallery();
-
-    }
-);
+}
 
 
 /* =========================================
