@@ -384,26 +384,30 @@
             </p>
 
 
-            <!--
-                IMPORTANTE:
-                Esta sección utiliza una columna única para que
-                el proyecto 2 aparezca DEBAJO del proyecto 1.
-            -->
-
             <div class="arte3d-projects">
 
 
                 <!-- =====================================
-                     PROYECTO 1
+                     PROYECTO 1 - GALERÍA 3D
                 ====================================== -->
 
-                <article class="project-card">
+                <article
+                    class="project-card animation-project"
+                    onclick="openGallery(3)">
 
-                    <div class="project-image">
+                    <div class="animation-image">
 
                         <img
                             src="images/3d/proyecto1.jpg"
                             alt="Modelado 3D">
+
+                        <div class="project-overlay">
+
+                            <span>
+                                VER PROYECTO →
+                            </span>
+
+                        </div>
 
                     </div>
 
@@ -423,12 +427,6 @@
                 ====================================== -->
 
                 <article class="project-card animation-project">
-
-                    <!--
-                        SIN .project-image:
-                        así el contenedor no fuerza 4:3
-                        ni deja espacio sobrante.
-                    -->
 
                     <div class="animation-video">
 
@@ -700,6 +698,7 @@
 
         </button>
 
+
         <button
             class="gallery-prev"
             onclick="previousImage()"
@@ -708,6 +707,7 @@
             ←
 
         </button>
+
 
         <div class="gallery-content">
 
@@ -719,6 +719,7 @@
                     alt="">
 
             </div>
+
 
             <div class="gallery-info">
 
@@ -741,6 +742,7 @@
             </div>
 
         </div>
+
 
         <button
             class="gallery-next"
