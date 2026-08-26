@@ -1114,8 +1114,8 @@ body {
     /* IMAGEN DECORATIVA */
 
     .background-decoration {
-        width: 100vw;
-        opacity: 0.6;
+        width: 300vw;
+        opacity: 0.5;
 
         max-width: 550px;
 
