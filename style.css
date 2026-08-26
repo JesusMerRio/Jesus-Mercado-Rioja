@@ -626,6 +626,35 @@ body {
     filter: brightness(0.7);
 }
 
+/* =========================================
+   VÍDEOS DE PROYECTOS
+========================================= */
+
+.project-image video {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-width: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+    transition:
+        transform 0.7s ease,
+        filter 0.5s ease;
+}
+
+
+/* =========================================
+   HOVER DEL VÍDEO
+========================================= */
+
+.project-card:hover .project-image video {
+    filter: brightness(0.7);
+}
+
 
 /* =========================================
    SECCIÓN DE CONTACTO / FOOTER
