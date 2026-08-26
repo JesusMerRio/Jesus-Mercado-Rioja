@@ -511,38 +511,25 @@ body {
    PROYECTOS / JUEGOS
 ========================================= */
 
-.games {
-
-    margin-top: 70px;
-
-    display: grid;
-
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    gap: 35px;
-
+.game {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    color: #171717;
+    text-decoration: none;
+    border: none;
+    padding: 0;
+    transition: transform 0.3s ease;
 }
 
-
-.game {
-
-    display: flex;
-
-    flex-direction: column;
-
+.game h3 {
     width: 100%;
-
-    color: #171717;
-
-    text-decoration: none;
-
-    border: none;
-
-    padding: 0;
-
-    transition:
-        transform 0.3s ease;
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: -0.3px;
+    text-align: center;
 }
 
 
