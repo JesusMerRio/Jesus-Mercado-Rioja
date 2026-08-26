@@ -508,64 +508,93 @@ body {
 
 
 /* =========================================
-   JUEGOS
+   PROYECTOS
 ========================================= */
 
 .games {
 
     margin-top: 70px;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 35px;
 }
 
 
 .game {
 
-    border-top: 1px solid #aaa59c;
-
-    padding: 30px 0;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 40px;
-}
-
-
-.game:last-child {
-
-    border-bottom: 1px solid #aaa59c;
-}
-
-
-.game h3 {
-
-    font-size: 28px;
-
-    text-transform: uppercase;
-}
-
-
-.game p {
-
-    margin-top: 10px;
-
-    opacity: 0.6;
-}
-
-
-.game a {
+    display: block;
 
     color: #171717;
 
     text-decoration: none;
 
-    font-size: 12px;
+    border: none;
 
-    letter-spacing: 1px;
+    padding: 0;
 
-    white-space: nowrap;
+    transition:
+        transform 0.3s ease;
+}
+
+
+.game-image {
+
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+    overflow: hidden;
+
+    background: #ddd8cf;
+}
+
+
+.game-image img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.6s ease,
+        filter 0.5s ease;
+}
+
+
+.game h3 {
+
+    margin-top: 15px;
+
+    font-size: 16px;
+
+    text-transform: uppercase;
+
+    letter-spacing: -0.3px;
+}
+
+
+/* =========================================
+   HOVER DE PROYECTOS
+========================================= */
+
+.game:hover {
+
+    transform: translateY(-5px);
+}
+
+
+.game:hover .game-image img {
+
+    transform: scale(1.04);
+
+    filter: brightness(0.7);
 }
 
 
@@ -677,10 +706,6 @@ body {
     pointer-events: none;
 }
 
-
-/* =========================================
-   CONTENEDOR DE IMAGEN
-========================================= */
 
 .gallery-image-container {
 
@@ -902,6 +927,14 @@ body {
     }
 
 
+    .games {
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 35px 25px;
+    }
+
+
     .sidebar-background {
 
         clip-path: polygon(
@@ -1054,6 +1087,14 @@ body {
     .section-header h2 {
 
         font-size: 55px;
+    }
+
+
+    .games {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
     }
 
 
