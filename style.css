@@ -21,20 +21,62 @@ body {
 
 
 /* =========================================
-   IMAGEN DECORATIVA
+   IMAGEN DECORATIVA DE FONDO
 ========================================= */
 
 .background-decoration {
     position: fixed;
     right: 0;
     bottom: 0;
+
     width: 25vw;
     max-width: 400px;
     height: auto;
+
     z-index: 5;
+
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
+}
+
+
+/* =========================================
+   MONIGOTE DECORATIVO DE CONTACTO
+========================================= */
+
+/*
+   IMPORTANTE:
+
+   Esta imagen debe ser un PNG con
+   transparencia.
+
+   Al estar fuera de .contact y usar
+   position: fixed, queda por encima
+   del fondo de toda la página.
+
+   Las partes transparentes del PNG
+   dejan ver perfectamente lo que hay
+   debajo.
+*/
+
+.contact-decoration {
+    position: fixed;
+
+    right: 0;
+    bottom: 0;
+
+    width: 32vw;
+    max-width: 500px;
+    height: auto;
+
+    z-index: 50;
+
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+
+    object-fit: contain;
 }
 
 
@@ -46,9 +88,12 @@ body {
     position: fixed;
     left: 0;
     top: 0;
+
     width: 360px;
     height: 100vh;
+
     z-index: 100;
+
     pointer-events: none;
 }
 
@@ -56,6 +101,7 @@ body {
     position: absolute;
     left: 0;
     top: 0;
+
     width: 100%;
     height: 100%;
 
@@ -718,8 +764,6 @@ body {
 
     align-items: flex-start;
 
-    /* MÁS ESPACIO ENTRE LINKEDIN,
-       INSTAGRAM Y EMAIL */
     gap: 60px;
 
     margin-top: 30px;
@@ -1044,6 +1088,14 @@ body {
     }
 
 
+    /* MONIGOTE */
+
+    .contact-decoration {
+        width: 38vw;
+        max-width: 380px;
+    }
+
+
     /* CONTACTO */
 
     .contact {
@@ -1118,6 +1170,19 @@ body {
         width: 35vw;
 
         max-width: 220px;
+    }
+
+
+    /* MONIGOTE */
+
+    .contact-decoration {
+        width: 48vw;
+        max-width: 280px;
+
+        right: 0;
+        bottom: 0;
+
+        z-index: 50;
     }
 
 
@@ -1228,9 +1293,7 @@ body {
     }
 
 
-    /* =====================================
-       ARTE 3D
-    ====================================== */
+    /* ARTE 3D */
 
     .arte3d-projects {
         gap: 45px;
@@ -1241,9 +1304,7 @@ body {
     }
 
 
-    /* =====================================
-       ANIMACIÓN
-    ====================================== */
+    /* ANIMACIÓN */
 
     .animation-video {
         width: 100%;
@@ -1262,9 +1323,7 @@ body {
     }
 
 
-    /* =====================================
-       JUEGOS
-    ====================================== */
+    /* JUEGOS */
 
     .games {
         grid-template-columns: 1fr;
@@ -1319,9 +1378,7 @@ body {
     }
 
 
-    /* =====================================
-       CARTELERÍA
-    ====================================== */
+    /* CARTELERÍA */
 
     .carteleria-image {
         width: 100%;
@@ -1340,9 +1397,7 @@ body {
     }
 
 
-    /* =====================================
-       CONTACTO
-    ====================================== */
+    /* CONTACTO */
 
     .contact {
         min-height: auto;
@@ -1409,9 +1464,7 @@ body {
     }
 
 
-    /* =====================================
-       CARRUSEL
-    ====================================== */
+    /* CARRUSEL */
 
     .gallery {
         padding: 20px;
