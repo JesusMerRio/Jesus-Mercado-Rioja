@@ -511,25 +511,33 @@ body {
    PROYECTOS / JUEGOS
 ========================================= */
 
-
-
 .games {
-    margin-top: 70px;
+
+    margin-top: 50px;
 
     display: grid;
 
     grid-template-columns: repeat(3, minmax(0, 1fr));
 
-    gap: 35px;
+    gap: 25px;
 
     width: 100%;
+
+    align-items: start;
 }
 
 
+/* =========================================
+   TARJETA DEL JUEGO
+========================================= */
+
 .game {
+
     display: flex;
 
     flex-direction: column;
+
+    align-items: center;
 
     width: 100%;
 
@@ -541,14 +549,26 @@ body {
 
     padding: 0;
 
-    transition: transform 0.3s ease;
+    transition:
+        transform 0.3s ease;
 }
 
 
+/* =========================================
+   IMAGEN DEL JUEGO
+========================================= */
+
 .game-image {
+
+    position: relative;
+
     width: 100%;
 
-    aspect-ratio: 2.2 / 1;
+    /*
+       Relación más horizontal para que
+       las imágenes no ocupen tanta altura.
+    */
+    aspect-ratio: 2.5 / 1;
 
     overflow: hidden;
 
@@ -562,69 +582,10 @@ body {
 }
 
 
-.game-image img {
-    display: block;
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: contain;
-
-    object-position: center;
-
-    transition:
-        transform 0.6s ease,
-        filter 0.5s ease;
-}
-
-
-.game h3 {
-    width: 100%;
-
-    margin-top: 15px;
-
-    font-size: 16px;
-
-    line-height: 1.2;
-
-    text-transform: uppercase;
-
-    letter-spacing: -0.3px;
-
-    text-align: center;
-}
-
-
-.game:hover {
-    transform: translateY(-5px);
-}
-
-
-.game:hover .game-image img {
-    transform: scale(1.04);
-
-    filter: brightness(0.7);
-}
-
-
-
 /* =========================================
-   IMÁGENES DE LOS JUEGOS
+   IMAGEN
 ========================================= */
 
-.game-image {
-
-    width: 100%;
-
-    aspect-ratio: 16 / 9;
-
-    overflow: hidden;
-
-    background: #ddd8cf;
-}
-
-
 .game-image img {
 
     display: block;
@@ -633,7 +594,11 @@ body {
 
     height: 100%;
 
-    object-fit: cover;
+    /*
+       Se muestra la imagen completa.
+       No se recorta ninguna parte.
+    */
+    object-fit: contain;
 
     object-position: center;
 
@@ -648,6 +613,8 @@ body {
 ========================================= */
 
 .game h3 {
+
+    width: 100%;
 
     margin-top: 15px;
 
@@ -675,7 +642,7 @@ body {
 
 .game:hover .game-image img {
 
-    transform: scale(1.04);
+    transform: scale(1.03);
 
     filter: brightness(0.7);
 }
@@ -1010,11 +977,22 @@ body {
     }
 
 
+    /* =====================================
+       PROYECTOS EN TABLET
+    ===================================== */
+
     .games {
 
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
 
         gap: 35px 25px;
+    }
+
+
+    .game-image {
+
+        aspect-ratio: 2.2 / 1;
     }
 
 
@@ -1187,7 +1165,9 @@ body {
 
     .game {
 
-        align-items: stretch;
+        width: 100%;
+
+        align-items: center;
 
         flex-direction: column;
     }
@@ -1195,9 +1175,9 @@ body {
 
     .game-image {
 
-        aspect-ratio: 16 / 9;
-
         width: 100%;
+
+        aspect-ratio: 2 / 1;
     }
 
 
@@ -1207,11 +1187,13 @@ body {
 
         height: 100%;
 
-        object-fit: cover;
+        object-fit: contain;
     }
 
 
     .game h3 {
+
+        width: 100%;
 
         text-align: center;
 
