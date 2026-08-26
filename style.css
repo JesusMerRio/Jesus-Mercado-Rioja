@@ -19,16 +19,26 @@ body {
     overflow-x: hidden;
 }
 
-body.gallery-open {
-    position: fixed;
-    width: 100%;
-    overflow: hidden;
-}
-
 
 /* =========================================
-   IMAGEN DECORATIVA
+   IMAGEN DECORATIVA DE FONDO
 ========================================= */
+
+/*
+   CAPAS:
+
+   0  -> fondo de la página
+   1  -> fondo gris de CONTACTO
+   5  -> dibujo decorativo
+   10 -> proyectos / imágenes / contenido
+   100 -> banner lateral
+   1000 -> carrusel
+
+   IMPORTANTE:
+   NO poner z-index al .main-content.
+   De esta forma los elementos individuales
+   pueden quedar por encima del dibujo.
+*/
 
 .background-decoration {
     position: fixed;
@@ -43,24 +53,41 @@ body.gallery-open {
 
     display: block;
 
+    /*
+       EL DIBUJO QUEDA:
+
+       - ENCIMA DEL FONDO NORMAL
+       - ENCIMA DEL GRIS DE CONTACTO
+       - DEBAJO DE PROYECTOS E IMÁGENES
+       - DEBAJO DEL BANNER
+    */
     z-index: 5;
 
     pointer-events: none;
     user-select: none;
-
     -webkit-user-drag: none;
 
     object-fit: contain;
     object-position: bottom right;
 
+    /*
+       El blanco de fondo.png se mezcla
+       con el fondo de la página.
+    */
     mix-blend-mode: multiply;
 
+    /*
+       Transparencia del dibujo.
+       1    = totalmente opaco
+       0.5  = 50%
+       0.3  = 30%
+    */
     opacity: 0.5;
 }
 
 
 /* =========================================
-   SIDEBAR
+   BANNER LATERAL
 ========================================= */
 
 .sidebar {
@@ -72,6 +99,10 @@ body.gallery-open {
     width: 360px;
     height: 100vh;
 
+    /*
+       EL BANNER SIEMPRE POR ENCIMA
+       DE TODO EL CONTENIDO Y DEL DIBUJO.
+    */
     z-index: 100;
 
     pointer-events: none;
@@ -80,7 +111,11 @@ body.gallery-open {
 .sidebar-background {
     position: absolute;
 
-    inset: 0;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
 
     background: #171717;
 
@@ -109,13 +144,20 @@ body.gallery-open {
     pointer-events: auto;
 
     display: flex;
+
     flex-direction: column;
 
     justify-content: space-between;
 }
 
+
+/* =========================================
+   PARTE SUPERIOR
+========================================= */
+
 .sidebar-top {
     display: flex;
+
     flex-direction: column;
 
     gap: 60px;
@@ -138,6 +180,7 @@ body.gallery-open {
 
 .navigation {
     display: flex;
+
     flex-direction: column;
 
     gap: 14px;
@@ -161,12 +204,13 @@ body.gallery-open {
 
 .navigation a:hover {
     opacity: 0.5;
+
     transform: translateX(5px);
 }
 
 
 /* =========================================
-   REDES SIDEBAR
+   ICONOS SIDEBAR
 ========================================= */
 
 .sidebar-social {
@@ -178,7 +222,7 @@ body.gallery-open {
 }
 
 .sidebar-social a {
-    color: #ffffff;
+    color: #ffffff !important;
 
     text-decoration: none;
 
@@ -188,6 +232,7 @@ body.gallery-open {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     transition:
@@ -197,24 +242,54 @@ body.gallery-open {
 
 .sidebar-social a:hover {
     opacity: 0.5;
+
     transform: translateY(-2px);
 }
 
 .sidebar-social .social-icon {
-    width: 20px;
-    height: 20px;
+    width: 20px !important;
+    height: 20px !important;
+
+    min-width: 20px;
+    min-height: 20px;
+
+    max-width: 20px;
+    max-height: 20px;
 
     display: block;
 
-    color: #ffffff;
+    color: #ffffff !important;
 
     fill: currentColor;
 }
 
+.sidebar-social .social-icon rect,
+.sidebar-social .social-icon circle,
+.sidebar-social .social-icon path {
+    vector-effect: non-scaling-stroke;
+}
+
 
 /* =========================================
-   CONTENIDO
+   CONTENIDO PRINCIPAL
 ========================================= */
+
+/*
+   IMPORTANTE:
+
+   NO ponemos z-index aquí.
+
+   Si ponemos z-index: 10 en .main-content,
+   TODO el contenido pasa por encima del dibujo
+   y el dibujo nunca podrá aparecer sobre
+   el fondo gris del contacto.
+
+   Al dejarlo sin z-index:
+
+   - el fondo gris puede quedar debajo del dibujo
+   - las tarjetas pueden ponerse encima del dibujo
+   - el banner sigue por encima de todo
+*/
 
 .main-content {
     position: relative;
@@ -257,8 +332,6 @@ body.gallery-open {
     text-transform: uppercase;
 
     max-width: 1000px;
-
-    overflow-wrap: anywhere;
 }
 
 .hero-description {
@@ -310,8 +383,6 @@ body.gallery-open {
     letter-spacing: -4px;
 
     text-transform: uppercase;
-
-    overflow-wrap: anywhere;
 }
 
 .section-description {
@@ -330,7 +401,7 @@ body.gallery-open {
 
 
 /* =========================================
-   GRID
+   GRID DE PROYECTOS
 ========================================= */
 
 .projects-grid {
@@ -356,19 +427,15 @@ body.gallery-open {
 
     position: relative;
 
+    /*
+       POR ENCIMA DEL DIBUJO
+    */
     z-index: 10;
-
-    outline: none;
-}
-
-.project-card:focus-visible {
-    outline: 3px solid #171717;
-    outline-offset: 6px;
 }
 
 
 /* =========================================
-   IMÁGENES
+   TARJETA DE IMAGEN
 ========================================= */
 
 .project-image {
@@ -381,7 +448,14 @@ body.gallery-open {
     overflow: hidden;
 
     background: #ddd8cf;
+
+    z-index: 10;
 }
+
+
+/* =========================================
+   IMAGEN DE LA TARJETA
+========================================= */
 
 .project-image img {
     width: 100%;
@@ -392,6 +466,10 @@ body.gallery-open {
     object-fit: cover;
 
     object-position: center top;
+
+    position: relative;
+
+    z-index: 11;
 
     transition:
         transform 0.7s ease,
@@ -412,6 +490,10 @@ body.gallery-open {
     overflow: hidden;
 
     background: #ddd8cf;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 .carteleria-image img {
@@ -424,9 +506,19 @@ body.gallery-open {
 
     object-position: center;
 
+    position: relative;
+
+    z-index: 11;
+
     transition:
         transform 0.7s ease,
         filter 0.5s ease;
+}
+
+.carteleria-image:hover img {
+    transform: scale(1.02);
+
+    filter: brightness(0.7);
 }
 
 
@@ -439,10 +531,6 @@ body.gallery-open {
 }
 
 .project-card:hover .project-image:not(.carteleria-image) img {
-    transform: scale(1.02);
-}
-
-.carteleria-image:hover img {
     transform: scale(1.02);
 }
 
@@ -459,6 +547,7 @@ body.gallery-open {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     color: #ffffff;
@@ -468,6 +557,8 @@ body.gallery-open {
     transition: opacity 0.4s ease;
 
     pointer-events: none;
+
+    z-index: 13;
 }
 
 .project-card:hover .project-overlay {
@@ -499,6 +590,10 @@ body.gallery-open {
     text-transform: uppercase;
 
     letter-spacing: -0.5px;
+
+    position: relative;
+
+    z-index: 12;
 }
 
 .project-card p {
@@ -509,6 +604,10 @@ body.gallery-open {
     opacity: 0.6;
 
     line-height: 1.5;
+
+    position: relative;
+
+    z-index: 12;
 }
 
 
@@ -534,13 +633,22 @@ body.gallery-open {
     width: 100%;
 }
 
+
+/* =========================================
+   ANIMACIÓN
+========================================= */
+
 .animation-project {
     width: 100%;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 
 /* =========================================
-   VIDEO
+   VÍDEO
 ========================================= */
 
 .animation-video {
@@ -552,15 +660,20 @@ body.gallery-open {
 
     background: transparent;
 
-    overflow: hidden;
+    overflow: visible;
 
     line-height: 0;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 .animation-video video {
     display: block;
 
     width: 100%;
+
     height: auto;
 
     max-width: 100%;
@@ -570,11 +683,23 @@ body.gallery-open {
     object-position: center;
 
     background: transparent;
+
+    position: relative;
+
+    z-index: 11;
+
+    transition:
+        transform 0.7s ease,
+        filter 0.5s ease;
+}
+
+.animation-project:hover .animation-video video {
+    filter: brightness(0.7);
 }
 
 
 /* =========================================
-   JUEGOS
+   PROYECTOS / JUEGOS
 ========================================= */
 
 .games {
@@ -616,12 +741,17 @@ body.gallery-open {
     padding: 0;
 
     transition: transform 0.3s ease;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 .game-image {
     position: relative;
 
     width: 100%;
+
     height: auto;
 
     overflow: hidden;
@@ -631,12 +761,15 @@ body.gallery-open {
     display: block;
 
     line-height: 0;
+
+    z-index: 10;
 }
 
 .game-image img {
     display: block;
 
     width: 100%;
+
     height: auto;
 
     max-width: 100%;
@@ -644,6 +777,10 @@ body.gallery-open {
     object-fit: contain;
 
     object-position: center;
+
+    position: relative;
+
+    z-index: 11;
 
     transition:
         transform 0.6s ease,
@@ -664,6 +801,10 @@ body.gallery-open {
     letter-spacing: -0.3px;
 
     text-align: center;
+
+    position: relative;
+
+    z-index: 11;
 }
 
 .game:hover {
@@ -681,18 +822,55 @@ body.gallery-open {
    CONTACTO
 ========================================= */
 
+/*
+   MUY IMPORTANTE:
+
+   El contacto NO tiene z-index.
+
+   Su fondo gris se crea mediante ::before
+   con z-index: 0.
+
+   El dibujo tiene z-index: 5.
+
+   Por tanto:
+
+       gris contacto
+            ↓
+       dibujo
+            ↓
+       contenido
+
+   Esto permite que el dibujo se vea
+   SOBRE EL GRIS.
+*/
+
 .contact {
     position: relative;
 
     min-height: auto;
 
     padding-top: 55px;
+
     padding-bottom: 45px;
 
+    /*
+       NO poner fondo gris directamente aquí.
+       Tiene que ser transparente para que
+       el dibujo pueda aparecer encima.
+    */
     background: transparent;
 
     color: #171717;
+
+    /*
+       SIN Z-INDEX
+    */
 }
+
+
+/* =========================================
+   FONDO GRIS DEL CONTACTO
+========================================= */
 
 .contact::before {
     content: "";
@@ -702,27 +880,34 @@ body.gallery-open {
     top: 0;
     bottom: 0;
 
+    /*
+       Se extiende por detrás del banner.
+    */
     left: -360px;
 
     width: 100vw;
 
     background: #d8d5cf;
 
+    /*
+       EL GRIS ESTÁ POR DEBAJO DEL DIBUJO
+    */
     z-index: 0;
 
     pointer-events: none;
 }
 
-.contact .section-header,
-.contact > p,
-.contact-social {
-    position: relative;
 
-    z-index: 2;
-}
+/* =========================================
+   CONTENIDO DEL CONTACTO
+========================================= */
 
 .contact .section-header {
     margin-bottom: 0;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 .contact .section-header h2 {
@@ -735,6 +920,10 @@ body.gallery-open {
     line-height: 0.9;
 
     letter-spacing: -3px;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 .contact > p {
@@ -749,11 +938,15 @@ body.gallery-open {
     color: #171717;
 
     opacity: 0.7;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 
 /* =========================================
-   REDES CONTACTO
+   REDES SOCIALES CONTACTO
 ========================================= */
 
 .contact-social {
@@ -766,6 +959,10 @@ body.gallery-open {
     margin-top: 30px;
 
     flex-wrap: wrap;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 .contact-social a {
@@ -780,29 +977,44 @@ body.gallery-open {
 
     justify-content: flex-start;
 
-    color: #171717;
+    color: #171717 !important;
 
     text-decoration: none;
 
     transition:
         opacity 0.3s ease,
         transform 0.3s ease;
+
+    position: relative;
+
+    z-index: 10;
 }
 
 .contact-social a:hover {
     opacity: 0.5;
+
     transform: translateY(-3px);
 }
 
 .contact-social .contact-icon {
-    width: 24px;
-    height: 24px;
+    width: 24px !important;
+    height: 24px !important;
+
+    min-width: 24px;
+    min-height: 24px;
+
+    max-width: 24px;
+    max-height: 24px;
 
     display: block;
 
-    color: #171717;
+    color: #171717 !important;
 
     fill: currentColor;
+
+    position: relative;
+
+    z-index: 11;
 }
 
 
@@ -815,23 +1027,25 @@ body.gallery-open {
 
     inset: 0;
 
-    width: 100%;
-    height: 100%;
+    background: rgba(
+        15,
+        15,
+        15,
+        0.97
+    );
 
-    background: rgba(15, 15, 15, 0.97);
-
+    /*
+       SIEMPRE POR ENCIMA DE TODO
+    */
     z-index: 1000;
 
     display: none;
 
     align-items: center;
+
     justify-content: center;
 
-    padding: 30px;
-
-    overflow: hidden;
-
-    touch-action: none;
+    padding: 40px;
 }
 
 .gallery.active {
@@ -839,7 +1053,8 @@ body.gallery-open {
 }
 
 .gallery-content {
-    width: min(90vw, 1200px);
+    width: 90vw;
+
     height: 90vh;
 
     display: flex;
@@ -847,25 +1062,24 @@ body.gallery-open {
     flex-direction: column;
 
     align-items: center;
+
     justify-content: center;
 
     pointer-events: none;
 }
 
 .gallery-image-container {
-    width: 100%;
-    height: 75vh;
+    width: 90vw;
+
+    height: 78vh;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    pointer-events: auto;
-
-    touch-action: pan-y;
-
-    overflow: hidden;
+    pointer-events: none;
 }
 
 .gallery-content img {
@@ -875,7 +1089,7 @@ body.gallery-open {
     height: auto;
 
     max-width: 85vw;
-    max-height: 70vh;
+    max-height: 75vh;
 
     object-fit: contain;
 
@@ -883,23 +1097,20 @@ body.gallery-open {
 
     pointer-events: auto;
 
+    cursor: default;
+
     user-select: none;
 
-    -webkit-user-select: none;
-
     -webkit-user-drag: none;
-
-    touch-action: pan-y;
 }
 
 
 /* =========================================
-   INFORMACIÓN CARRUSEL
+   INFORMACIÓN DEL CARRUSEL
 ========================================= */
 
 .gallery-info {
     width: 85vw;
-    max-width: 1200px;
 
     margin-top: 20px;
 
@@ -922,8 +1133,6 @@ body.gallery-open {
     flex-direction: column;
 
     gap: 7px;
-
-    min-width: 0;
 }
 
 .gallery-info h3 {
@@ -954,41 +1163,25 @@ body.gallery-open {
 
 
 /* =========================================
-   BOTONES CARRUSEL
+   BOTONES DEL CARRUSEL
 ========================================= */
 
 .gallery button {
-    position: absolute;
+    border: none;
 
-    border: 0;
-
-    background: transparent;
+    background: none;
 
     color: #f3f0e9;
 
     cursor: pointer;
 
-    z-index: 20;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 55px;
-    height: 55px;
-
-    padding: 0;
+    position: absolute;
 
     font-size: 40px;
 
-    line-height: 1;
+    transition: opacity 0.3s ease;
 
-    transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
-
-    touch-action: manipulation;
+    z-index: 10;
 }
 
 .gallery button:hover {
@@ -996,32 +1189,27 @@ body.gallery-open {
 }
 
 .gallery-close {
-    top: 20px;
-    right: 25px;
+    top: 25px;
 
-    font-size: 45px;
+    right: 35px;
+
+    font-size: 45px !important;
 }
 
 .gallery-prev {
-    left: 20px;
+    left: 30px;
+
     top: 50%;
 
     transform: translateY(-50%);
 }
 
 .gallery-next {
-    right: 20px;
+    right: 30px;
+
     top: 50%;
 
     transform: translateY(-50%);
-}
-
-.gallery-prev:hover {
-    transform: translateY(-50%) scale(1.1);
-}
-
-.gallery-next:hover {
-    transform: translateY(-50%) scale(1.1);
 }
 
 
@@ -1032,64 +1220,29 @@ body.gallery-open {
 @media (max-width: 900px) {
 
     .sidebar {
-        position: relative;
-
-        width: 100%;
-        height: auto;
-
-        min-height: 180px;
-
-        z-index: 100;
-
-        pointer-events: auto;
+        width: 240px;
     }
 
-    .sidebar-background {
-        clip-path: none;
-    }
-
-    .sidebar-content {
-        width: 100%;
-        height: auto;
-
-        min-height: 180px;
-
-        padding: 30px 40px;
-    }
-
-    .sidebar-top {
-        gap: 30px;
-    }
-
-    .navigation {
-        flex-direction: row;
-
-        flex-wrap: wrap;
-
-        gap: 12px 25px;
-    }
-
+    /*
+       SIN Z-INDEX EN MAIN-CONTENT
+    */
     .main-content {
-        margin-left: 0;
+        margin-left: 240px;
 
-        width: 100%;
+        width: calc(100% - 240px);
     }
 
     .hero,
     .section {
-        padding: 80px 40px;
-    }
-
-    .hero h1 {
-        font-size: clamp(
-            60px,
-            12vw,
-            120px
-        );
+        padding: 70px 40px;
     }
 
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    .arte3d-projects {
+        gap: 55px;
     }
 
     .games {
@@ -1099,39 +1252,121 @@ body.gallery-open {
         gap: 30px 25px;
     }
 
-    .background-decoration {
-        width: 55vw;
 
-        max-width: 500px;
+    /* =====================================
+       BANNER
+    ===================================== */
+
+    .sidebar-background {
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            65% 100%,
+            0 100%
+        );
+    }
+
+
+    /* =====================================
+       ICONOS
+    ===================================== */
+
+    .sidebar-social .social-icon {
+        width: 18px !important;
+        height: 18px !important;
+
+        min-width: 18px;
+        min-height: 18px;
+
+        max-width: 18px;
+        max-height: 18px;
+    }
+
+
+    /* =====================================
+       IMAGEN DECORATIVA
+    ===================================== */
+
+    .background-decoration {
+        width: 60vw;
+
+        max-width: 550px;
+
+        right: 0;
+        bottom: 0;
+
+        z-index: 5;
+
+        opacity: 0.5;
+
+        mix-blend-mode: multiply;
+    }
+
+
+    /* =====================================
+       CONTACTO
+    ===================================== */
+
+    .contact {
+        padding-top: 45px;
+
+        padding-bottom: 40px;
+
+        background: transparent;
     }
 
     .contact::before {
-        left: 0;
+        left: -240px;
 
-        width: 100%;
+        width: 100vw;
+
+        z-index: 0;
     }
 
-    .gallery {
-        padding: 20px;
+    .contact .section-header h2 {
+        font-size: 48px;
     }
 
-    .gallery-content {
-        width: 94vw;
-        height: 90vh;
+    .contact > p {
+        margin-top: 18px;
+
+        font-size: 14px;
+
+        max-width: 400px;
     }
+
+    .contact-social {
+        gap: 45px;
+
+        margin-top: 28px;
+    }
+
+    .contact-social a {
+        width: 45px;
+        height: 45px;
+    }
+
+
+    /* =====================================
+       CARRUSEL
+    ===================================== */
 
     .gallery-image-container {
-        width: 94vw;
-        height: 72vh;
+        width: 90vw;
+
+        height: 75vh;
+
+        touch-action: pan-y;
     }
 
     .gallery-content img {
-        max-width: 88vw;
-        max-height: 65vh;
+        max-width: 82vw;
+
+        max-height: 70vh;
     }
 
     .gallery-info {
-        width: 88vw;
+        width: 82vw;
     }
 
     .gallery-prev,
@@ -1147,13 +1382,39 @@ body.gallery-open {
 
 @media (max-width: 600px) {
 
+
+    /* =====================================
+       IMAGEN DECORATIVA
+    ===================================== */
+
     .background-decoration {
+        position: fixed;
+
+        right: 0;
+        bottom: 0;
+
         width: 65vw;
 
         max-width: 380px;
 
-        right: 0;
-        bottom: 0;
+        height: auto;
+
+        /*
+           DIBUJO:
+           encima del gris
+           debajo de proyectos
+        */
+        z-index: 5;
+
+        display: block;
+
+        object-fit: contain;
+
+        object-position: bottom right;
+
+        pointer-events: none;
+
+        mix-blend-mode: multiply;
 
         opacity: 0.5;
     }
@@ -1161,16 +1422,28 @@ body.gallery-open {
 
     /* =====================================
        MENÚ
-    ====================================== */
+    ===================================== */
 
     .sidebar {
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
         min-height: 220px;
+
+        z-index: 100;
+    }
+
+    .sidebar-background {
+        clip-path: none;
     }
 
     .sidebar-content {
-        min-height: 220px;
-
         padding: 25px;
+
+        min-height: 220px;
     }
 
     .sidebar-top {
@@ -1182,12 +1455,21 @@ body.gallery-open {
     }
 
     .navigation {
+        flex-direction: row;
+
+        flex-wrap: wrap;
+
         gap: 10px 20px;
     }
 
     .navigation a {
         font-size: 11px;
     }
+
+
+    /* =====================================
+       ICONOS
+    ===================================== */
 
     .sidebar-social {
         margin-top: 35px;
@@ -1201,14 +1483,26 @@ body.gallery-open {
     }
 
     .sidebar-social .social-icon {
-        width: 18px;
-        height: 18px;
+        width: 18px !important;
+        height: 18px !important;
+
+        min-width: 18px;
+        min-height: 18px;
+
+        max-width: 18px;
+        max-height: 18px;
     }
 
 
     /* =====================================
        CONTENIDO
-    ====================================== */
+    ===================================== */
+
+    .main-content {
+        margin-left: 0;
+
+        width: 100%;
+    }
 
     .hero,
     .section {
@@ -1220,80 +1514,218 @@ body.gallery-open {
     }
 
     .hero h1 {
-        font-size: clamp(
-            50px,
-            17vw,
-            80px
-        );
+        font-size: 70px;
 
         letter-spacing: -5px;
-    }
-
-    .hero-description {
-        margin-top: 35px;
-
-        font-size: 16px;
     }
 
 
     /* =====================================
        CABECERAS
-    ====================================== */
+    ===================================== */
 
     .section-header {
         display: block;
     }
 
     .section-header h2 {
-        font-size: clamp(
-            42px,
-            14vw,
-            65px
-        );
-
-        letter-spacing: -3px;
-    }
-
-    .section-description {
-        margin-bottom: 50px;
-
-        font-size: 15px;
+        font-size: 55px;
     }
 
 
     /* =====================================
        ARTE 3D
-    ====================================== */
+    ===================================== */
 
     .arte3d-projects {
         gap: 45px;
+
+        position: relative;
+
+        z-index: 10;
+    }
+
+
+    /* =====================================
+       ANIMACIÓN
+    ===================================== */
+
+    .animation-video {
+        width: 100%;
+
+        height: auto;
+
+        overflow: visible;
+
+        position: relative;
+
+        z-index: 10;
+    }
+
+    .animation-video video {
+        width: 100%;
+
+        height: auto;
+
+        max-width: 100%;
+
+        position: relative;
+
+        z-index: 11;
     }
 
 
     /* =====================================
        JUEGOS
-    ====================================== */
+    ===================================== */
 
     .games {
         grid-template-columns: 1fr;
 
         gap: 45px;
+
+        width: 100%;
+
+        position: relative;
+
+        z-index: 10;
+    }
+
+    .game {
+        width: 100%;
+
+        align-items: center;
+
+        position: relative;
+
+        z-index: 10;
+    }
+
+    .game-image {
+        width: 100%;
+
+        height: auto;
+
+        aspect-ratio: auto;
+
+        overflow: hidden;
+
+        background: transparent;
+
+        display: block;
+
+        line-height: 0;
+
+        position: relative;
+
+        z-index: 10;
+    }
+
+    .game-image img {
+        width: 100%;
+
+        height: auto;
+
+        max-width: 100%;
+
+        object-fit: contain;
+
+        display: block;
+
+        position: relative;
+
+        z-index: 11;
+    }
+
+    .game h3 {
+        width: 100%;
+
+        text-align: center;
+
+        margin-top: 15px;
+
+        font-size: 16px;
+
+        position: relative;
+
+        z-index: 11;
+    }
+
+
+    /* =====================================
+       CARTELERÍA
+    ===================================== */
+
+    .carteleria-image {
+        width: 100%;
+
+        height: auto;
+
+        aspect-ratio: auto;
+
+        position: relative;
+
+        z-index: 10;
+    }
+
+    .carteleria-image img {
+        width: 100%;
+
+        height: auto;
+
+        object-fit: contain;
+
+        position: relative;
+
+        z-index: 11;
     }
 
 
     /* =====================================
        CONTACTO
-    ====================================== */
+    ===================================== */
 
     .contact {
+        min-height: auto;
+
         padding-top: 45px;
+
         padding-bottom: 40px;
+
+        /*
+           TRANSPARENTE.
+
+           El gris está en ::before.
+           Esto permite que el dibujo
+           aparezca por encima del gris.
+        */
+        background: transparent;
+
+        position: relative;
     }
 
     .contact::before {
+        /*
+           En móvil el banner ya no ocupa
+           el lateral.
+        */
         left: 0;
 
         width: 100%;
+
+        background: #d8d5cf;
+
+        z-index: 0;
+    }
+
+    .contact .section-header {
+        display: block;
+
+        margin-bottom: 0;
+
+        position: relative;
+
+        z-index: 10;
     }
 
     .contact .section-header h2 {
@@ -1307,96 +1739,123 @@ body.gallery-open {
 
         font-size: 13px;
 
+        line-height: 1.5;
+
         max-width: 320px;
+
+        position: relative;
+
+        z-index: 10;
     }
 
     .contact-social {
         gap: 35px;
 
         margin-top: 28px;
+
+        justify-content: flex-start;
+
+        flex-wrap: wrap;
+
+        position: relative;
+
+        z-index: 10;
     }
 
     .contact-social a {
         width: 45px;
         height: 45px;
+
+        position: relative;
+
+        z-index: 10;
     }
 
     .contact-social .contact-icon {
-        width: 23px;
-        height: 23px;
+        width: 23px !important;
+        height: 23px !important;
+
+        min-width: 23px;
+        min-height: 23px;
+
+        max-width: 23px;
+        max-height: 23px;
+
+        position: relative;
+
+        z-index: 11;
     }
 
 
     /* =====================================
        CARRUSEL
-    ====================================== */
+    ===================================== */
 
     .gallery {
-        padding: 15px;
+        padding: 20px;
     }
 
     .gallery-content {
-        width: 100%;
+        width: 95vw;
+
         height: 90vh;
     }
 
     .gallery-image-container {
-        width: 100%;
-        height: 68vh;
+        width: 95vw;
+
+        height: 72vh;
+
+        touch-action: pan-y;
     }
 
     .gallery-content img {
-        max-width: 94vw;
-        max-height: 60vh;
+        max-width: 88vw;
+
+        max-height: 68vh;
+
+        width: auto;
+
+        height: auto;
+
+        object-fit: contain;
+
+        user-select: none;
+
+        -webkit-user-drag: none;
     }
 
     .gallery-info {
-        width: 94vw;
+        width: 88vw;
 
-        margin-top: 12px;
+        margin-top: 15px;
 
-        gap: 10px;
+        gap: 15px;
     }
 
     .gallery-info h3 {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .gallery-info p {
-        font-size: 11px;
+        font-size: 12px;
     }
 
     .gallery-info span {
-        font-size: 10px;
+        font-size: 11px;
+    }
+
+    .gallery-prev,
+    .gallery-next {
+        display: none;
     }
 
     .gallery-close {
-        top: 10px;
-        right: 10px;
+        top: 15px;
 
-        width: 45px;
-        height: 45px;
+        right: 20px;
 
-        font-size: 38px;
+        font-size: 40px !important;
     }
 }
 
-
-/* =========================================
-   REDUCIR ANIMACIONES
-========================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
