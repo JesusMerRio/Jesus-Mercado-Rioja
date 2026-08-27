@@ -650,7 +650,7 @@ body {
 }
 
 .animation-project:hover .animation-video video {
-    filter: brightness(0.7);
+    filter: brightness(1.0);
 }
 
 
